@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+		   width="30"
+		   height="115"
+		   color="#FFFFFF"
+		   verticalScrollPolicy="off">
+
+	<mx:HBox width="100%"
+			 bottom="0"
+			 backgroundColor="{0xEEEEEE}"
+			 height="{getProgressHeight(height, progress)}"/>
+
+	<mx:Script>
+		<![CDATA[
+			import com.evola.driving.util.GroupColors;
+
+			[Bindable]
+			public var progress:Number=0;
+
+			[Bindable]
+			public var groupId:int;
+
+			private function getProgressHeight(height:Number, progress:Number):Number
+			{
+				return Math.min(this.height, this.height * progress);
+			}
+		]]>
+	</mx:Script>
+
+</mx:Canvas>

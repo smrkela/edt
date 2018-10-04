@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		 verticalAlign="middle"
+		 horizontalGap="2"
+		 borderStyle="solid"
+		 borderSides="bottom"
+		 backgroundColor="{GroupColors.getProgressInactiveColor(groupId)}"
+		 borderColor="{isRollOver ? GroupColors.getProgressInactiveColor(groupId) : GroupColors.getColor(groupId)}"
+		 borderThickness="5"
+		 height="120"
+		 width="400"
+		 buttonMode="true"
+		 useHandCursor="true"
+		 mouseChildren="false"
+		 click="onClick(event)"
+		 backgroundAlpha="{isRollOver ? 0.5: 0.3}"
+		 rollOver="isRollOver = true"
+		 rollOut="isRollOver = false"
+		 verticalScrollPolicy="off"
+		 xmlns:controls="com.evola.driving.views.controls.*"
+		 xmlns:controls1="com.evola.driving.controls.*">
+
+	<mx:Canvas height="100%"
+			   width="100%"
+			   borderColor="{isRollOver ? GroupColors.getProgressInactiveColor(groupId) : GroupColors.getColor(groupId)}"
+			   borderSides="top"
+			   borderStyle="solid">
+
+		<controls:LearningGroupProgressControl progress="{data.@learn1 / data.attribute('number-of-questions')}"
+											   groupId="{groupId}"
+											   left="0"
+											   bottom="0"/>
+
+		<mx:Text text="{data.@learn1} naučeno"
+				 leading="0"
+				 width="60"
+				 alpha="0.6"
+				 left="0"
+				 bottom="0"/>
+
+		<controls:LearningGroupProgressControl progress="{data.@test1 / data.attribute('number-of-questions')}"
+											   groupId="{groupId}"
+											   right="0"
+											   bottom="0"/>
+
+		<mx:Text text="{data.@test1} provereno"
+				 textAlign="right"
+				 leading="0"
+				 width="60"
+				 alpha="0.6"
+				 bottom="0"
+				 right="0"/>
+
+		<controls1:LinkText text="{data.@title}"
+							color="{GroupColors.getColor(groupId)}"
+							leading="0"
+							fontWeight="bold"
+							textAlign="center"
+							fontSize="14"
+							width="300"
+							horizontalCenter="0"
+							top="5"/>
+
+		<mx:Label horizontalCenter="0"
+				  bottom="0"
+				  textAlign="left"
+				  alpha="0.6"
+				  text="{data.attribute('number-of-questions')} pitanja"/>
+
+		<mx:Label text="{getProgressValue(data.@learn1)}"
+				  horizontalCenter="0"
+				  bottom="30"
+				  alpha="0.6"
+				  fontWeight="bold"
+				  fontSize="22"/>
+
+	</mx:Canvas>
+
+	<mx:Script>
+		<![CDATA[
+			import com.evola.driving.util.GroupColors;
+			import com.evola.driving.util.PageManager;
+
+			[Bindable]
+			public var groupId:int;
+
+			[Bindable]
+			public var isRollOver:Boolean=false;
+
+			protected function onClick(event:MouseEvent):void
+			{
+
+				PageManager.selectPage("GroupSessions", {id: data.@id});
+			}
+
+			private function getProgressValue(learns:int):String
+			{
+
+				var learned:int=data.@learn1;
+				var tested:int=data.@test1;
+				var total:int=data.attribute("number-of-questions");
+				
+				var value:int=(learned + tested) * 100 / (2 * total);
+				
+				value = Math.min(value, 100);
+
+				return value + "%";
+			}
+		]]>
+	</mx:Script>
+
+</mx:HBox>

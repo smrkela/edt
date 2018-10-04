@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		 verticalAlign="middle"
+		 height="105"
+		 width="280"
+		 borderStyle="solid"
+		 backgroundColor="#FAFAFA"
+		 paddingBottom="4"
+		 paddingLeft="4"
+		 paddingRight="4"
+		 paddingTop="4"
+		 xmlns:controls="com.evola.driving.views.controls.*"
+		 xmlns:controls1="com.evola.driving.controls.*">
+
+	<mx:VBox height="100%"
+			 verticalGap="1">
+
+		<controls:LearningLessonProgressControl progress="{data.@learn3 / data.attribute('number-of-questions')}"
+												index="3"/>
+		<controls:LearningLessonProgressControl progress="{data.@learn2 / data.attribute('number-of-questions')}"
+												index="2"/>
+		<controls:LearningLessonProgressControl progress="{data.@learn1 / data.attribute('number-of-questions')}"
+												index="1"/>
+
+	</mx:VBox>
+
+	<mx:Canvas width="100%"
+			   height="100%">
+
+		<mx:Text text="{data.@title}"
+				 textAlign="center"
+				 fontSize="16"
+				 fontWeight="bold"
+				 left="0"
+				 top="5"/>
+
+		<mx:Label text="{getProgressValue(data.@learn1)}"
+				  left="0"
+				  top="30"
+				  alpha="0.6"
+				  fontWeight="bold"
+				  fontSize="22"/>
+
+		<mx:Label textAlign="right"
+				  left="0"
+				  bottom="0"
+				  alpha="0.5"
+				  text="{data.attribute('number-of-questions')} pitanja"/>
+
+		<controls1:BoxButton label="Uči"
+							 color="#000000"
+							 height="30"
+							 width="95"
+							 primaryColor="#DDDDDD"
+							 secondaryColor="0x00A300"
+							 icon="@Embed(source='/data/images/book.png')"
+							 click="onClick('learn')"
+							 top="10"
+							 right="5"/>
+
+
+		<controls1:BoxButton label="Proveri"
+							 color="#000000"
+							 height="30"
+							 width="95"
+							 primaryColor="#DDDDDD"
+							 secondaryColor="0xFFC40D"
+							 icon="@Embed(source='/data/images/pencil.png')"
+							 click="onClick('test')"
+							 top="45"
+							 right="5"/>
+
+	</mx:Canvas>
+
+	<mx:VBox height="100%"
+			 verticalGap="1">
+
+		<controls:LearningLessonProgressControl progress="{data.@test3 / data.attribute('number-of-questions')}"
+												index="3"
+												isLearn="false"/>
+		<controls:LearningLessonProgressControl progress="{data.@test2 / data.attribute('number-of-questions')}"
+												index="2"
+												isLearn="false"/>
+		<controls:LearningLessonProgressControl progress="{data.@test1 / data.attribute('number-of-questions')}"
+												index="1"
+												isLearn="false"/>
+
+	</mx:VBox>
+
+	<mx:Script>
+		<![CDATA[
+			import com.evola.driving.util.GroupColors;
+			import com.evola.driving.util.PageManager;
+
+			[Bindable]
+			public var groupId:int;
+
+			protected function onClick(type:String):void
+			{
+
+				PageManager.selectPage("LearningSession", {groupId: groupId, lessonId: data.@id, type: type});
+			}
+
+			private function getProgressValue(learns:int):String
+			{
+
+				var learned:int=data.@learn1;
+				var tested:int=data.@test1;
+				var total:int=data.attribute("number-of-questions");
+
+				var value:int=(learned + tested) * 100 / (2 * total);
+				
+				value = Math.min(value, 100);
+
+				return value + "%";
+			}
+		]]>
+	</mx:Script>
+
+</mx:HBox>

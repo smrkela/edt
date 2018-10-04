@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		 width="100%"
+		 addedToStage="onCreationComplete(event)"
+		 xmlns:controls="com.evola.driving.controls.*"
+		 xmlns:util="com.evola.driving.util.*"
+		 xmlns:controls1="com.evola.driving.views.controls.*"
+		 xmlns:containers="flexlib.containers.*">
+
+	<controls:SectionTitle label="Izaberi kategoriju pitanja i kreni sa učenjem"/>
+
+	<containers:FlowContainer width="100%"
+							  verticalGap="20"
+							  horizontalGap="20">
+
+		<mx:Repeater id="rpt"
+					 dataProvider="{groups}"
+					 recycleChildren="true">
+
+			<controls1:LearningGroupRenderer data="{rpt.currentItem}"
+											 groupId="{rpt.currentItem.@id}"/>
+
+		</mx:Repeater>
+
+	</containers:FlowContainer>
+
+	<mx:Spacer height="20"/>
+
+	<mx:Text text="{getNoteText()}"
+			 color="#555555"
+			 width="100%"/>
+
+	<util:EvolaHttpService id="service"
+						   fault="onLoadFault(event)"
+						   restUrl="statistics/loadGroups"
+						   result="onLoadResult(event)"/>
+
+	<mx:Script>
+		<![CDATA[
+			import com.evola.driving.util.GroupColors;
+			import com.evola.driving.util.PageManager;
+
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+
+			[Bindable]
+			private var groups:XMLList;
+
+			private function onLoadResult(event:ResultEvent):void
+			{
+
+				var result:XML=XML(event.result);
+
+				groups=result.child("group");
+			}
+
+			protected function onCreationComplete(event:Event):void
+			{
+
+				service.send();
+			}
+
+			protected function onLoadFault(event:FaultEvent):void
+			{
+
+				Alert.show("Error loading progress");
+			}
+
+			protected function onLearningDetailsClick(event:MouseEvent):void
+			{
+
+				PageManager.selectPage("LearningDetails");
+			}
+
+			protected function onTestingDetailsClick(event:MouseEvent):void
+			{
+				PageManager.selectPage("TestingDetails");
+			}
+
+			private function getNoteText():String
+			{
+
+				var text:String="NAPOMENA: Uz svaku grupu pitanja sa leve strane predstavljen " + "je broj pitanja ove grupe koji je učen barem jedanput i uz to grafik " + "koji predstavlja precentualnu vrednost tog broja u odnosu na ukupan broj pitanja u toj grupi. " + "Sa desne strane analogno tome predstavljen je napredak u proveri znanja.";
+				text+="\n\n";
+				text+="Ispod naziva grupe pitanja nalazi se procentualni iznos koji pokazuje koliki je napredak u završavanju date grupe pitanja odnosno pokazuje koliko je pitanja, od ukupnog broja pitanja, učeno i provereno barem jednom. Procenat od 100% znači da su sva pitanja barem jednom učena i proverena.";
+				text+="\n\n";
+				text+="Na na dnu ispod procentualnog iznosa nalazi se ukupan broj pitanja u datoj grupi pitanja.";
+
+				return text;
+			}
+		]]>
+	</mx:Script>
+
+</mx:VBox>
