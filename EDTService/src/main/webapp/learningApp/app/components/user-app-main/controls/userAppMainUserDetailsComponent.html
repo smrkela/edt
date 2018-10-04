@@ -1,0 +1,110 @@
+<div class="col-md-12">
+
+	<div class="row">
+
+		<div class="col-md-6">
+
+			<div class="panel panel-success">
+
+				<div class="panel-heading">
+					<div class="panel-title">Nešto o meni</div>
+				</div>
+
+				<div class="panel-body">
+
+					<div ng-show="userPreview.registerDate != null">
+						Registrovao si se <b>{{userPreview.registerDate | date
+								: 'dd/MM/yyyy'}}</b>.
+					</div>
+
+					<div ng-show="userPreview.numOfDailyTestsDone>
+						0">
+						Uradio si <b>{{userPreview.numOfDailyTestsDone}}</b> testova dana.
+						<a href="test-dana">Uradi još koji.</a>
+					</div>
+
+					<div ng-show="userPreview.numOfDailyTestsDone == 0">
+						Ne zaboravi da možeš da vežbaš i takmičiš se na dnevnom testu!. <a
+							href="test-dana">Kreni odmah.</a>
+					</div>
+
+					<div>
+
+						<div ng-show="userPreview.drivingCategoryName == null">
+							Nemaš izabranu kategoriju vozila. <a href="">Klikni ovde da
+								je izabereš.</a>
+						</div>
+						<div ng-show="userPreview.drivingCategoryName != null">
+							Spremaš se za <b>{{userPreview.drivingCategoryName}}</b>
+							kategoriju.
+						</div>
+
+					</div>
+
+					<div>
+						<div ng-show="userPreview.learningStartDate == null">Još
+							uvek nisi počeo sa učenjem.</div>
+						<div ng-show="userPreview.learningStartDate != null">
+							Počeo si sa učenjem <b>{{userPreview.learningStartDate | date
+								: 'dd/MM/yyyy'}}</b>.
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="panel panel-success">
+
+				<div class="panel-heading">
+					<div class="panel-title">Moja auto škola</div>
+				</div>
+
+				<div class="panel-body">
+
+					<div ng-show="userPreview.drivingSchools.length == 0">
+						Trenutno nisi član ni jedne auto škole. <br /> <a href="uclani-se-u-auto-skolu">Pošalji
+							zahtev za članstvo u auto školi.</a>
+					</div>
+
+					<div ng-show="userPreview.drivingSchools.length == 1">
+
+						<img class="img-rounded" style="height: 60px"
+							ng-src="resource?path=/drivingSchools/{{userPreview.drivingSchools[0].id}}/logo"
+							alt="{{userPreview.drivingSchools[0].name}}"></img>
+
+						<div>
+							<a
+								href="spisak-auto-skola/{{userPreview.drivingSchools[0].uniqueName}}/profil-auto-skole">{{userPreview.drivingSchools[0].name}}</a>
+							- {{userPreview.drivingSchools[0].city}}
+						</div>
+
+					</div>
+
+					<div ng-show="userPreview.drivingSchools.length > 1">
+
+						<ul class="list-group">
+							<li class="list-group-item"
+								ng-repeat="school in userPreview.drivingSchools"><img
+								class="img-rounded" style="height: 60px"
+								ng-src="resource?path=/drivingSchools/{{school.id}}/logo"
+								alt="{{school.name}}"></img> <br /><br/> <b><a
+									href="spisak-auto-skola/{{school.uniqueName}}/profil-auto-skole">{{school.name}}</a></b>
+								- {{school.city}}</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

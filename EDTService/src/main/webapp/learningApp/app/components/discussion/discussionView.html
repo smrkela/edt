@@ -1,0 +1,140 @@
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="row">
+
+			<div class="col-md-12">
+				<h4>Diskusija - {{totalMessages}} poruka -
+					{{loadedQuestion.text}}</h4>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12" ng-show="!isLoading">
+
+				<question-control-widget question="loadedQuestion" hide-discussions="true"/>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+		
+			<div class="col-md-12">
+				
+				<div class="alert alert-info">
+					Ukoliko imaš nedoumica vezanih za ovo pitanje, smatraš
+					da nije tačno ili ti odgovor deluje nejasno, ovde možeš to da
+					napišeš. Takođe ukoliko znaš odgovor na pitanje koje je neko drugi
+					postavio, ovde možeš odgovoriti na takvo pitanje i pomoći drugima.			
+				</div>
+			</div>
+		
+		</div>	
+		
+		<div class="row" ng-show="isLoading">
+		
+			<div class="col-md-12">
+				Učitava se diskusija...
+			</div>
+		
+		</div>	
+
+		<div class="row" ng-show="!isLoading">
+
+			<div class="col-md-12" style="background-color: #FFFFFF">
+
+				<div class="row" ng-show="totalPages > 1">
+		
+					<div class="col-md-12">
+						<paging-widget currentPage="currentPageIndex + 1" totalPages="totalPages"/>
+					</div>
+						
+				</div>
+
+				<div class="row discussionWrapper">
+
+					<discussion-renderer ng-repeat="message in messages"/>
+
+				</div>
+				
+				<div class="row" ng-show="totalPages > 1">
+		
+					<div class="col-md-12">
+						<paging-widget currentPage="currentPageIndex + 1" totalPages="totalPages"/>
+					</div>
+						
+				</div>
+
+				<div class="row" ng-show="!isLoading && messages.length == 0">
+
+					<div class="col-md-12">
+					
+						<div class="text-center">
+	
+							<p>Trenutno nema poruka o ovom pitanju.</p> 
+							<p>Ukoliko
+								imaš neku nedoumicu vezanu za ovo pitanje, napiši poruku.</p>
+		
+							<p>
+								<button class="btn btn-default" ng-click="writeMessageClicked()">Napiši poruku</button>
+							</p>
+	
+						</div>
+					
+					</div>
+				
+				</div>
+				
+			</div>
+
+		</div>
+
+		<div id="messageWritingDiv" class="row">
+
+			<div class="col-md-12" ng-show="isWritingMessage">
+
+				<label>Poruka:</label> 
+				
+				<p ng-show="repliedMessage">
+					Odgovor na poruku: {{repliedMessage['message-text']}}
+				</p>
+				
+				<textarea type="text" ng-model="messageText" class="form-control" rows="5"></textarea>
+
+				<label>Preostalo {{MAX_MESSAGE_SIZE - messageText.length}}
+					slova.</label>
+
+				<div ng-show="!isSavingMessage">
+
+					<button class="btn btn-primary" ng-click="saveMessage()"><i class="glyphicon glyphicon-floppy-disk"></i> Sačuvaj poruku</button>
+					<button class="btn btn-warning" ng-click="cancelMessage()">Otkaži</button>
+					
+					<span class="text-right">{{messageNotification}}</span>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row voffset2" ng-show="!isWritingMessage">
+
+			<div class="col-md-12">
+
+				<button class="btn btn-success" ng-click="writeMessageClicked()">
+					<i class="glyphicon glyphicon-pencil"></i> Napiši poruku
+				</button>
+				<button class="btn btn-warning" ng-click="close()">Zatvori
+					diskusiju</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

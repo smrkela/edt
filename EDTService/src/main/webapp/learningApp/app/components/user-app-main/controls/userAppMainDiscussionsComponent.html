@@ -1,0 +1,66 @@
+<div class="col-md-12">
+
+	<div class="row">
+
+		<div class="col-md-6">
+
+			<div ng-show="discussions.lastUserMessageText != null">
+
+				<h5 class="example-title">Tvoja poslednja poruka</h5>
+
+				<div class="media">
+					<a class="pull-left" href="#"><img
+						class="media-object img-rounded"
+						ng-src="resource?path=/users/{{userPreview.userId}}/smallImage"
+						alt="{{discussions.lastMessageUserName}}"></img></a>
+					<div class="media-body">
+						<h4 class="media-heading">{{userPreview.username}}</h4>
+						<p class="labelInfo">{{discussions.lastUserMessageDate | date : 'MM/dd/yyyy'}}</p>
+						<p>{{discussions.lastUserMessageText}}</p>
+					</div>
+				</div>
+
+				<div ng-show="discussions.numOfMessages > 0">Imaš
+					{{discussions.numOfUserMessages}} poruka postavljenih u diskusijama.</div>
+
+			</div>
+			
+			<div ng-show="discussions.numOfUserMessages == 0">Nemaš poruka u
+				diskusijama o pitanjima. Pomozi drugima ili potraži odgovor na
+				pitanja koja ti nisu jasna.</div>
+
+			<a href="#" ui-sref="mydiscussions({page: 1})">Moje
+				diskusije</a>
+
+		</div>
+
+		<div class="col-md-6">
+
+			<div ng-show="discussions.lastMessageText != null">
+
+				<h5 class="example-title">Poslednja poruka u diskusijama</h5>
+
+				<div class="media">
+					<a class="pull-left" href="#"><img
+						class="media-object img-rounded"
+						ng-src="resource?path=/users/{{discussions.lastMessageUserId}}/smallImage"
+						alt="{{discussions.lastMessageUserName}}"></img></a>
+					<div class="media-body">
+						<h4 class="media-heading">{{discussions.lastMessageUserName}}</h4>
+						<p class="labelInfo">{{discussions.lastMessageDate | date : 'MM/dd/yyyy'}}</p>
+						<p>{{discussions.lastMessageText}}</p>
+					</div>
+				</div>
+
+			</div>
+			
+			<div ng-show="discussions.numOfMessages > 0">Trenutno u diskusijama ima {{discussions.numOfMessages}} poruka.</div>
+			
+			<a href="#" ui-sref="discussions({page: 1})">Sve
+				diskusije</a>
+
+		</div>
+
+	</div>
+
+</div>

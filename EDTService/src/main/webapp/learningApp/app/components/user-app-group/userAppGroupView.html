@@ -1,0 +1,138 @@
+<div class="row">
+	
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li><a ui-sref="user-app-main"><i class="glyphicon glyphicon-home"></i> Glavna</a></li>
+			<li><span>{{groupName}}</span></li>
+		</ol>
+	</div>
+	
+	<div class="col-md-12">
+	
+		<div class="row">
+	
+			<div class="col-md-12">
+				<h4><span style="background-color: {{getGroupColor(categoryId)}}">&nbsp;&nbsp;&nbsp;</span> {{groupName}}</h4>
+			</div>
+			
+		</div>
+		
+		<div class="text-divider6"><span></span></div>
+		
+		<div class="labelInfo">
+		
+			Izaberi lekciju i kreni sa učenjem ili proverom:
+		
+		</div>
+		
+		<div class="row">
+		
+			<div class="col-md-9">
+	
+				<div class="list-group">
+				
+					<user-lesson-renderer ng-repeat="lesson in lessons" />
+					
+				</div>
+					
+			</div>
+			
+			<div class="col-md-3">
+			
+				<div class="row">
+				
+					<div class="col-md-12 learningGroupProgress">
+					
+						<ul class="list-group">
+				
+							<li class="list-group-item">
+								{{currentProgress | number : 0}}% ove grupe je pređeno
+							</li>
+							<li class="list-group-item">
+								<div class="progress">
+									<div class="progress-bar" role="progressbar"
+										aria-valuenow="{{currentProgress}}" aria-valuemin="0"
+										aria-valuemax="100" style="width: {{currentProgress}}%">
+										<span class="sr-only">{{currentProgress}}% Complete</span>
+									</div>
+								</div>
+							</li>
+							
+							<li class="list-group-item">
+								Naučeno {{learnedOnce}} od {{totalQuestions}} pitanja
+							</li>
+							<li class="list-group-item">
+								<div class="progress">
+									<div class="progress-bar progress-bar-success" role="progressbar"
+										aria-valuenow="{{learnedOnce * 100 / totalQuestions}}" aria-valuemin="0"
+										aria-valuemax="100" style="width: {{learnedOnce * 100 / totalQuestions}}%">
+										<span class="sr-only">{{learnedOnce * 100 / totalQuestions}}% Complete</span>
+									</div>
+								</div>
+							</li>
+							
+							<li class="list-group-item">
+							Provereno {{testedOnce}} od {{totalQuestions}} pitanja
+							</li>
+							<li class="list-group-item">
+								<div class="progress">
+									<div class="progress-bar progress-bar-warning" role="progressbar"
+										aria-valuenow="{{testedOnce * 100 / totalQuestions}}" aria-valuemin="0"
+										aria-valuemax="100" style="width: {{testedOnce * 100 / totalQuestions}}%">
+										<span class="sr-only">{{testedOnce * 100 / totalQuestions}}% Complete</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+							
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						Koji put učiš i proveravaš?
+			
+						<div class="row">
+							<div class="col-md-4">
+								<button class="btn btn-sm btn-{{currentLearn == 1 ? 'success' : 'warn'}} btn-block voffset1"
+									ng-click="updateCurrentLearn(1)">Prvi</button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-sm btn-{{currentLearn == 2 ? 'success' : 'warn'}} btn-block voffset1"
+									ng-click="updateCurrentLearn(2)">Drugi</button>
+							</div>
+							<div class="col-md-4">								
+								<button class="btn btn-sm btn-{{currentLearn == 3 ? 'success' : 'warn'}} btn-block voffset1"
+									ng-click="updateCurrentLearn(3)">Treći</button>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+				
+				<div class="row">
+				
+					<div class="col-md-12">
+	
+						<h4>Druge grupe pitanja:</h4>
+						
+						<hr/>
+				
+						<ul style="list-style: none;">
+							<li ng-repeat="group in groups" style="padding: 3px;">
+								<span style="background-color: {{getGroupColor(group.id)}}">&nbsp;&nbsp;&nbsp;</span>
+								<a ui-sref="user-app-group({groupId:group.id})"> {{group.title}}</a>
+							</li>
+						</ul>
+						
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+
+</div>

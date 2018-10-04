@@ -1,0 +1,103 @@
+<div class="list-group-item learningGroup {{lesson == selectedLesson ? 'learningGroupSelected' : isRollOver ? 'learningGroupActive' : ''}}" ng-mouseenter="mouseEnter()" ng-mouseleave="mouseLeave()"
+	ng-click="onLessonClick(lesson)">
+	
+	<div class="row">
+	
+		<div class="col-md-4">
+			
+			<h5><a href="" style="color: {{getGroupColor(categoryId)}}">{{lesson.title}}</a></h5>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<span class="learningGroupPercent">{{totalPercent | number :
+					0}}%</span>
+					<span class="learningGroupQuestions">, {{lesson['number-of-questions']}} pitanja</span> 
+					<span class="learningGroupQuestions" ng-show="lesson['favorites-count'] > 0">, {{lesson['favorites-count']}} omiljenih</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-6" style="padding-top: 10px">
+		
+			<div class="row">
+				
+				<div class="col-md-12" title="{{learnTooltip}}">
+					<div class="progress">
+						<div class="progress-bar progress-bar-success" role="progressbar"
+							aria-valuenow="{{learnPercent}}" aria-valuemin="0"
+							aria-valuemax="100" style="width: {{learnPercent}}%">
+							<span class="sr-only">{{learnPercent}}% Complete
+								(success)</span>
+						</div>	
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row hide-fade" ng-show="lesson == selectedLesson">
+				<div class="col-md-12">
+					<a class="btn btn-block btn-sm btn-primary" ng-click="startLearning(lesson)"><i class="glyphicon glyphicon-book"> </i> Uči celu lekciju</a>
+				</div>
+			</div>
+			
+			<div class="row voffset1 hide-fade" ng-show="lesson == selectedLesson">
+				<div class="col-md-12">
+					<a class="btn btn-block btn-sm btn-info" href="" ng-show="learnCount != total" ng-click="goToPartial(lesson, true)"><i class="glyphicon glyphicon-book"> </i> {{'Uči preostalih ' + (total - learnCount)}}</a>
+				</div>
+			</div>
+			
+			<div class="row voffset1 hide-fade" ng-show="lesson == selectedLesson">
+				<div class="col-md-12">
+					<a class="btn btn-block btn-sm btn-danger" href="" ng-show="lesson['favorites-count'] > 0" ng-click="goToFavorites(lesson, true)"><i class="glyphicon glyphicon-book"> </i> {{'Uči omiljenih ' + (lesson['favorites-count']) + ' pitanja'}}</a>
+				</div>
+			</div>
+			
+			<div class="row hidden-xs hidden-sm" ng-hide="lesson == selectedLesson">
+				<div class="col-md-12">
+					<p class="lessonQuestionCount">{{learnCount}}</p>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-6" style="padding-top: 10px">
+		
+			<div class="row">
+				
+				<div class="col-md-12" title="{{testTooltip}}">
+					<div class="progress">
+						<div class="progress-bar progress-bar-warning" role="progressbar"
+							aria-valuenow="{{testPercent}}" aria-valuemin="0"
+							aria-valuemax="100" style="width: {{testPercent}}%">
+							<span class="sr-only">{{testPercent}}% Complete</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="row hide-fade" ng-show="lesson == selectedLesson">
+				<div class="col-md-12">
+					<a class="btn btn-block btn-sm btn-primary" ng-click="startTesting(lesson)"><i class="glyphicon glyphicon-pencil"> </i> Proveri celu lekciju</a>
+				</div>
+			</div>
+			
+			<div class="row voffset1 hide-fade" ng-show="lesson == selectedLesson">
+				<div class="col-md-12">
+					<a class="btn btn-block btn-sm btn-info" href="" ng-show="testCount != total" ng-click="goToPartial(lesson, false)"><i class="glyphicon glyphicon-pencil"> </i> {{'Proveri preostalih ' + (total - testCount)}}</a>
+				</div>
+			</div>
+			
+			<div class="row voffset1 hide-fade" ng-show="lesson == selectedLesson">
+				<div class="col-md-12">
+					<a class="btn btn-block btn-sm btn-danger" href="" ng-show="lesson['favorites-count'] > 0" ng-click="goToFavorites(lesson, false)"><i class="glyphicon glyphicon-pencil"> </i> {{'Proveri omiljenih ' + (lesson['favorites-count']) + ' pitanja'}}</a>
+				</div>
+			</div>
+			
+			<div class="row hidden-xs hidden-sm" ng-hide="lesson == selectedLesson">
+				<div class="col-md-12">
+					<p class="lessonQuestionCount">{{testCount}}</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

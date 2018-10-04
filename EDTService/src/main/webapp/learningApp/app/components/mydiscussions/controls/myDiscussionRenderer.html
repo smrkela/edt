@@ -1,0 +1,89 @@
+<div class="col-md-12 discussionRenderer">
+	
+	<div class="row">
+		
+		<div class="col-md-12 discussionHeader"> 
+			
+			<a href="" ng-click="showMessages(message['question-id'])">{{message['question-id']}}
+				{{message['question-text']}}</a>
+		
+		</div> 
+	
+	</div>
+	
+	<div class="row">
+		
+		<div class="col-md-5">
+		
+			<div class="row">
+				
+				<div class="col-md-12 discussionMessage">
+					<div>{{message['message-text'] | limitTo : 200}}</div>
+				</div>
+				
+			</div>
+		
+			<div class="row">
+			
+				<div class="col-md-12 discussionDetails">
+	
+					<span>{{getMessageNumber(messages.indexOf(message), currentPage)}}</span>, <span>{{message['category-name']}}</span>, <span>{{message['message-date']
+						| date}}</span>
+					
+				</div>
+				
+			</div>
+		
+		</div>
+		
+		<div class="col-md-5" ng-show="hasAnswer(message)">
+			
+			<div class="row">
+				
+				<div class="col-md-12">
+				
+					<img class="img-rounded pull-left discussionAnswerImage"
+						ng-src="resource?path=/users/{{message['answer-user-id']}}/smallImage"
+						alt="{{message['answer-user-name']}}"></img>
+
+					<p><b>{{message['answer-user-name']}}</b></p>
+					<p><span class="label label-primary">{{message['answer-user-level']}}. nivo</span></p>
+					
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 discussionMessageAnswer">
+					{{message['answer-text']}}
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 discussionDetails">
+					<div>{{message['answer-date'] | date}}</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="col-md-5 discussionDetails" ng-show="!hasAnswer(message)">Još uvek
+			nema odgovora.</div>
+			
+		<div class="col-md-2 discussionCount">
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center">Poruka</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12" style="font-size: 18px;">
+					<p class="text-center">{{message['message-count']}}</p>
+				</div>
+			</div>
+
+		</div>
+			
+	</div>
+	
+</div>

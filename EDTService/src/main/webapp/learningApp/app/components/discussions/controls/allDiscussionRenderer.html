@@ -1,0 +1,73 @@
+<div class="col-md-12 discussionRenderer">
+
+	<div class="row">
+	
+		<div class="col-md-12 discussionHeader">
+	
+				<a href="" ng-click="showMessages(message['question-id'])">#{{message['question-id']}}
+					{{message['question-text']}}</a>
+
+		</div>
+	
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-2">
+
+			<img class="img-rounded pull-left"
+				ng-src="resource?path=/users/{{message['message-user-id']}}/smallImage"
+				alt="{{message['message-user-name']}}"></img>
+
+			<p class="text-center">
+				<b>{{message['message-user-name']}}</b>
+			</p>
+			<p class="text-center">
+				<span class="label label-primary">{{message['message-user-level']}}.
+					nivo</span>
+			</p>
+		</div>
+
+		<div class="col-md-8">
+
+			<div class="row">
+
+				<div class="col-md-12 discussionMessage">
+					<div>{{message['message-text'] | limitTo :
+						200}}</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-12 discussionDetails">
+
+					<span>{{getMessageNumber(messages.indexOf(message),
+						currentPage)}}</span>, <span>{{message['category-name']}}</span>, <span>{{message['message-date']
+						| date}}</span>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-2 discussionCount">
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center">Poruka</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12" style="font-size: 18px;">
+					<p class="text-center">{{message['message-count']}}</p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

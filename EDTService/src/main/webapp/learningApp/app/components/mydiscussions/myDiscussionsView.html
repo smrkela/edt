@@ -1,0 +1,82 @@
+<div class="row">
+
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li><a ui-sref="user-app-main"><i class="glyphicon glyphicon-home"></i> Glavna</a></li>
+			<li><span>Moje diskusije</span></li>
+		</ol>
+	</div>	
+	
+	<div class="col-md-12">
+	
+		<div class="row">
+	
+			<div class="col-md-12">
+				<h4>Moje diskusije</h4>
+			</div>
+	
+		</div>
+	
+		<hr />
+	
+		<div class="row">
+	
+			<div class="col-md-6">
+				<paging-widget currentPage="currentPage" totalPages="totalPages" />
+			</div>
+			
+			<div class="col-md-6">
+			
+				<div class="input-group form-search discussionsSearch">
+					<input class="form-control search-query" ng-model="search" ng-enter="onSearch()" placeholder="Tekst ili broj pitanja"/> 
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-primary" data-type="last" ng-click="onSearch()">Pretraži</button>
+					</span>
+				</div>
+				
+			</div>
+	
+		</div>
+	
+		<div class="row" ng-repeat="message in messages">
+	
+			<my-discussion-renderer />
+	
+		</div>
+		
+		<div class="row" ng-show="hasNoMessages && !usedSearch">
+		
+			<div class="col-md-12">
+			
+				<div class="alert alert-warning">
+					<p>Trenutno nemaš svojih poruka u diskusijama.</p>
+					<p><a href="" ui-sref="discussions({page: 1})">Pogledaj sve diskusije.</a></p>
+				</div>		
+			
+			</div>
+		
+		</div>
+		
+		<div class="row" ng-show="hasNoMessages && usedSearch">
+		
+			<div class="col-md-12">
+			
+				<div class="alert alert-warning">
+					<p>Nema poruka koristeći unetu pretragu '{{usedSearch}}'. <a href="" ng-click="onRemoveSearch()">ukloni pretragu</a>.</p>
+				</div>		
+			
+			</div>
+		
+		</div>
+		
+		<div class="row">
+	
+			<div class="col-md-12">
+				<paging-widget currentPage="currentPage" totalPages="totalPages" />
+			</div>
+	
+		</div>
+	
+	</div>
+	
+</div>

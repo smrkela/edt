@@ -1,0 +1,102 @@
+<div class="row">
+
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li><a ui-sref="user-app-main"><i class="glyphicon glyphicon-home"></i> Glavna</a></li>
+			<li><span>Moja aktivnost</span></li>
+		</ol>
+	</div>	
+	
+	<div class="col-md-12">
+	
+		<div class="row">
+	
+			<div class="col-md-12">
+				<h4>{{title}} <small>{{note}}</small></h4>
+			</div>
+	
+		</div>
+	
+		<hr />
+		
+		<div class="row">
+		
+			<div class="col-md-12">
+			
+				<button class="btn btn-info" ng-show="!isLearn" ui-sref="user-app-activity({type: 'ucenje'})"><i class="glyphicon glyphicon-book"></i> Pređi na pregled učenja</button>
+				<button class="btn btn-info" ng-show="isLearn" ui-sref="user-app-activity({type: 'provera'})"><i class="glyphicon glyphicon-pencil"></i> Pređi na pregled provera</button>
+			
+				<br/>
+				<br/>
+			</div>
+		
+		</div>
+	
+		<div class="row" ng-repeat="session in sessions">
+	
+			<div class="col-md-12">
+	
+				<div class="panel panel-success">
+	
+					<div class="panel panel-heading activity-session-header">
+	
+						<div class="row">
+	
+							<div class="col-md-8">
+								<p>{{session.title}}</p>
+							</div>
+		
+							<div class="col-md-4">
+								<p class="text-right">{{session.numberOfQuestions}} pitanja</p>
+							</div>
+							
+						</div>
+	
+					</div>
+					
+					<div class="panel panel-body activity-session-body">
+	
+						<ul class="list-group" ng-repeat="group in session.groups">
+		
+							<li class="list-group-item activity-session-row">
+							
+								<div class="row">
+							
+									<div class="col-md-8">
+										<p style="color: {{getDayColor(group.date)}}">{{group.title}}</p>
+									</div>
+				
+									<div class="col-md-4">
+										<p class="text-right">{{group.numberOfQuestions}}</p>
+									</div>
+									
+								</div>
+								
+							</li>
+		
+						</ul>
+						
+					</div>
+				
+				</div>
+	
+			</div>
+	
+	
+		</div>
+		
+		<div class="row" ng-show="hasNoActivity">
+		
+			<div class="col-md-12">
+			
+				<div class="alert alert-warning">
+					Još uvek nemaš zabeleženih aktivnosti.
+				</div>
+				
+			</div>
+		
+		</div>
+	
+	</div>
+
+</div>

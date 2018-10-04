@@ -1,0 +1,68 @@
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="row">
+
+			<div class="col-md-12">
+				<div class="alert alert-info">{{descriptiveStatus}}</div>
+			</div>
+			
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12">
+
+				<div class="progress">
+		
+					<div class="progress-bar progress-bar-success"
+						style="width: {{correctlyAnswered/totalQuestions* 100}}%"></div>
+					<div class="progress-bar progress-bar-danger"
+						style="width: {{incorrectlyAnswered/totalQuestions* 100}}%"></div>
+		
+				</div>
+				
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12">
+
+				<ul class="list-group">
+
+
+					<li class="list-group-item"><span class="badge badge-default">{{totalQuestions}}</span>
+						Ukupno pitanja</li>
+
+					<li class="list-group-item"><span class="badge badge-info">{{answeredQuestions}}</span>
+						Odgovoreno pitanja</li>
+
+					<li class="list-group-item"><span class="badge badge-success">{{correctlyAnswered}}</span>
+						Tačno odgovorenih</li>
+
+					<li class="list-group-item"><span class="badge badge-danger">{{incorrectlyAnswered}}</span>
+						Netačno odgovorenih</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12">
+
+				<a ng-href="" class="btn btn-primary" ng-click="closeTestResults()"><i class="glyphicon glyphicon-ok"></i> Nastavi
+					sa ostalim lekcijama</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,65 @@
+<html ng-app="edt" ng-controller="mainController">
+<head>
+<title ng-bind="pageService.title()"></title>
+
+<!-- VENDORS -->
+<script type="text/javascript"
+	src="assets/libs/jquery1.11/jquery-1.11.2.min.js">
+</script>
+<script type="text/javascript"
+	src="assets/libs/pace/js/pace.js"></script>
+<link rel="stylesheet" href="assets/libs/pace/css/pace.css"/>
+
+<link rel="stylesheet" href="assets/libs/bootstrap3/css/bootstrap.css" />
+
+<link rel="stylesheet"
+	href="assets/libs/bootstrap3/css/color_scheme.css" />
+<link rel="stylesheet" href="assets/libs/ngdialog/css/ngDialog.css" />
+<link rel="stylesheet"
+	href="assets/libs/ngdialog/css/ngDialog-theme-discussion.css" />
+<link rel="stylesheet" href="assets/libs/bootflat/css/bootflat.min.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div ng-include="'app/shared/header.html'"></div>
+		</div>
+
+		<div class="row main-view">
+			<div ui-view></div>
+		</div>
+
+		<div class="row">
+			<div ng-include="'app/shared/footer.html'"></div>
+		</div>
+
+	</div>
+
+	<!-- VENDORS -->
+	<script type="text/javascript"
+		src="assets/libs/bootstrap3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/libs/angular1.3/angular.js">
+	</script>
+	<script type="text/javascript" src="assets/libs/angular1.3/angular-animate.js">
+	</script>
+	<script type="text/javascript"
+		src="assets/libs/angular1.3/angular-ui-router.js"></script>
+	<script type="text/javascript"
+		src="assets/libs/angular1.3/angular-cookies.js"></script>
+	<script type="text/javascript"
+		src="assets/libs/ngdialog/js/ngDialog.js"></script>
+	<script type="text/javascript"
+		src="assets/libs/smoothscroll/smoothscroll.js"></script>
+
+	<!-- APP -->
+	
+	<script type="text/javascript" src="/ROOT/wro/learning-app.js"></script>
+	
+	<!-- BOOTFLAT -->
+	<script type="text/javascript"
+		src="assets/libs/bootflat/js/icheck.min.js"></script>
+
+</body>
+</html>

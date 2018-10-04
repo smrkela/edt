@@ -1,0 +1,77 @@
+<div class="row">
+
+	<div class="col-md-12">
+	
+		<div class="panel" ng-class="getTitleStyle()">
+		
+			<div class="panel-heading">
+			
+				<div class="row panel-title">
+			
+					<div class="col-md-1 col-sm-1 col-xs-1"><b>#{{question.id}}</b></div>
+		
+					<div class="col-md-11 col-sm-11 col-xs-11">
+						<div class="row">
+							<div class="col-md-12"><b>{{question.text}}</b></div>
+						</div>
+						<div class="row" ng-show="question.remark">
+							<div class="col-md-12 help-block">{{question.remark}}</div>
+						</div>
+					</div>
+					
+				</div>
+			
+			</div>
+			
+			<div class="panel-body">
+			
+				<div class="row">
+		
+					<div class="col-md-6" ng-show="question['question-image'].length > 0">
+			
+						<div class="row" ng-repeat="image in question['question-image']">
+							
+							<div class="col-md-12">
+
+								<img class="img-responsive center-block"
+									ng-src="image?path={{image.url}}"></img>
+								
+								<p class="text-center voffset2" ng-show="image.text"><span class="label label-info">{{image.text}}</span></p>
+							
+							</div>
+							
+						</div>
+			
+					</div>
+			
+					<div class="{{question['question-image'].length == 0 ? 'col-md-12' : 'col-md-6'}}">
+			
+						<p class="answer {{(answer.correct && (!isTestingMode || !question.isUnconfirmed)) ? 'answer-correct' : ''}}"
+							ng-repeat="answer in question['question-answer']" 
+							ng-click="answerClicked(answer)" ng-disabled="!question.isUnconfirmed">
+					
+							<span ng-show="isTestingMode && !hideDiscussions">
+								<input icheck type="checkbox" value="{{answer.isUserSelected}}" ng-model="answer.isUserSelected"/>
+							</span>
+							
+							<span>{{answer.letter}} {{answer.text}}</span>
+							
+						</p>
+			
+					</div>
+		
+				</div>
+			
+			</div>
+			
+			<div class="panel-footer">
+			
+				<a href="" ng-click="showMessages()" class="btn btn-warning" ng-hide="hideDiscussions" ng-disabled="(isTestingMode && question.isUnconfirmed)">{{question['number-of-messages']}} poruka</a>
+			
+			</div>
+		
+		</div>
+
+	</div>
+
+</div>

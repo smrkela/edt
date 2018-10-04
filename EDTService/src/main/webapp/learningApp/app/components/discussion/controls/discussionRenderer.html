@@ -1,0 +1,68 @@
+<div class="col-md-12 discussionRenderer">
+
+	<div class="row discussionHeader">
+
+		<div class="col-md-1">
+
+			{{getMessageNumber(message)}} 
+
+		</div>
+		
+		<div class="col-md-5">
+
+			{{message['report-date']
+				| date: 'dd/MM/yyyy HH:mm:ss'}} 
+
+		</div>
+
+		<div class="col-md-6 text-right">
+
+			<a ng-href="#" ng-click="replyMessageClicked(message)">odgovori</a>
+			
+			&nbsp;&nbsp;&nbsp;
+
+			<a  ng-href="#" ng-show="isDeleteVisible(message)"
+				ng-click="deleteMessageClicked(message)"
+				ng-enabled="deletedMessage == null">obriši poruku</a>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-2">
+
+			<img class="img-rounded pull-left"
+				ng-src="resource?path=/users/{{message['user-id']}}/smallImage"></img>
+
+			<p class="text-center"><b>{{message['user-name']}}</b></p>
+			<p class="text-center"><span class="label label-primary">{{message['user-level']}}. nivo</span></p>
+
+		</div>
+
+		<div class="col-md-10">
+
+			<div class="row" ng-show="hasReplyMessage(message)">
+				
+				<div class="col-md-12 well">
+
+					<div>{{getRepliedMessage(message)}}</div>
+					<div>{{message['parent-message-date'] | date}}</div>
+					<div>{{message['parent-message-text']}}</div>
+	
+				</div>
+			
+			</div> 
+			
+			<div class="row">
+			
+				<div class="col-md-12 discussionMessage">{{message['message-text']}}</div>	
+			
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

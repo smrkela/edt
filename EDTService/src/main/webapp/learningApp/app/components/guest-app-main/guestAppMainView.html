@@ -1,0 +1,25 @@
+<div class="well">
+
+	<div class="row">
+
+		<div class="col-md-4">Izaberi kategoriju i kreni sa učenjem</div>
+
+	</div>
+
+	<hr />
+
+	<div class="row learningGroup learningGroup{{group.id}}"
+		ng-repeat="group in groups">
+
+		<div class="col-md-1">
+			<img ng-src="assets/img/categories/{{group.id}}.png" />
+		</div>
+		<div class="col-md-5">
+			<h3><a ng-click="showLessons(group)">{{group.title}}</a></h3>
+			<div class="row">
+				<div class="col-md-6 learningGroupQuestions">{{group['number-of-questions']}} pitanja</div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,196 @@
+<div class="row">
+
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li class="active"><span><i class="glyphicon glyphicon-home"></i> Glavna</span></li>
+		</ol>
+	</div>
+
+	<div class="col-md-12">
+	
+		<div class="row">
+			<div class="col-md-12">
+				<h4>Izaberi kategoriju i kreni sa učenjem</h4>
+			</div>
+		</div>
+		
+		<div class="text-divider6">
+			<span></span>
+		</div>
+	
+		<div class="row">
+		
+			<div class="col-md-9">
+			
+				<ul class="list-group">
+				
+					<li class="learningGroup list-group-item"
+						ng-repeat="group in groups">
+				
+						<div class="row">
+						
+							<div class="col-md-1 col-sm-2 col-xs-2" style="padding-top: 10px">
+								<img ng-src="learningApp/assets/img/categories/{{group.id}}.png" />
+							</div>
+							<div class="col-md-6 col-sm-5 col-xs-5">
+								<h5><a style="color: {{getGroupColor(group.id)}}" ui-sref="user-app-group({groupId: group.id})">{{group.title}}</a></h5>
+								<div class="row">
+									<div class="col-md-3 col-sm-3 col-xs-3"><strong>{{getGroupTotalPercent(group) | number :
+										0}}%</strong></div>
+									<div class="col-md-3 col-sm-3 col-xs-3 learningGroupQuestions">{{group['number-of-questions']}} pitanja</div>
+					
+								</div>
+							</div>
+							<div class="col-md-5 col-sm-5 col-xs-12" style="padding-top: 10px">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="progress">
+											<div class="progress-bar progress-bar-success" role="progressbar"
+												aria-valuenow="{{getLearnPercent(group)}}" aria-valuemin="0"
+												aria-valuemax="100" style="width: {{getLearnPercent(group)}}%">
+												<span class="sr-only">{{getLearnPercent(group)}}% Complete
+													(success)</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 labelInfo">{{getLearnStat(group)}} naučeno</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="progress">
+											<div class="progress-bar progress-bar-warning" role="progressbar"
+												aria-valuenow="{{getTestPercent(group)}}" aria-valuemin="0"
+												aria-valuemax="100" style="width: {{getTestPercent(group)}}%">
+												<span class="sr-only">{{getTestPercent(group)}}% Complete</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 labelInfo">{{getTestStat(group)}} provereno</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+		
+				<div class="row">
+					<user-details/>
+				</div>
+				
+				<div class="row">
+					<user-discussions/>
+				</div>
+		
+			</div>
+			
+			<div class="col-md-3">
+			
+				<div class="row">
+				
+					<div class="col-md-12">
+					
+						<div class="row">
+						
+							<div class="col-md-6 col-md-offset-3">
+								<div class="userExperienceLevel">
+									{{currentLevel}}. nivo
+								</div>
+							</div>
+							
+						</div>
+					
+						<div class="row voffset3">
+						
+							<div class="col-md-1">{{currentLevel}}</div>
+							
+							<div class="col-md-9">
+		
+								<div class="progress">
+										<div class="progress-bar" role="progressbar"
+											aria-valuenow="{{currentProgress}}" aria-valuemin="0"
+											aria-valuemax="100" style="width: {{currentProgress}}%">
+											<span>{{currentProgress | number: 0}}%</span>
+										</div>
+								</div>
+							
+							</div>
+							
+							<div class="col-md-1">{{currentLevel+1}}</div>
+						
+						</div>
+						
+						<div class="row">
+						
+							<div class="col-md-12">
+							
+								<ul class="list-group">
+						
+									<li class="list-group-item">
+										<span class="badge badge-primary">{{experiencePoints}}</span>
+										Ukupno skupljenih poena					
+									</li>
+									<li class="list-group-item">
+										<span class="badge badge-success">{{learnedQuestions}}</span>
+										Čitanih pitanja
+									</li>
+									<li class="list-group-item">
+										<span class="badge badge-warning">{{testedQuestions}}</span>
+										Provera pitanja
+									</li>
+								
+								</ul>
+								
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="row">
+						
+					<div class="col-md-12">
+						
+						Koji put učiš i proveravaš?
+						
+						<div class="row">
+							<div class="col-md-4">
+								<button class="btn btn-sm btn-block btn-{{currentLearn == 1 ? 'success' : 'warn'}} voffset1"
+									ng-click="updateCurrentLearn(1)">Prvi</button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-sm btn-block btn-{{currentLearn == 2 ? 'success' : 'warn'}} voffset1"
+									ng-click="updateCurrentLearn(2)">Drugi</button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-sm btn-block btn-{{currentLearn == 3 ? 'success' : 'warn'}} voffset1"
+									ng-click="updateCurrentLearn(3)">Treći</button>
+							</div>
+						</div>
+						
+					</div>
+				
+				</div>
+			
+				<div class="row">
+				
+					<div class="col-md-12">
+					
+						<h4>Top lista</h4>
+						
+						<hr/>
+			
+						<leaderboard-widget/>		
+					
+					</div>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+	
+	</div>
+	
+</div>
+

@@ -1,0 +1,18 @@
+<div class="well">
+
+	<form>
+
+		<div class="form-group">
+			<label for="drivingCategoryInput">Kategorija za koju se
+				spremaš</label> 
+			<select id="drivingCategoryInput" class="form-control" name="drivingCategory" ng-model="selectedDrivingCategory"
+				ng-options="drivingCategory as drivingCategory.name for drivingCategory in drivingCategories">
+			</select>
+		</div>
+		
+		<a ng-click="startLearning()" class="btn btn-success">Kreni sa učenjem</a>
+
+	</form>
+
+</div>
+

@@ -1,0 +1,92 @@
+<div class="row">
+
+	<div class="col-md-12">
+
+		<div class="row">
+
+			<div class="col-md-12">
+
+				<a href=""
+					class="btn btn-sm {{typeId == 1 ? 'btn-info' : 'btn-default'}}"
+					ng-click="loadLeaderboard(1)">Ove nedelje</a> <a href=""
+					class="btn btn-sm {{typeId == 2 ? 'btn-info' : 'btn-default'}}"
+					ng-click="loadLeaderboard(2)">Ovog meseca</a> <a href=""
+					class="btn btn-sm {{typeId == 3 ? 'btn-info' : 'btn-default'}}"
+					ng-click="loadLeaderboard(3)">Oduvek</a>
+
+			</div>
+
+		</div>
+
+		<div class="row"><br /></div>
+
+		<div class="row" ng-show="users.length > 0">
+
+			<div class="col-md-12">
+
+				<ul class="list-group">
+
+					<li class="list-group-item" ng-repeat="user in users">
+
+						<div class="row">
+
+							<div class="col-md-3 col-sm-3 col-xs-3">
+
+								<img class="img-rounded"
+									ng-src="resource?path=/users/{{user.userid}}/smallImage"
+									alt="{{user.username}}"></img>
+
+							</div>
+
+							<div class="col-md-6 col-sm-6 col-xs-6">
+
+								<div class="row">
+
+									<div class="col-md-12">{{user.username}}</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-12 labelInfo">{{user.level}}. nivo</div>
+
+								</div>
+
+							</div>
+
+							<div class="col-md-3 col-sm-3 col-xs-3">
+
+								<div class="row">
+
+									<div class="col-md-12">{{user.points}}</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-12 labelInfo">poena</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</li>
+
+				</ul>
+
+
+			</div>
+
+		</div>
+
+		<div class="row" ng-show="users.length == 0">
+
+			<div class="col-md-12 labelInfo">Još uvek nema takmičara na ovoj listi.</div>
+
+		</div>
+
+	</div>
+
+</div>

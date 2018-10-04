@@ -1,0 +1,349 @@
+body {
+	background: url('../../assets/img/background.png') no-repeat center
+		center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.h1 small,.h2 small,.h3 small,.h4 small,.h5 small,.h6 small,h1 small,h2 small,h3 small,h4 small,h5 small,h6 small
+	{
+	color: #B0B5BD;
+}
+
+hr{
+	
+	margin-top: 10px;
+	maring-bottom: 10px;
+}
+
+.top_line {
+	background-color: #2773ae;
+	height: 5px;
+}
+
+.labelInfo {
+	color: gray;
+}
+
+.page-header {
+	margin-left: 20px;
+	margin-right: 20px
+}
+
+.main-view {
+	padding: 0px 20px 20px 20px;
+}
+
+.container {
+	margin: 0 auto;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.voffset {
+	margin-top: 2px;
+}
+
+.voffset1 {
+	margin-top: 5px;
+}
+
+.voffset2 {
+	margin-top: 10px;
+}
+
+.voffset3 {
+	margin-top: 15px;
+}
+
+.voffset4 {
+	margin-top: 30px;
+}
+
+.voffset5 {
+	margin-top: 40px;
+}
+
+.voffset6 {
+	margin-top: 60px;
+}
+
+.voffset7 {
+	margin-top: 80px;
+}
+
+.voffset8 {
+	margin-top: 100px;
+}
+
+.voffset9 {
+	margin-top: 150px;
+}
+
+/** Learning groups **/
+.learningGroup {
+	vertical-align: middle;
+	padding: 5px 10px 5px 10px;
+}
+
+.learningGroupActive {
+	background-color: #FAFAFA;
+}
+
+.learningGroupSelected {
+	background-color: #FAF9B2;
+}
+
+.learningGroup .learningGroupPercent {
+	color: #999999;
+}
+
+.learningGroup .learningGroupQuestions {
+	color: #BBBBBB;
+}
+
+.learningGroup .progress {
+	margin-bottom: 15px;
+	height: 10px;
+}
+
+.learningGroup .title {
+	font-weight: bold;
+}
+
+.lessonQuestionCount {
+	font-size: 18px;
+	color: #777777;
+}
+
+.learningGroupProgress .progress{
+	
+	margin-bottom: 5px;
+	height: 10px;
+}
+
+/** User experience level control **/
+.userExperienceLevel {
+	font-size: 18px;
+	background-color: #3bafda;
+	padding: 5px;
+	color: #FFFFFF;
+	border-radius: 4px;
+}
+
+.list-group-item-success {
+	color: #537f24;
+}
+
+/** Dodatna klasa za vertical align bootstrap redova **/
+.vertical-align {
+	display: flex;
+	flex-direction: row;
+}
+
+.vertical-align>[class^="col-"],.vertical-align>[class*=" col-"] {
+	display: flex;
+	align-items: center;
+}
+
+/** Question widget **/
+.answer {
+	padding: 5px;
+}
+
+.answer-correct {
+	background-color: #8cc152;
+	color: #FFFFFF;
+}
+
+/** Discussion popup **/
+.discussionPopup {
+	
+}
+
+.discussionRenderer{
+	
+	border-bottom: 1px #CCCCCC solid;
+	padding-bottom: 4px;
+}
+
+.discussionHeader{
+	
+	background-color: #EEEEEE;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-left-radius: 3px;
+  	border-bottom-right-radius: 3px;
+  	font-weight: bold;
+  	margin-bottom: 10px;
+}
+
+.discussionMessage{
+	
+	border-left: 3px #FFCE54 solid;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.discussionMessageAnswer{
+	
+	border-left: 3px #A0D468 solid;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin-top: 5px;
+}
+
+.discussionAnswerImage{
+	
+	margin-right: 10px;
+}
+
+.discussionCount{
+	
+	background-color: #F5F7FA;
+	border-radius: 5px;
+}
+
+.discussionDetails{
+	
+	color: #AAAAAA;
+	font-style: italic;
+}
+
+.discussionWrapper{
+	
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.discussionWrapper .discussionHeader{
+	
+	font-weight: normal;
+}
+
+.discussionsSearch{
+	
+	margin: 20px 0px;
+}
+
+/** Dividers **/
+.text-divider1 {
+	border-top: 1px solid #cccccc;
+	margin-bottom: 19px;
+}
+
+.text-divider2 {
+	display: block;
+	margin-bottom: 19px;
+	width: 100%;
+	border-bottom: 1px solid #cccccc;
+	text-align: right;
+	color: #666666;
+	margin-top: -19px;
+}
+
+.text-divider2:hover,.text-divider4:hover {
+	text-decoration: none;
+	color: #666666;
+}
+
+.text-divider3 {
+	border-top: 1px dashed #cccccc;
+	margin-bottom: 19px;
+}
+
+.text-divider4 {
+	display: block;
+	margin-bottom: 19px;
+	width: 100%;
+	border-bottom: 1px dashed #cccccc;
+	text-align: right;
+	color: #666666;
+	margin-top: -19px;
+}
+
+.text-divider5,.text-divider6 {
+	border-bottom: 1px solid #cccccc;
+	width: 100%;
+	margin-bottom: 19px;
+	margin-top: -3px;
+}
+
+.text-divider5 span {
+	display: block;
+	width: 70px;
+	height: 3px;
+}
+
+.text-divider6 span {
+	display: block;
+	width: 70px;
+	height: 3px;
+	float: right;
+}
+
+/** NAV BAR **/
+.navbar .navbar-toggle {
+	background-color: #2B74AC;
+	border-color: #2B74AC;
+}
+
+.navbar .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {
+	background-color: #348ACC;
+	border-color: #348ACC;
+}
+
+.navbar .navbar-toggle .icon-bar {
+	background-color: #FFFFFF;
+}
+
+.navbar .nav a {
+	border-top: 3px solid #FFFFFF;
+	
+	padding: 10px;
+}
+
+.header-user-li{
+	
+	padding-right: 5px;
+}
+
+/** AKTIVNOST **/
+.activity-session-header {
+	font-weight: bold;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+}
+
+.activity-session-body{
+	
+	padding: 10px;
+}
+
+.activity-session-row {
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+/** SHOW HIDE FADE EFFECT **/
+
+.hide-fade.ng-hide-remove {
+  -webkit-transition:all linear 0.5s;
+  -moz-transition:all linear 0.5s;
+  -o-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+  display:block!important;
+}
+.hide-fade.ng-hide-remove {
+  opacity:0;
+}
+.hide-fade.ng-hide-remove.ng-hide-remove-active {
+  opacity:1;
+}

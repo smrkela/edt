@@ -1,0 +1,193 @@
+<div class="row">
+
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li><a ui-sref="user-app-main"><i class="glyphicon glyphicon-home"></i> Glavna</a></li>
+			<li><a ui-sref="user-app-group({groupId: groupId})">{{groupName}}</a></li>
+			<li><span>{{lessonName}}</span></li>
+		</ol>
+	</div>
+	
+	<div class="col-md-12">
+	
+		<div class="row">
+		
+			<div class="col-md-12">
+			
+				<div class="row vertical-align">
+					
+					<div class="col-md-8">
+						<h4><span style="background-color: {{groupColor}}">&nbsp;&nbsp;&nbsp;</span> {{title}}</h4>
+					</div>
+					<div class="col-md-4">
+						<ul class="list-inline pull-right">
+							<li ng-repeat="question in questions" style="padding: 1px;"><span
+								style="background-color: {{question	== currentQuestion ? groupColor : '#DDDDDD'}}">&nbsp;&nbsp;</span></li>
+						</ul>
+					</div>
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		<div class="text-divider6">
+			<span></span>
+		</div>
+		
+		<div class="row" ng-show="isPartial || isFavorite">
+		
+			<div class="col-md-12">
+			
+				<div class="alert alert-info">
+					{{lessonNotification}}
+				</div>
+			
+			</div>
+		
+		</div>
+	
+		<div class="row">
+			
+			<div class="col-md-9">
+	
+				<question-control-widget question="getCurrentQuestion()"
+					isTestingMode="isTestingMode" hide-discussions="false"/>
+			
+			</div>
+			
+			<div class="col-md-3">
+			
+				<div class="row" ng-show="!isTestingMode">
+			
+					<div class="col-md-6 col-sm-6 col-xs-6" ng-class="currentQuestionIndex == 0 ? 'invisible' : ''">
+			
+						<a class="btn btn-warning btn-block" 
+							ng-click="previousQuestion()">Prethodno</a>
+			
+					</div>
+			
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						
+						<a class="btn btn-success btn-block"
+							ng-show="currentQuestionIndex < questions.length - 1"
+							ng-click="nextQuestion()">Sledeće &nbsp;<i
+							class="glyphicon glyphicon-circle-arrow-right"></i></a> <a
+							class="btn btn-success btn-block"
+							ng-show="currentQuestionIndex == questions.length - 1"
+							ng-click="finishLearning()">Završi
+							&nbsp;<i class="glyphicon glyphicon-flag"></i>
+						</a> 
+						
+					</div>
+			
+				</div>
+			
+				<div class="row" ng-show="isTestingMode">
+				
+					<div class="col-md-6 col-sm-6 col-xs-6 voffset2">
+					
+						<a class="btn btn-success btn-block" ng-show="currentQuestion.isUnconfirmed"
+							ng-disabled="!currentQuestion.isAnswered"
+							ng-click="confirmQuestion()">Potvrdi <i class="glyphicon glyphicon-check"></i></a>
+						<a
+							class="btn btn-success btn-block"
+							style="margin-top: 0px"
+							ng-show="!currentQuestion.isUnconfirmed && currentQuestionIndex < questions.length - 1"
+							ng-click="nextQuestion()">Sledeće&nbsp;<i
+							class="glyphicon glyphicon-circle-arrow-right"></i></a>
+					
+					</div>
+				
+					<div class="col-md-6 col-sm-6 col-xs-6 voffset2">
+					
+						 <a class="btn btn-success btn-block"
+							ng-show="!currentQuestion.isUnconfirmed && currentQuestionIndex == questions.length - 1"
+							ng-click="finishTesting()">Završi &nbsp;<i
+							class="glyphicon glyphicon-flag"></i></a> 
+						 <a class="btn btn-info btn-block"
+						 	style="margin-top: 0px"
+							ng-show="currentQuestion.isUnconfirmed" ng-click="skipQuestion()">Preskoči
+							&nbsp;<i class="glyphicon glyphicon-circle-arrow-right"></i>
+						</a>
+			
+					</div>
+			
+				</div>
+				
+				<div class="row voffset2">
+				
+					<div class="col-md-12">
+					
+						<strong>{{currentQuestionIndex + 1}}.</strong> pitanje od
+							{{questions.length}}
+					
+					</div>
+					
+				</div>
+				
+				<div class="row voffset3">
+				
+					<div class="col-md-12">
+				
+						<a ng-click="goBackToLessons()" href=""><i class="glyphicon glyphicon-arrow-left"></i> Nazad na sve lekcije</a> <br />
+					
+					</div>
+				
+				</div>
+			
+				<div class="row voffset3">
+			
+					<div class="col-md-12" ng-hide="currentQuestion['is-favorite']">
+			
+						<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			
+						<a class="btn btn-link" ng-click="markFavorite()" href="">Označi
+							kao omiljeno pitanje</a>
+			
+					</div>
+			
+					<div class="col-md-12" ng-show="currentQuestion['is-favorite']">
+			
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <a
+							class="btn btn-link" ng-click="unmarkFavorite()" href="">Ukloni
+							iz omiljenih</a>
+			
+					</div>
+			
+				</div>
+			
+				<div class="row voffset3">
+			
+					<div class="col-md-12">
+					
+						<div class="panel panel-default">
+						
+							<div class="panel-heading">
+								<h3 class="panel-title">Prethodna učenja i provere</h3>
+							</div>
+							
+							<div class="panel-body">
+								
+								<li class="list-group-item"><span class="badge badge-primary">{{currentQuestion['learn-count']}}</span>
+								Učenja</li>
+								<li class="list-group-item"><span class="badge badge-success">{{currentQuestion['test-correct-count']}}</span>
+									Tačnih provera</li>
+								<li class="list-group-item"><span class="badge badge-warning">{{currentQuestion['test-incorrect-count']}}</span>
+									Netačnih provera</li>
+							
+							</div>
+						
+						</div>
+			
+					</div>
+			
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+
+</div>
