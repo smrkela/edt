@@ -1,0 +1,19 @@
+a {
+	
+}
+
+p {
+	margin: 0 0 0 0;
+}
+
+.main-content {
+	display: none;
+	margin-top: 20px;
+}
+
+.header-links {
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px
+}
+
