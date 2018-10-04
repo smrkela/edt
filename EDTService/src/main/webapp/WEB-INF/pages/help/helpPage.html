@@ -1,0 +1,45 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/pomoc}">Pomoć</a></li>
+				<li th:text="${page.title}"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- VEST -->
+
+			<div class="span9 main-column two-columns-left">
+				<h1 th:text="${page.title}">Naslov</h1>
+				
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+				
+				<div th:utext="${page.content}">Sadrzaj</div>
+				
+				<hr />
+				
+				<div class="addthis_sharing_toolbox" align="right"></div>
+				
+				
+				<div class="post-item-panel"></div>
+
+				<hr />
+
+
+			</div>
+		</div>
+	</div>
+
+</div>

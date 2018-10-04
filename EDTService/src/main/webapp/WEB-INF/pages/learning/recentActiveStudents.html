@@ -1,0 +1,108 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li th:text="${pageInfo.title}">tekst</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Učenici aktivni poslednjih 7 dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+
+				<div class="well"
+					th:text="'Ukupno '+ ${numOfStudents} + ' učenika je učilo i testiralo se preko web aplikacije poslednjih 7 dana.'">
+				</div>
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th style="width: 50px"></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="student : ${students}">
+
+							<td><img alt="" style="margin-bottom: 0px"
+								th:src="@{/resource(path=${student.smallProfileImagePath})}" /></td>
+							<td>
+								<div style="font-weight: bold;" th:text="${student.username}">korisničko
+									ime</div>
+								<div>
+									<span th:text="${student.points + ' poena'}">2poena</span> <span
+										style="color: #888888"
+										th:text="${'(' + student.learningPoints + ' učena pitanja, ' + student.testingPoints + ' proverenih)'}">2poena</span>
+								</div>
+							</td>
+							<td style="width: 200px">
+								<div
+									th:class="${student.completionPercent >= 50} ? (${student.completionPercent >= 100} ? 'progress progress-success' : 'progress progress-info') : 'progress progress-warning'"
+									style="width: 100%">
+									<div
+										th:attr="style='width:' + ${student.completionPercent} + '%'"
+										class="bar">
+										<p th:text="${student.completionPercent}+'%'">24%</p>
+									</div>
+								</div>
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br /> <br />
+
+			</div>
+
+			<hr />
+
+			<div class="addthis_sharing_toolbox" align="right"></div>
+
+			<br />
+
+		</div>
+
+	</div>
+
+</div>
+
+<link rel="stylesheet" type="text/css"
+	th:src="@{/atheme/css/bootstrap-progressbar.css}" />
+<script type="text/javascript"
+	th:src="@{/atheme/js/lib/bootstrap-progressbar.min.js}"></script>
+
+<script>
+	jQuery(function($) {
+
+		/* required bootstrap-progressbar.min.js*/
+
+		jQuery('.progress .bar.text-no').progressbar();
+		jQuery('.progress .bar.text-filled').progressbar({
+			display_text : 1
+		});
+		jQuery('.progress .bar.text-centered').progressbar({
+			display_text : 2
+		});
+
+	});
+</script>

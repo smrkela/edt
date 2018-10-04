@@ -1,0 +1,55 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Dodavanje clana skole</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${school.id}" />
+					<input type="hidden" id="id" th:value="${member.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="email">Email korisnika</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="email" name="email"
+								data-message="Unesite email" th:value="${member.email}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="role">Rola</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="role"
+								name="role" data-message="Unesite naziv role"
+								th:value="${member.role}" />
+						</div>
+					</div>
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Sačuvaj</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br/>
+<br/>
+
+<script th:src="@{/scripts/admin/createPage/administrationDrivingSchoolMemberAdd.js}"></script>

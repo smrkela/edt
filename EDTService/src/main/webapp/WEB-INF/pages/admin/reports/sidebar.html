@@ -1,0 +1,32 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2>Izveštaji</h2>
+
+		<ul>
+			<li th:class="${pageInfo.name == 'reports'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Pregled</a>
+			</li>
+			<li th:class="${pageInfo.name == 'logged-in-users'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports/ulogovani-korisnici(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Ulogovani korisnici</a>
+			</li>
+			<li th:class="${pageInfo.name == 'registered-users'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports/registrovani-korisnici(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Registrovani korisnici</a>
+			</li>
+			<li th:class="${pageInfo.name == 'application-users'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports/korisnici-aplikacije(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Korisnici aplikacije</a>
+			</li>
+			<li th:class="${pageInfo.name == 'licenced-driving-schools'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports/licencirane-auto-skole(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Licencirane škole</a>
+			</li>
+			<li th:class="${pageInfo.name == 'driving-schools-login'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports/login-auto-skola(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Login auto škola</a>
+			</li>
+			<li th:class="${pageInfo.name == 'activity'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/reports/aktivnost(startDate=${#dates.format(startDate, 'yyyy-MM-dd')},finishDate=${#dates.format(finishDate, 'yyyy-MM-dd')})}">Aktivnost sajta</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

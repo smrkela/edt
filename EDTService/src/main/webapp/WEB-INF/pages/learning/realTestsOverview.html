@@ -1,0 +1,137 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li>Probni testovi</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Probni testovi</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+
+				<div class="well well-small">
+
+					<h2
+						th:text="${#numbers.formatInteger(data.totalUsers, 1, 'COMMA')} + ' takmičara je  uradilo ukupno ' + ${#numbers.formatInteger(data.totalTestsDone,1,'COMMA')} +' testova!'">145
+						takmičara je uradilo ukupno 4132 testa!</h2>
+
+				</div>
+
+				<div th:if="${isUserLoggedIn}">
+
+					<div th:if="${hasUserTakenTests}" class="alert alert-success">
+
+						<h2
+							th:text="'Radio si ukupno ' + ${data.totalTestsByCurrentUser} + ' testova a položio ' + ${#numbers.formatInteger(data.totalPassedTestsByCurrentUser, 1, 'COMMA')} +'!'">Radio
+							si 4 testova i skupio ukupno 543 poena!</h2>
+
+					</div>
+
+					<div th:unless="${hasUserTakenTests}" style="font-size: 16px">
+
+						<h2>Još uvek nemaš ni jedan test urađen... :(</h2>
+
+					</div>
+
+				</div>
+
+				<div th:unless="${isUserLoggedIn}">Ulogujte se i priključite
+					se ostalima u testovima poznavanja saobraćajnih pravila i propisa!</div>
+
+				<br />
+
+				<ul class="nav nav-tabs">
+
+					<li th:class="${group.categoryId} == ${selectedCategoryId} ? 'active'"
+						th:each="group : ${data.groups}"><a data-toggle="tab"
+						href="#" th:href="@{'#' + ${group.categoryName}}"
+						th:text="${group.categoryName + ' kategorija'}">B</a></li>
+
+				</ul>
+
+				<div class="tab-content">
+
+					<div th:each="group : ${data.groups}"
+						th:attr="id=${group.categoryName}" class="tab-pane"
+						th:classappend="${group.categoryId} == ${selectedCategoryId} ? 'active'">
+
+						<h1>
+							<b th:text="${group.categoryName}"> B kategorija</b> <small
+								th:text="'urađeno ukupno ' + ${group.totalTestsDone} + ' testova'">uradjeno
+								12 testova</small>
+						</h1>
+						
+						<div th:if="${#lists.size(group.tests) == 0}" class="alert alert-attention">
+						
+							<h2>Testovi ove kategorije uskoro.</h2>
+							<br/>
+						
+						</div>
+
+						<table th:if="${#lists.size(group.tests) > 0}" class="table table-striped">
+
+							<thead>
+								<tr>
+									<th>Naziv testa</th>
+									<th>Ukupno polaganja</th>
+									<th>Tvojih polaganja</th>
+									<th></th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<tr th:each="test : ${group.tests}">
+
+									<td style="font-weight: bold"><a th:text="${test.name}"
+										th:href="@{'/testovi/test/' + ${test.id}}">datum</a></td>
+									<td th:text="${test.totalResults}">12</td>
+
+									<td
+										th:text="${test.totalUserTests} + '/' + ${test.totalUserPassedTests}"
+										th:if="${test.hasUserTakenTest}" style="font-weight: bold">12</td>
+									<td th:unless="${test.hasUserTakenTest}">/</td>
+									<td th:if="${isUserLoggedIn}"><a
+										th:href="@{'/testovi/polaganje/' + ${test.id}}"
+										class="btn btn-success btn-small">polaži sada</a></td>
+									<td th:if="${not isUserLoggedIn}"><a
+										th:href="@{/uloguj-se}">uloguj se i polaži</a></td>
+								</tr>
+
+							</tbody>
+
+						</table>
+
+						<br />
+
+					</div>
+
+				</div>
+
+				<hr />
+
+				<div class="addthis_sharing_toolbox" align="right"></div>
+
+				<br /> <br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

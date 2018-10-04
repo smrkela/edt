@@ -1,0 +1,257 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Auto škola</h1>
+				
+				<input type="hidden" id="schoolId" th:value="${school.id}" /> 
+				<input type="hidden" id="membershipRequestId" th:value="${membershipRequestId}" />
+					
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div class="alert alert-info">
+                	<button data-dismiss="alert" class="close" type="button">x</button>
+                	<h2>Izbor učenika</h2>
+                	<p>Potrebno je odabrati (štiklirati) samo jednog učenika iz ponuđene liste i kliknuti na dugme <i>"Poveži"</i>. 
+                	   Detalje o svakom učeniku možete videti klikom na ikonicu za informacije.</p>
+				</div>
+				
+				<!-- LISTA SVIH STUDENATA KOJI NISU POVEZANI NI SA JEDNIM CLANOM -->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="box">
+                            <header>
+                                <h5 style="font-size: 14px;">&nbsp;</h5>
+                            </header>
+                            <div id="collapse4" class="body">
+                                <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
+                                    <thead>
+			                            <tr>
+			                            	<th>
+			                                </th>
+			                                <th style="text-align: center;">Ime učenika</th>
+			                                <th style="text-align: center;">E-mail učenika</th>
+			                                <th style="text-align: center;">Adresa</th>
+			                                <th style="text-align: center;">Kategorija</th>
+			                                <th style="text-align: center;">Detalji</th>
+			                                
+			                                <!-- HIDDEN -->
+			                                <th style="text-align: center; display: none;">Telefon</th>
+			                                <th style="text-align: center; display: none;">Datum registracije</th>
+			                                <th style="text-align: center; display: none;">Položena obuka prve pomoći</th>
+			                                <th style="text-align: center; display: none;">Datum polaganja obuke prve pomoći</th>
+			                                <th style="text-align: center; display: none;">Položen teorijski deo</th>
+			                                <th style="text-align: center; display: none;">Datum polaganja teorijskog dela</th>
+			                                <th style="text-align: center; display: none;">Položen praktični deo</th>
+			                                <th style="text-align: center; display: none;">Datum polaganja praktičnog dela</th>
+			                                <th style="text-align: center; display: none;">Komentar</th>
+			                            </tr>
+			                        </thead>
+                                    <tbody>
+			                            <tr th:each="student : ${students}">
+			                            
+			                            	<td style="text-align: center;">
+												<input class="uniform" type="checkbox" th:value="${student.id}" />
+											</td>
+									                                                              	
+											<td th:text="${student.firstName} + ' ' + ${student.lastName}" style="text-align: center;">ime ucenika</td>
+											
+											<td th:text="${student.email}" style="text-align: center;">e-mail ucenika</td>
+									
+											<td th:text="${student.address}" style="text-align: center;">adresa</td>
+											
+											<td th:text="${student.category.name}" style="text-align: center;">kategorija</td>
+											
+											<td style="text-align: center;">
+												<button class="btn edit btn-link" title="Više detalja o učeniku.">
+													<i class="icon-info-sign"></i>
+												</button>
+											</td>
+											
+											<!-- HIDDEN -->
+											<td th:text="${student.phone}" style="text-align: center; display: none;">Telefon</td>
+											
+											<td th:text="${student.registerDate != null ? #dates.format(student.registerDate, 'yyyy-MM-dd') : null}" style="text-align: center; display: none;">datum registracije</td>
+											
+											<td th:text="${student.isFirstAidPassed}" style="text-align: center; display: none;">položena obuka prve pomoći</td>
+											
+											<td th:text="${student.firstAidPassedDate != null ? #dates.format(student.firstAidPassedDate, 'yyyy-MM-dd') : null}" style="text-align: center; display: none;">datum polaganja obuke prve pomoći</td>
+											
+											<td th:text="${student.isTheoryPassed}" style="text-align: center; display: none;">položen teorijski deo</td>
+											
+											<td th:text="${student.theoryPassedDate != null ? #dates.format(student.theoryPassedDate, 'yyyy-MM-dd') : null}" style="text-align: center; display: none;">datum polaganja teorijskog dela</td>
+											
+											<td th:text="${student.isPracticePassed}" style="text-align: center; display: none;">položen praktični deo</td>
+											
+											<td th:text="${student.practicePassedDate != null ? #dates.format(student.practicePassedDate, 'yyyy-MM-dd') : null}" style="text-align: center; display: none;">datum polaganja praktičnog dela</td>
+											
+											<td th:text="${student.comment}" style="text-align: center; display: none;">komentar</td>
+											
+										</tr>
+                       				 </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+				<div>
+			    	<button id="submitStudent" class="btn btn-success" type="submit">Poveži</button>
+			    </div>
+			    
+			    <br />
+			    
+			    <div id="connectionValidationMessage" style="display: none" class="alert alert-error"></div>
+                            
+				<br />
+				
+				<div class="alert alert-info">
+                	<button data-dismiss="alert" class="close" type="button">x</button>
+                	<h2>Spisak učenika</h2>
+                	<p style="font-size: 10px;">Ovaj spisak sadrži samo one učenike Vaše auto škole koji već nisu povezani sa određenim korisnikom, tj. zahtevom za 
+                		članstvo. Ukoliko želite da povežete ovaj zahtev sa učenikom koji je već povezan, molimo Vas, prvo raskinite vezu između učenika i korisnika 
+                		u sekciji 'Učenici'.</p>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<!-- #editModal -->
+<div id="editModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="editModalLabel"><i class="icon-edit"></i> Pregled informacija o učeniku</h3>
+    </div>
+    <div class="modal-body form-horizontal">
+        <div class="control-group" style="height: 19px;">
+            <label for="studentName" class="control-label" style="width: 242px; margin-right: 10px;">Ime učenika</label>
+            <div class="controls">
+                <input type="text" id="studentName" name="studentName" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group" style="height: 19px;">
+            <label for="studentEmail" class="control-label" style="width: 242px; margin-right: 10px;">E-mail učenika</label>
+            <div class="controls">
+                <input type="text" id="studentEmail" name="studentEmail" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="studentAddress" class="control-label" style="width: 242px; margin-right: 10px;">Adresa učenika</label>
+            <div class="controls">
+                <input type="text" id="studentAddress" name="studentAddress" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="studentCategory" class="control-label" style="width: 242px; margin-right: 10px;">Kategorija</label>
+            <div class="controls">
+                <input type="text" id="studentCategory" name="studentCategory" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="studentPhone" class="control-label" style="width: 242px; margin-right: 10px;">Telefon</label>
+            <div class="controls">
+                <input type="text" id="studentPhone" name="studentPhone" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="registerDate" class="control-label" style="width: 242px; margin-right: 10px;">Datum registracije</label>
+            <div class="controls">
+                <input type="text" id="registerDate" name="registerDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="firstAidPassed" class="control-label" style="width: 242px; margin-right: 10px;">Položena obuka prve pomoći</label>
+            <div class="controls">
+                <span>
+                	<i id="firstAidNotPassed" name="firstAidNotPassed" class="icon-check" style="color: #c1b6b6; font-size: 18px"></i>
+					<i id="firstAidPassed" name="firstAidPassed" class="icon-check" style="color: #058107; font-size: 18px"></i>
+				</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="firstAidPassedDate" class="control-label" style="width: 242px; margin-right: 10px;">Datum polaganja obuke prve pomoći</label>
+            <div class="controls">
+                <input type="text" id="firstAidPassedDate" name="firstAidPassedDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="theoryPassed" class="control-label" style="width: 242px; margin-right: 10px;">Položen teorijski deo</label>
+            <div class="controls">
+                <span>
+                	<i id="theoryNotPassed" name="theoryNotPassed" class="icon-check" style="color: #c1b6b6; font-size: 18px"></i>
+					<i id="theoryPassed" name="theoryPassed" class="icon-check" style="color: #058107; font-size: 18px"></i>
+				</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="theoryPassedDate" class="control-label" style="width: 242px; margin-right: 10px;">Datum polaganja teorijskog dela</label>
+            <div class="controls">
+                <input type="text" id="theoryPassedDate" name="theoryPassedDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="practicePassed" class="control-label" style="width: 242px; margin-right: 10px;">Položen praktični deo</label>
+            <div class="controls">
+                <span>
+                	<i id="practiceNotPassed" name="theoryNotPassed" class="icon-check" style="color: #c1b6b6; font-size: 18px"></i>
+					<i id="practicePassed" name="theoryPassed" class="icon-check" style="color: #058107; font-size: 18px"></i>
+				</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="practicePassedDate" class="control-label" style="width: 242px; margin-right: 10px;">Datum polaganja praktičnog dela</label>
+            <div class="controls">
+                <input type="text" id="practicePassedDate" name="practicePassedDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="comment" class="control-label" style="width: 242px; margin-right: 10px;">Komentar</label>
+            <div class="controls">
+                <textarea type="text" id="comment" name="comment" disabled="disabled"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="closeBtn" class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zatvori</button>
+    </div>
+</div>
+<!-- /#editModal -->
+
+<!-- FORM RELATED -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/atheme/js/vendor/jquery-migrate-1.1.1.min.js}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript" th:src="@{/atheme/js/vendor/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tablesorter.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/responsive-tables.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/main.js}"></script>
+
+<!-- TABLE end -->
+
+<script>
+	jQuery(function() {
+		bizstrapTable();
+	});
+</script>
+
+<script th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationStudentConnectToExisting.js}"></script>

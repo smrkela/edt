@@ -1,0 +1,302 @@
+<link rel="stylesheet" th:href="@{/css/bootstrap/css/jquery.fileupload-ui.css}" />
+
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Grle</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<div tiles:include="imageUploader"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${school.id}" /> <input type="hidden"
+						id="schoolUniqueName" th:value="${school.uniqueName}" />
+
+					<!-- Basic info -->
+					<div class="form-actions" id="basicInfo" style="padding-left: 0px;">
+			        	
+			        	<div class="header">
+					        <h4 id="basicInfoLabel"><i class="icon-eye-open" style="font-size: 24px;"></i> | Osnovne informacije</h4>
+					    </div>
+					
+						<div class="control-group">
+							<label class="control-label" for="name">Naziv</label>
+							<div class="controls">
+								<input type="text" id="name" name="name" title="Unesite naziv auto škole"
+									placeholder="Unesite naziv" th:value="${school.name}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="legalName">Pun pravni naziv</label>
+							<div class="controls">
+								<textarea id="legalName" name="legalName" title="Unesite pun naziv"
+									placeholder="Unesite pun naziv" th:text="${school.legalName}" style="height: 80px" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="categories">Kategorije</label>
+							<div class="controls">
+								<input type="text" id="categories" name="categories" title="Unesite kategorije"
+									placeholder="Unesite kategorije" th:value="${school.categories}" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="permitNumber">Broj dozvole</label>
+							<div class="controls">
+								<input type="text" id="permitNumber" name="permitNumber" title="Unesite broj dovole"
+									placeholder="Unesite broj dozvole" th:value="${school.permitNumber}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="permitDateDiv">Datum dobijanja dozvole</label>
+							<div class="controls">
+								<div class="input-append date" id="permitDateDiv"
+									th:attr="data-date=${school.permitDate != null ? #dates.format(school.permitDate, 'yyyy-MM-dd') : '2014-01-01'}"
+									data-date="2012-02-03" data-date-format="yyyy-MM-dd">
+									<input class="span3" id="permitDate" size="16" type="text"
+										th:value="${school.permitDate != null ? #dates.format(school.permitDate, 'yyyy-MM-dd') : '2014-01-01'}"
+										readonly="readonly" name="validTo" data-message="Unesite datum dobijanja dozvole">
+									<span class="add-on"><i class="icon-calendar"></i></span> </input>
+								</div>
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="registryNumber">Matični broj</label>
+							<div class="controls">
+								<input type="text" id="registryNumber" name="registryNumber" title="Unesite matični broj"
+									placeholder="Unesite matični broj" th:value="${school.registryNumber}" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="aboutUs">O auto školi</label>
+							<div class="controls">
+								<textarea id="aboutUs" name="aboutUs" title="Unesite opis autoškole"
+									placeholder="Unesite opis autoškole" th:text="${school.aboutUs}" style="height: 150px" />
+							</div>
+						</div>
+						
+					</div>	
+					
+					<!-- Contact info -->
+					<div class="form-actions" id="contactInfo" style="padding-left: 0px;">
+						
+						<div class="header">
+					        <h4 id="contactInfoLabel"><i class="icon-book" style="font-size: 24px;"></i> | Kontakt podaci</h4>
+					    </div>
+	
+						<div class="control-group">
+							<label class="control-label" for="city">Grad</label>
+							<div class="controls">
+								<input type="text" id="city" name="city" title="Unesite grad" placeholder="Unesite grad"
+									th:value="${school.city}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="address">Adresa</label>
+							<div class="controls">
+								<input type="text" id="address" name="address" title="Unesite adresu"
+									placeholder="Unesite adresu" th:value="${school.address}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="country">Država</label>
+							<div class="controls">
+								<input type="text" id="country" name="country" title="Unesite državu"
+									placeholder="Unesite državu" th:value="${school.country}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="phone">Telefon</label>
+							<div class="controls">
+								<input type="text" id="phone" name="phone" title="Unesite telefon"
+									placeholder="Unesite telefon" th:value="${school.phone}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="phone2">Telefon 2</label>
+							<div class="controls">
+								<input type="text" id="phone2" name="phone2" title="Unesite drugi telefon"
+									placeholder="Unesite drugi telefon" th:value="${school.phone2}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="fax">Fax</label>
+							<div class="controls">
+								<input type="text" id="fax" name="fax" title="Unesite fax" placeholder="Unesite fax"
+									th:value="${school.fax}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="email">Email</label>
+							<div class="controls">
+								<input type="text" id="email" name="email" title="Unesite email adresu"
+									placeholder="Unesite email adresu" th:value="${school.email}" />
+							</div>
+						</div>
+						
+					</div>
+					
+					<!-- Web info -->
+					<div class="form-actions" id="basicInfo" style="padding-left: 0px;">
+			        	
+			        	<div class="header">
+					        <h4 id="basicInfoLabel"><i class="icon-globe" style="font-size: 24px;"></i> | Web</h4>
+					    </div>
+					    
+						<div class="control-group">
+							<label class="control-label" for="website">Website</label>
+							<div class="controls">
+								<input type="text" id="website" name="website" title="Unesite adresu web sajta"
+									placeholder="Unesite adresu web sajta" th:value="${school.website}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="facebookURL">Facebook URL</label>
+							<div class="controls">
+								<input type="text" id="facebookURL" name="facebookURL"
+									title="Unesite URL za Facebook stranicu" placeholder="Unesite URL za Facebook stranicu"
+									th:value="${school.facebookURL}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="twitterURL">Twitter URL</label>
+							<div class="controls">
+								<input type="text" id="twitterURL" name="twitterURL" title="Unesite URL za Twitter stranicu"
+									placeholder="Unesite URL za Twitter stranicu" th:value="${school.twitterURL}" />
+							</div>
+						</div>
+					
+					</div>
+
+					<!-- Basic info -->
+					<div class="form-actions" id="basicInfo" style="padding-left: 0px;">
+			        	
+			        	<div class="header">
+					        <h4 id="basicInfoLabel"><i class="icon-time" style="font-size: 24px;"></i> | Radno vreme</h4>
+					    </div>
+
+						<div class="control-group">
+							<label class="control-label" for="workingHoursMonday">Radno vreme za ponedeljak</label>
+							<div class="controls">
+								<input type="text" id="workingHoursMonday" name="workingHoursMonday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursMonday}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="workingHoursTuesday">Radno vreme za utorak</label>
+							<div class="controls">
+								<input type="text" id="workingHoursTuesday" name="workingHoursTuesday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursTuesday}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="workingHoursWednesday">Radno vreme za sredu</label>
+							<div class="controls">
+								<input type="text" id="workingHoursWednesday" name="workingHoursWednesday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursWednesday}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="workingHoursThursday">Radno vreme za četvrtak</label>
+							<div class="controls">
+								<input type="text" id="workingHoursThursday" name="workingHoursThursday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursThursday}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="workingHoursFriday">Radno vreme za petak</label>
+							<div class="controls">
+								<input type="text" id="workingHoursFriday" name="workingHoursFriday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursFriday}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="workingHoursSaturday">Radno vreme za subotu</label>
+							<div class="controls">
+								<input type="text" id="workingHoursSaturday" name="workingHoursSaturday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursSaturday}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="workingHoursSunday">Radno vreme za nedelju</label>
+							<div class="controls">
+								<input type="text" id="workingHoursSunday" name="workingHoursSunday"
+									title="Unesite radno vreme" placeholder="Unesite radno vreme"
+									th:value="${school.workingHoursSunday}" />
+							</div>
+						</div>
+						
+					</div>
+					
+					<!-- Lokacija -->
+					<div class="form-actions" id="basicInfo" style="padding-left: 0px;">
+			        	
+			        	<div class="header">
+					        <h4 id="basicInfoLabel"><i class="icon-map-marker" style="font-size: 24px;"></i> | Lokacija</h4>
+					    </div>
+
+						<div class="control-group">
+							<label class="control-label" for="googleMapsURL">Google Maps (sirina,visina)</label>
+							<div class="controls">
+								<input type="text" id="googleMapsURL" name="googleMapsURL" title="Unesite URL za google mape"
+									placeholder="Unesite URL za google mape" th:value="${school.googleMapsURL}" />
+							</div>
+						</div>
+						
+					</div>
+					
+					<button class="btn btn-primary" type="submit">Sačuvaj</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script th:src="@{/scripts/jquery/jquery.form.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/date.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/daterangepicker.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/bootstrap-datepicker.js}"></script>
+
+<script th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationBasicInfo.js}"></script>

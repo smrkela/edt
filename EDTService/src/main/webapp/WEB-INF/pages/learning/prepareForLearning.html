@@ -1,0 +1,419 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Učenje</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+
+			<div class="span9">
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h1>Web aplikacija</h1>
+						<div class="text-divider6">
+							<span></span>
+						</div>
+
+						<div class="row">
+
+							<div class="span5">
+
+								<h3>Uči i pripremaj se detaljno i postupno</h3>
+
+								<fieldset>
+
+									<div class="image-wrapper">
+
+										<img alt="" th:src="@{/images/home/app_on_laptop_100.jpg}" />
+
+										<span th:if="${numberOfActiveStudents gt 0}"
+											style="padding-left: 15px; font-size: 34px"
+											th:text="${numberOfActiveStudents}">34</span> <a
+											th:if="${numberOfActiveStudents gt 0}"
+											th:href="@{/aktivni-ucenici}" th:text="'aktivnih učenika'">Aktivnih
+											učenika</a>
+									</div>
+
+									<br /> <a class="btn btn-info"
+										th:href="@{/online-ucenje}">Idi na aplikaciju</a>
+									<br /> <br /> <a th:href="@{/app/index.html}">Stara
+										verzija aplikacije</a><br /> <a
+										th:href="@{/priprema-za-vozacki-ispit-testovi-aplikacija}">Klikni
+										ovde da saznaš više o aplikaciji</a>
+
+								</fieldset>
+
+							</div>
+
+							<div class="span4">
+
+								<h3>5 najboljih učenika poslednjih 7 dana:</h3>
+
+								<table class="table">
+									<tbody>
+										<tr th:each="user,status : ${bestLearners}">
+											<td th:text="${status.count} + '.'"
+												style="padding-right: 5px">1.</td>
+											<td th:text="${user.username}" style="font-weight: bold;">pera</td>&nbsp;&nbsp;&nbsp;
+											<td
+												th:text="${#numbers.formatInteger(user.points, 1, 'COMMA')} + '  poena'"
+												style="text-align: right;">123</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+
+				<br />
+
+				<!-- TEST DANA -->
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h1>Test dana</h1>
+						<div class="text-divider6">
+							<span></span>
+						</div>
+
+						<div class="row">
+
+							<div class="span5">
+
+								<h3>Nemaš vremena a želiš da proveriš znanje</h3>
+
+								<fieldset>
+									<div class="image-wrapper">
+
+										<img alt="" th:src="@{/images/home/daily_test_100.jpg}" /> <span
+											th:if="${numberOfTodayDailyTestResults gt 0}"
+											style="padding-left: 15px; font-size: 34px"
+											th:text="${numberOfTodayDailyTestResults}">34</span> <a
+											th:if="${numberOfTodayDailyTestResults gt 0}"
+											th:href="@{/test-dana}">polaganja danas</a>
+
+									</div>
+
+									<br /> <a th:href="@{/test-dana}"
+										class="btn btn-success">Idi na test dana</a> <br />
+									<br /> <a th:href="@{/pomoc/test-dana}">Klikni ovde da
+										saznaš više o testu dana</a>
+
+								</fieldset>
+
+							</div>
+
+							<div class="span4">
+
+								<fieldset>
+
+									<h3>5 najboljih takmičara poslednjih 7 dana:</h3>
+
+									<table class="table">
+										<tbody>
+											<tr th:each="user,status : ${bestCompetitors}">
+												<td th:text="${status.count} + '.'"
+													style="padding-right: 5px">1.</td>
+												<td th:text="${user.user.username}"
+													style="font-weight: bold;">pera</td>&nbsp;&nbsp;&nbsp;
+												<td
+													th:text="${#numbers.formatInteger(user.points, 1, 'COMMA')} + '  poena'"
+													style="text-align: right;">123</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</fieldset>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<br />
+
+				<!--  PROBNI TESTOVI -->
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h1>Probni testovi</h1>
+						<div class="text-divider6">
+							<span></span>
+						</div>
+
+						<div class="row">
+
+							<div class="span5">
+
+								<h3>Okušaj se u testovima sa polaganja</h3>
+
+								<fieldset>
+
+									<div class="image-wrapper">
+
+										<img alt="" th:src="@{/images/home/real_test_100.jpg}" />
+										<span th:if="${realTestResults gt 0}"
+											style="padding-left: 15px; font-size: 34px"
+											th:text="${realTestResults}">34</span> <a
+											th:if="${realTestResults gt 0}"
+											th:href="@{/testovi}">skorašnjih polaganja</a>
+									</div>
+
+									<br /> <a class="btn btn-danger"
+										th:href="@{/testovi}">Idi na probne testove</a> <br /> <br />
+
+								</fieldset>
+
+							</div>
+
+							<div class="span4">
+
+								<fieldset>
+
+									<h3>5 najboljih takmičara poslednjih 7 dana:</h3>
+
+									<table class="table">
+										<tbody>
+											<tr th:each="user,status : ${realTestsBestCompetitors}">
+												<td th:text="${status.count} + '.'"
+													style="padding-right: 5px">1.</td>
+												<td th:text="${user.user.username}"
+													style="font-weight: bold;">pera</td>&nbsp;&nbsp;&nbsp;
+												<td
+													th:text="${#numbers.formatInteger(user.points, 1, 'COMMA')} + '  poena'"
+													style="text-align: right;">123</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</fieldset>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<br />
+				
+				<!-- MARATON -->
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h1>Maraton</h1>
+						<div class="text-divider6">
+							<span></span>
+						</div>
+
+						<div class="row">
+
+							<div class="span5">
+
+								<h3>Imaš neograničeno vreme i veliku upornost</h3>
+
+								<fieldset>
+									<div class="image-wrapper">
+
+										<img alt="" th:src="@{/images/home/marathon_100.jpg}" /> <span
+											th:if="${marathonTestResults gt 0}"
+											style="padding-left: 15px; font-size: 34px"
+											th:text="${marathonTestResults}">34</span> <a
+											th:if="${marathonTestResults gt 0}"
+											th:href="@{/maraton}">skorašnjih polaganja</a>
+
+									</div>
+
+									<br /> <a th:href="@{/maraton}"
+										class="btn btn-success">Idi na maraton</a> <br />
+									<br /> <a th:href="@{/pomoc/maraton}">Klikni ovde da
+										saznaš više o maratonu</a>
+
+								</fieldset>
+
+							</div>
+
+							<div class="span4">
+
+								<fieldset>
+
+									<h3>5 najboljih takmičara poslednjih 7 dana:</h3>
+
+									<table class="table">
+										<tbody>
+											<tr th:each="user,status : ${marathonTestsBestCompetitors}">
+												<td th:text="${status.count} + '.'"
+													style="padding-right: 5px">1.</td>
+												<td th:text="${user.user.username}"
+													style="font-weight: bold;">pera</td>&nbsp;&nbsp;&nbsp;
+												<td
+													th:text="${#numbers.formatInteger(user.points, 1, 'COMMA')} + '  poena'"
+													style="text-align: right;">123</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</fieldset>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+				
+				<br/>
+
+				<!-- DRUGI RED -->
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h1>Čitanje na sajtu</h1>
+						<div class="text-divider6">
+							<span></span>
+						</div>
+
+						<div class="row">
+
+							<div class="span4">
+								<div class="image-wrapper">
+									<img alt="" th:src="@{/images/home/book_100.jpg}" />
+								</div>
+							</div>
+
+							<div class="span5">
+								<h2>Izaberi kategoriju vozila i pitanja i kreni sa učenjem</h2>
+
+								<a class="btn btn-warning" th:href="@{/ucenje/izbor}">Kreni
+									sa učenjem</a>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<br />
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h1>Mobilna aplikacija</h1>
+						<div class="text-divider6">
+							<span></span>
+						</div>
+
+						<div class="row">
+
+							<div class="span4">
+								<div class="image-wrapper">
+									<img alt="" th:src="@{/images/home/app_on_phone_100.png}" />
+								</div>
+							</div>
+
+							<div class="span5">
+								<h3>Uči, testiraj se i prati svoj napredak na telefonu!</h3>
+
+								<a
+									href="https://play.google.com/store/apps/details?id=air.EDTFlexMobile">
+									<img alt="Preuzmi sa Google Play"
+									th:src="@{/images/en_generic_rgb_wo_60.png}" />
+								</a> <br /><br/> <a th:href="@{/pomoc/o-mobilnoj-aplikaciji}">Klikni
+									ovde da saznaš više o mobilnoj aplikaciji</a> <br />
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+				
+				<br/>
+				<br/>
+
+			</div>
+
+			<!-- 
+			<div tiles:include="sidebar"></div>
+			 -->
+
+			<div class="span3 main-column">
+
+				<h1>Aktivnost</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div
+					style="overflow: scroll; overflow-x: hidden; height: 1400px; margin-bottom: 10px">
+
+					<div th:each="activityMessage : ${activity}"
+						style="border-bottom: 1px solid #cccccc;">
+
+						<div style="padding-bottom: 10px; padding-top: 10px;">
+
+							<div style="float: left; padding-right: 5px; padding-bottom: 0px">
+								<img style="margin-bottom: 0px; height: 40px; width: 40px"
+									th:src="@{/resource(path=${'/users/'+activityMessage.authorId + '/smallImage'})}" />
+							</div>
+
+							<div style="margin-left: 45px">
+
+								<p th:utext="${activityMessage.message}" style="padding: 0px">Poruka</p>
+								<p style="color: #888888; padding: 0px">
+									<span th:text="${activityMessage.timeAgoString}">pre par
+										minuta</span>&nbsp;&nbsp;&nbsp; <a
+										th:if="${!#strings.isEmpty(activityMessage.link)}"
+										th:href="@{${activityMessage.link}}"
+										th:text="${activityMessage.linkText}">Administracija</a>
+								</p>
+
+							</div>
+
+							<div style="clear: both;"></div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

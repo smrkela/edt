@@ -1,0 +1,224 @@
+<div class="row show-grid" ng-app="marathonApp"
+	ng-controller="controller">
+
+	<!-- ANGULAR SCRIPTS -->
+	<script type="text/javascript"
+		th:src="@{/learningApp/assets/libs/angular1.3/angular.js}">
+		
+	</script>
+	<script type="text/javascript"
+		th:src="@{/learningApp/assets/libs/angular1.3/angular-animate.js}">
+		
+	</script>
+	<script type="text/javascript"
+		th:src="@{/learningApp/assets/libs/angular1.3/angular-ui-router.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/learningApp/assets/libs/angular1.3/angular-cookies.js}"></script>
+
+
+
+	<!-- HIDDEN SETUP FIELDS -->
+
+	<input type="hidden" id="marathonId" th:value="${marathonId}"></input>
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/maraton}">Maraton</a></li>
+				<li>Polaganje</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div class="span12 main-column">
+
+				<h1>Maraton</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div th:unless="${isUserLoggedIn}">
+
+					<div>Morate biti ulogovani da biste polagali maraton.</div>
+
+					<br /> <a th:href="@{/uloguj-se}" class="btn btn-primary">Uloguj
+						se</a> <br /> <br />
+
+				</div>
+
+				<div th:if="${isUserLoggedIn}" class="row">
+
+					<div class="span12">
+
+						<div class="row">
+
+							<div class="span6">
+
+								<div>
+									Tačno odgovorenih: <b>{{correctQuestions}}</b>
+								</div>
+
+								<div>
+									Netačno odgovorenih: <b>{{incorrectQuestions}}</b>
+								</div>
+
+								<div>
+									Preskočenih pitanja: <b>{{skippedQuestions}}</b>
+								</div>
+
+							</div>
+
+							<div class="span6">
+
+								<div>
+									Kategorija vožnje: <b th:text="${drivingCategoryName}">B
+										kategorija</b>
+								</div>
+
+								<div>
+									Dosadašnje vreme: <b>{{timeTakenString}}</b>
+								</div>
+								
+								<div>
+									Skupljenih bodova: <b>{{totalPoints}}</b>
+								</div>
+
+							</div>
+
+						</div>
+
+						<hr />
+
+						<!-- PITANJE -->
+
+						<div class="row">
+
+							<div class="span12">
+
+								<div ng-class="'panel ' + getTitleStyle()">
+
+									<div class="panel-heading">
+
+										<div class="row panel-title">
+
+											<div class="span11">
+												<div class="row">
+													<div class="span11">
+														<b>{{questionIndex+1}}.</b> <b>{{question.text}}</b>
+													</div>
+												</div>
+												<div class="row" ng-show="question.remark">
+													<div class="span11 help-block">{{question.remark}}</div>
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="panel-body">
+
+										<div class="row">
+
+											<div class="span6"
+												ng-show="question['question-image'].length > 0">
+
+												<div class="row"
+													ng-repeat="image in question['question-image']">
+
+													<div class="span6">
+
+														<img class="img-responsive center-block"
+															ng-src="{{getImageUrl(image)}}"></img>
+
+														<p class="text-center" ng-show="image.text">
+															<span class="label label-info">{{image.text}}</span>
+														</p>
+
+													</div>
+
+												</div>
+
+											</div>
+
+											<div
+												class="{{question['question-image'].length == 0 ? 'span11' : 'span5'}}">
+
+												<p class="answer {{getAnswerStyle(answer)}}"
+													ng-repeat="answer in question['question-answer']"
+													ng-click="answerClicked(answer)"
+													ng-disabled="!question.isUnconfirmed">
+
+													<span ng-show="!hideDiscussions"> <input
+														ng-disabled="!question.isUnconfirmed" type="checkbox"
+														ng-model="answer.isUserSelected" />
+													</span> <span>{{answer.letter}} {{answer.text}}</span>
+
+												</p>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="panel-footer">
+
+										<div class="row">
+
+											<div class="span12">
+												<a class="btn btn-success" ng-click="confirmAnswers()"
+													ng-disabled="!question.isAnswered"
+													ng-show="question.isUnconfirmed">Potvrdi <i
+													class="icon-check"></i></a><a class="btn btn-success"
+													ng-click="submit()" ng-show="!question.isUnconfirmed">Sledeće
+													<i class="icon-check"></i>
+												</a> <a class="btn btn-info" ng-click="skip()"
+													ng-show="question.isUnconfirmed">Preskoči <i
+													class="icon-circle-arrow-right"></i>
+												</a>
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- KRAJ PITANJA -->
+
+						<p ng-show="question.isUnconfirmed">Nakon potvrde odgovora
+							možeš da pogledaš detalje pitanja.</p>
+						<p ng-show="!question.isUnconfirmed">
+							<a ng-href="{{questionHelpLink}}" target="_blank">Vidi
+								detalje pitanja</a>
+						</p>
+
+						<br />
+
+						<p class="muted">U svakom trenutku možeš da napustiš maraton i
+							kasnije ga nastaviš od istog pitanja na kojem si bio.</p>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/scripts/doMarathon.js}"></script>
+<link th:href="@{/css/edt/singleQuestion.css}" rel="stylesheet" />

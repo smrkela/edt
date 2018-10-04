@@ -1,0 +1,95 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Pretraga pitanja</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div>
+					<b>Unesi željene kriterijume za pretragu da bi pronašao željena pitanja:</b>
+					
+					<form class="form-inline" th:action="@{/administracija/pretraga-pitanja}" method="GET">
+					
+						<br/>
+					
+						Pretraga po tekstu:
+						
+						<br/>
+						
+						<input type="text" name="q1" th:value="${q1}"></input>
+					
+						<input type="text" name="q2" th:value="${q2}"></input>
+					
+						<input type="text" name="q3" th:value="${q3}"></input>
+					
+						<br/>
+						<br/>
+						
+						Pretraga po odgovoru:
+						
+						<br/>
+						
+						<input type="text" name="a1" th:value="${a1}"></input>
+						<input type="text" name="a2" th:value="${a2}"></input>
+						<input type="text" name="a3" th:value="${a3}"></input>
+					
+						<br/>
+						<br/>
+					
+						<input class="btn btn-primary" type="submit" value="Pronađi"></input> 
+						<a class="btn btn-info" th:href="@{/administracija/pretraga-pitanja}">Reset</a>
+					
+					</form>
+					
+				</div>
+
+				<br />
+				<br />
+				
+				<div th:if="${!hasSearch}">
+					U formu unesi kriterijume za pretragu.
+				</div>
+				
+				<div th:if="${hasSearch AND  !hasQuestions}">Nema rezultata.</div>
+
+				<table class="table" th:if="${hasQuestions}">
+
+					<thead>
+						<tr>
+							<th>#</th>
+							<th style="padding: 2px;">Tekst pitanja</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="question : ${questions}">
+
+							<td th:text="${question.id}">
+							</td>
+							<td style="padding: 2px;">
+								<a th:href="@{'/ucenje/pitanja/' + ${question.id}}" th:text="${question.text}">naslov</a>
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br />
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>

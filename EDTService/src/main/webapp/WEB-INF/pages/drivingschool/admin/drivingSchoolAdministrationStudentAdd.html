@@ -1,0 +1,336 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Auto škola</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${school.id}" /> 
+					<input type="hidden" id="id" th:value="${student.id}" />
+					<input type="hidden" id="userId" th:value="${student.user != null ? student.user.id : null}" />
+					<input type="hidden" id="membershipRequestToken" th:value="${membershipRequestToken}" />
+
+					<!-- Basic info -->
+					<div class="form-actions" id="basicInfo" style="padding-left: 0px;">
+			        	
+			        	<div class="header">
+					        <h4 id="basicInfoLabel"><i class="icon-eye-open" style="font-size: 24px;"></i> | Osnovne informacije</h4>
+					    </div>
+					    
+			        	<div class="control-group">
+							<label class="control-label" for="firstName">Ime <span>*</span></label>
+							<div class="controls">
+								<input type="text" id="firstName" name="firstName" title="Unesite ime" placeholder="Unesite ime" th:value="${student.firstName}" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="lastName">Prezime <span>*</span></label>
+							<div class="controls">
+								<input type="text" id="lastName" name="lastName" title="Unesite prezime" placeholder="Unesite prezime" th:value="${student.lastName}" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="gender">Pol<sup>*</sup></label>
+							<div class="controls" style="margin-top: 5px">
+								<input id="male" name="isMale" style="margin-top: -2px" type="radio" title="Izaberite pol" th:checked="${student.isMale}" 
+									th:value="${student.isMale}" /> Muški 
+								<br /> 
+								<input id="female" name="isMale" type="radio" style="margin-top: -2px" title="Izaberite pol" th:checked="${student.isMale == false}"
+									th:value="${student.isMale == false}" /> Ženski
+							</div>
+						</div>
+						
+			        </div>
+  
+        
+					<!-- Contact info -->
+					<div class="form-actions" id="contactInfo" style="padding-left: 0px;">
+						
+						<div class="header">
+					        <h4 id="contactInfoLabel"><i class="icon-book" style="font-size: 24px;"></i> | Kontakt podaci</h4>
+					    </div>
+					    
+					    <div class="control-group">
+							<label class="control-label" for="email">E-mail</label>
+							<div class="controls">
+								<input type="email" id="email" name="email" th:value="${student.email}" title="Unesite validan e-mail" placeholder="Unesite e-mail" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">Telefon</label>
+							<div class="controls">
+								<input type="text" id="phone" name="phone" title="Unesite broj telefona" placeholder="Unesite broj telefona" th:value="${student.phone}" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="address">Adresa</label>
+							<div class="controls">
+								<input type="text" id="address" name="address" title="Unesite adresu" placeholder="Unesite adresu" th:value="${student.address}" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="city">Grad</label>
+							<div class="controls">
+								<input type="text" id="city" name="city" title="Unesite grad" placeholder="Unesite grad" th:value="${student.city}" />
+							</div>
+						</div>
+					    
+					</div>
+					
+					
+					<!-- Status info -->
+					<div class="form-actions" id="statusInfo" style="padding-left: 0px;">
+						
+						<div class="header">
+					        <h4 id="statusInfoLabel"><i class="icon-truck" style="font-size: 24px;"></i> | Podaci o statusu</h4>
+					    </div>
+					    
+					    <div class="control-group">
+							<label class="control-label" for="registerDateDiv">Datum upisa</label>
+							<div class="controls">
+								<div class="input-append date" id="registerDateDiv" data-date="2012-02-12" data-date-format="yyyy-MM-dd" 
+									 th:attr="data-date=${student.registerDate != null ? #dates.format(student.registerDate, 'yyyy-MM-dd') : #dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
+									<input class="span3" id="registerDate" size="16" type="text" 
+										th:value="${student.registerDate != null ? #dates.format(student.registerDate, 'yyyy-MM-dd') : null}"
+										readonly="readonly" name="registerDate" data-message="Unesite datum upisa"> 
+											<span class="add-on">
+												<i class="icon-calendar"></i>
+											</span> 
+									</input>
+								</div>
+							</div>
+						</div>
+						
+						<!-- PRVA POMOC -->
+						
+						<div class="control-group">
+							<label class="control-label" for="isFirstAidPassed">Položena obuka prve pomoći</label>
+							<div class="controls">
+								<input type="checkbox" id="isFirstAidPassed" name="isFirstAidPassed" data-message="Da li je položena obuka prve pomoći?"
+									th:checked="${student.isFirstAidPassed}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="firstAidPassedDateDiv">Datum polaganja obuke prve pomoći</label>
+							<div class="controls">
+								<div class="input-append date" id="firstAidPassedDateDiv" data-date="2012-02-12" data-date-format="yyyy-MM-dd"
+									th:attr="data-date=${student.firstAidPassedDate != null ? #dates.format(student.firstAidPassedDate, 'yyyy-MM-dd') : #dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
+									<input class="span3" id="firstAidPassedDate" size="16" type="text"
+										th:value="${student.firstAidPassedDate != null ? #dates.format(student.firstAidPassedDate, 'yyyy-MM-dd') : null}"
+										readonly="readonly" name="firstAidPassedDate" data-message="Unesite datum polaganja"> 
+										<span class="add-on">
+											<i class="icon-calendar"></i>
+										</span> 
+									</input>
+								</div>
+							</div>
+						</div>
+						
+						<!-- TEORIJA -->
+	
+						<div class="control-group">
+							<label class="control-label" for="isTheoryCompleted">Odslušan teorijski deo</label>
+							<div class="controls">
+								<input type="checkbox" id="isTheoryCompleted" name="isTheoryCompleted" data-message="Da li je odslušan teorijski deo obuke?" 
+									th:checked="${student.isTheoryCompleted}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="isTheoryPassed">Položen teorijski deo</label>
+							<div class="controls">
+								<input type="checkbox" id="isTheoryPassed" name="isTheoryPassed" data-message="Da li je položen teorijski deo obuke?"
+									th:checked="${student.isTheoryPassed}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="theoryPassedDateDiv">Datum polaganja teorijskog dela</label>
+							<div class="controls">
+								<div class="input-append date" id="theoryPassedDateDiv" data-date="2012-02-12" data-date-format="yyyy-MM-dd"
+									th:attr="data-date=${student.theoryPassedDate != null ? #dates.format(student.theoryPassedDate, 'yyyy-MM-dd') : #dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
+									<input class="span3" id="theoryPassedDate" size="16" type="text"
+										th:value="${student.theoryPassedDate != null ? #dates.format(student.theoryPassedDate, 'yyyy-MM-dd') : null}"
+										readonly="readonly" name="theoryPassedDate" data-message="Unesite datum polaganja teorijskog dela obuke."> 
+										<span class="add-on"><i class="icon-calendar"></i></span> 
+									</input>
+								</div>
+							</div>
+						</div>
+						
+						
+	
+						<!-- PRAKTICNI DEO -->
+	
+						<div class="control-group">
+							<label class="control-label" for="isPracticeCompleted">Završen praktični deo</label>
+							<div class="controls">
+								<input type="checkbox" id="isPracticeCompleted" name="isPracticeCompleted" data-message="Da li je završen praktični deo nastave/obuke?"
+									th:checked="${student.isPracticeCompleted}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="isPracticePassed">Položen praktični deo</label>
+							<div class="controls">
+								<input type="checkbox" id="isPracticePassed" name="isPracticePassed" data-message="Da li je položen praktični deo obuke (vožnja)?" 
+									th:checked="${student.isPracticePassed}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="practicePassedDateDiv">Datum polaganja praktičnog dela</label>
+							<div class="controls">
+								<div class="input-append date" id="practicePassedDateDiv" data-date="2012-02-12" data-date-format="yyyy-MM-dd"
+									th:attr="data-date=${student.practicePassedDate != null ? #dates.format(student.practicePassedDate, 'yyyy-MM-dd') : #dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
+									<input class="span3" id="practicePassedDate" size="16" type="text"
+										th:value="${student.practicePassedDate != null ? #dates.format(student.practicePassedDate, 'yyyy-MM-dd') : null}"
+										readonly="readonly" name="practicePassedDate" data-message="Unesite datum polaganja praktičnog dela obuke."> 
+											<span class="add-on">
+												<i class="icon-calendar"></i>
+											</span> 
+									</input>
+								</div>
+							</div>
+						</div>
+						
+						<!-- SVE -->
+						
+						<div class="control-group">
+							<label class="control-label" for="isAllPassed">Položeno sve</label>
+							<div class="controls">
+								<input type="checkbox" id="isAllPassed" name="isAllPassed" data-message="Da li je položena kompletna obuka" 
+									   th:checked="${student.isAllPassed}" />
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="allPassedDateDiv">Datum polaganja</label>
+							<div class="controls">
+								<div class="input-append date" id="allPassedDateDiv" data-date="2012-02-12" data-date-format="yyyy-MM-dd"
+									th:attr="data-date=${student.allPassedDate != null ? #dates.format(student.allPassedDate, 'yyyy-MM-dd') : #dates.format(#dates.createNow(), 'yyyy-MM-dd')}">
+									<input class="span3" id="allPassedDate" size="16" type="text"
+										th:value="${student.allPassedDate != null ? #dates.format(student.allPassedDate, 'yyyy-MM-dd') : null}"
+										readonly="readonly" name="allPassedDate" data-message="Unesite datum polaganja"> 
+										<span class="add-on">
+											<i class="icon-calendar"></i>
+										</span> 
+									</input>
+								</div>
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="categoryId">Izaberite kategoriju <span>*</span></label>
+							<div class="controls">
+								<select id="categoryId" data-placeholder="Izaberite kategoriju" class="span3 chzn-select-deselect" name="categoryId">
+									<option value=""></option>
+									<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+										th:selected="${student.categoryId != null and student.categoryId eq category.id}"></option>
+								</select>
+								<span id="tooltipForCategory" title="Izaberite kategoriju"> </span>
+							</div>
+						</div>
+					    
+					</div>
+
+					
+					<!-- Other info -->
+					<div class="form-actions" id="otherInfo" style="padding-left: 0px;">
+						
+						<div class="header">
+					        <h4 id="otherInfoLabel"><i class="icon-info-sign" style="font-size: 24px;"></i> | Ostalo</h4>
+					    </div>
+					    
+					    <div class="control-group">
+							<label class="control-label" for="sendNotifications">Šalji nova obaveštenja automatski</label>
+							<div class="controls">
+								<input type="checkbox" id="sendNotifications" name="sendNotifications" th:checked="${student.sendNotifications}"
+									   data-message="Da li želite da se nova obaveštenja Vaše auto škole automatski šalju učeniku nakon kreiranja?" 
+									   title="Da li želite da se nova obaveštenja Vaše auto škole automatski šalju učeniku nakon kreiranja?" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="inviteToJoin">Pozovi polaznika da se priključi sajtu</label>
+							<div class="controls">
+								<input type="checkbox" id="inviteToJoin" name="inviteToJoin" 
+									   data-message="Da li želite da pozovete učenika da se priključi Sajtu i Vašoj auto školi?" th:checked="${student.inviteToJoin}" 
+									   title="Da li želite da pozovete učenika da se priključi Sajtu i Vašoj auto školi?"/>
+							</div>
+						</div>
+	
+						<div class="control-group">
+							<label class="control-label" for="comment">Komentar</label>
+							<div class="controls">
+								<textarea id="comment" name="comment" title="Unesite opis" placeholder="Unesite opis" th:text="${student.comment}" style="height: 150px" />
+							</div>
+						</div>
+					    
+					</div>
+					
+					<button class="btn btn-success" type="submit" id="submitForm">Sačuvaj</button>
+					<button class="btn btn-warning" type="button" id="cancelForm">Otkaži</button>
+				</form>
+				
+				<div id="invitationValidationMessage" style="display: none" class="alert alert-info">
+					<button class="close" type="button" data-dismiss="alert">×</button>
+					<h2>Info</h2>
+					<p>Ukoliko želite da automatski šaljete nova obaveštenja učeniku ili da pošaljete pozivnicu za priključenje Sajtu, molimo Vas, unesite njegovu 
+					e-mail adresu. Ukoliko ne želite da pošaljete pozivnicu, molimo Vas, odštiklirajte opcije <i><b>"Pozovi polaznika da se priključi sajtu"</b></i> i 
+					<i><b>" Šalji obaveštenja automatski?"</b></i>.</p>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<!-- FORM RELATED -->
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.mousewheel.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/prettify.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dualListBox-1.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/bootstrap-inputmask.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.autosize-min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.inputlimiter.1.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tagsinput.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/chosen.jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.uniform.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.toggle.buttons.js}"></script>
+
+<script type="text/javascript" th:src="@{/scripts/jquery/jquery.form.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/date.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/daterangepicker.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/bootstrap-datepicker.js}"></script>
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationStudentAdd.js}"></script>

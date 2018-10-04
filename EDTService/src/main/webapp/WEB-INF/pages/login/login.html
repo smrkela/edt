@@ -1,0 +1,104 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12" th:unless="${#authorization.expr('isAuthenticated()')}">
+		<div class="row show-grid clear-both">
+
+			<div class="span6 main-column">
+
+				<h1>Ulogujte se</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div th:if="${errorMessage}" class="alert alert-error" th:text="${errorMessage}">Neuspešan login preko face-a</div>
+
+				<div id="login_message" class="alert alert-error"
+					style="display: none"></div>
+
+				<form id="login_form" class="form-horizontal" th:action="@{/login}" method="post">
+					<div class="control-group">
+						<label class="control-label" for="login_username">Korisničko ime</label>
+						<div class="controls">
+							<input id="login_username" type="text" placeholder="Korisničko ime" name="username" data-message="Unesite korisničko ime" 
+									autocomplete="on" autofocus="autofocus" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="login_username">Šifra</label>
+						<div class="controls">
+							<input id="login_password" type="password" placeholder="Šifra" name="password" data-message="Unesite šifru" autocomplete="on" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="login_username">Zapamti me na ovom računaru</label>
+						<div class="controls">
+							<input type="checkbox" id="_spring_security_remember_me" value="no" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<button class="btn btn-success controls" type="submit">
+							<i class="icon-signin"></i> | Uloguj se
+						</button>
+					</div>
+
+				</form>
+
+				<a th:href="@{/resetuj-sifru}">Zaboravljena šifra?</a> 
+				<br /> 
+				<a th:href="@{/zaboravljeno-korisnicko-ime}">Zaboravljeno korisničko ime?</a> 
+				<br /> <br /> <br />
+
+			</div>
+
+			<div class="span6 main-column">
+
+				<h1>Niste registrovani?</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<!-- Social Sign In Buttons -->
+				<div class="panel panel-default">
+					<div class="panel-body">
+
+						<form th:action="@{/registruj-se}">
+							<button type="submit" class="btn btn-info">
+								<i class="icon-user"></i> | Registruj se
+							</button>
+						</form>
+
+						<form th:action="@{/signin/facebook}" method="POST">
+							<button type="submit" class="btn btn-primary">
+								<i class="icon-facebook"></i> | Uloguj se preko facebook-a
+							</button>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="span12" th:if="${#authorization.expr('isAuthenticated()')}">
+		<div class="row show-grid clear-both">
+
+			<div class="span12 main-column">
+				Već ste ulogovani.
+				<br /> <br /> 
+				<a th:href="@{/}">Kliknite ovde da se vratite na glavnu stranicu.</a> 
+				<br /> <br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+	<br /> <br />
+
+</div>
+
+<script type="text/javascript" th:src="@{/scripts/login.js}"></script>

@@ -1,0 +1,80 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/spisak-auto-skola}">Sve auto škole</a></li>
+				<li th:text="${pageInfo.title}"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+
+				<h1>Obaveštenja auto škola</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="post-item" th:each="notification : ${notifications}">
+
+					<h2 th:text="${notification.title}">Naslov</h2>
+
+					<div class="text-divider1"></div>
+
+					<img alt="" style="height: 100px"
+						th:src="@{'/resource?path=/drivingSchools/' + ${notification.school.id} + '/logo'}" />
+
+					<p class="post-description" th:utext="${notification.content}">Sadržaj</p>
+
+					<div class="span7">
+					<a class="post-more"
+						th:href="@{'/spisak-auto-skola/' + ${notification.school.uniqueName} + '/obavestenja-auto-skole/obavestenje/' + ${notification.id}}"
+						href="#">Idi na obaveštenje&nbsp;&raquo;</a> <br /> <br />
+					</div>
+					
+					<div tiles:include="share"></div>
+					
+					<div class="post-item-panel">
+						<ul>
+							<li class="date">
+								<p>
+									<i class="icon-calendar"></i> <span
+										th:text="${#dates.format(notification.creationDate, 'dd/MM/yyyy HH:mm')}"></span>
+								</p>
+							</li>
+							<li><p>
+									<i class="icon-user"></i> <span
+										th:text="${notification.authorDTO.username}"></span>
+								</p></li>
+							<li class="comments"><p>
+									<i class="icon-comments-alt"></i><span
+										th:text="${notification.numOfComments} + ' komentara'"></span>
+								</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="bs-docs-example">
+					<ul class="pager">
+						<li class="next" th:unless="${isLastPage}"><a
+							th:href="@{/spisak-auto-skola/obavestenja(startingIndex=${nextIndex})}">Starije
+								vesti &rarr; </a></li>
+						<li class="previous" th:unless="${isFirstPage}"><a
+							th:href="@{/spisak-auto-skola/obavestenja(startingIndex=${previousIndex})}">&larr;
+								Novije vesti</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

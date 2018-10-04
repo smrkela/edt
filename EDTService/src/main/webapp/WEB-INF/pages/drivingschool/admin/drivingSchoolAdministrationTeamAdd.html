@@ -1,0 +1,88 @@
+<link rel="stylesheet" th:href="@{/css/bootstrap/css/jquery.fileupload-ui.css}" />
+
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Grle</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<div tiles:include="imageUploader"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${school.id}" /> <input type="hidden" id="id"
+						th:value="${employee.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="firstName">Ime <span>*</span></label>
+						<div class="controls">
+							<input type="text" id="firstName" name="firstName" title="Unesite ime"
+								placeholder="Unesite ime" th:value="${employee.firstName}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="lastName">Prezime <span>*</span></label>
+						<div class="controls">
+							<input type="text" id="lastName" name="lastName" title="Unesite prezime"
+								placeholder="Unesite prezime" th:value="${employee.lastName}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="role">Uloga u timu <span>*</span></label>
+						<div class="controls">
+							<input type="text" id="role" name="role" title="Unesite ulogu" placeholder="Unesite ulogu"
+								th:value="${employee.role}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="experience">Iskustvo</label>
+						<div class="controls">
+							<textarea id="experience" name="experience" title="Unesite iskustvo"
+								placeholder="Unesite iskustvo" th:text="${employee.experience}" style="height: 100px" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="comment">Opis</label>
+						<div class="controls">
+							<textarea id="comment" name="comment" title="Unesite opis" placeholder="Unesite opis"
+								th:text="${employee.comment}" style="height: 150px" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="orderIndex">Redni broj</label>
+						<div class="controls">
+							<input type="text" id="orderIndex" name="orderIndex"
+								title="Unesite ceo broj, osoba sa većim broj se prikazuje pre" placeholder="Unesite ceo broj"
+								th:value="${employee.orderIndex}" />
+						</div>
+					</div>
+
+					<button class="btn btn-primary" type="submit">Sačuvaj</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script th:src="@{/scripts/jquery/jquery.form.js}"></script>
+<script th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationTeamAdd.js}"></script>

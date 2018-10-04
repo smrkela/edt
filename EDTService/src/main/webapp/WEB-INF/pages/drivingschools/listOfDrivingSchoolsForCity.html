@@ -1,0 +1,112 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/spisak-auto-skola}">Auto škole</a></li>
+				<li th:text="${city}">Auto škole</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+
+		<h1 th:text="${city}">Beograd</h1>
+		<div class="text-divider6">
+			<span></span>
+		</div>
+
+		<p th:if="${#lists.isEmpty(schools)}">Nema auto škola</p>
+		<p th:if="${not #lists.isEmpty(schools)}"
+			th:text="${'Ukupno ' + #lists.size(schools) + ' auto škola'}">5
+			autoskola</p>
+
+		<table class="table table-bordered table-hover">
+			<!-- <table class="table table-bordered table-hover sortableTable responsive"> -->
+
+			<thead>
+
+				<tr>
+					<th>Naziv auto škole</th>
+					<th>Telefon</th>
+					<th>Kategorije</th>
+					<th style="width: 100px; text-align: center;">Cena (B kat.)</th>
+					<th style="width: 100px; text-align: center;">Ocena</th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				<tr th:each="school : ${schools}">
+
+					<td><b><a href="#"
+						th:href="@{'/spisak-auto-skola/'+ ${school.uniqueName} + '/profil-auto-skole'}"
+						th:text="${school.name}">Naziv auto škole</a></b></td>
+
+					<td th:text="${school.phone}" />
+
+					<td th:text="${school.categories}" />
+
+					<td style="text-align: center;"><span
+						th:if="${school.categoryBPrice == null}"></span> <span
+						th:if="${school.categoryBPrice != null}"
+						th:text="${#numbers.formatDecimal(school.categoryBPrice, 0, 'POINT', 2, 'COMMA')} + ' RSD'">cena</span>
+					</td>
+
+					<td th:class="${school.averageMark > 8} ? 'bold'" class="bold"
+						style="text-align: center;"><span
+						th:text="${#strings.toString(school.averageMark)}"></span></td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+
+		<!-- 
+
+			<thead>
+				<tr>
+					<th data-sort="string">Naziv auto škole</th>
+					<th data-sort="string">Telefon</th>
+					<th data-sort="string">Adresa</th>
+					<th data-sort="string">Website</th>
+					<th data-sort="string">Kategorije</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="school : ${schools}">
+					<td><a href="#"
+						th:href="@{'/spisak-auto-skola/'+ ${school.uniqueName} + '/profil-auto-skole'}"
+						th:text="${school.name}">Naziv auto škole</a></td>
+					<td th:text="${school.phone}" />
+					<td th:text="${school.address}" />
+					<td th:if="${school.website}"><a href="#" target="_blank" th:href="'http://'+ ${school.website} + ''"
+						th:text="${school.website}">www.nekisajt.com</a></td>
+					<td th:unless="${school.website}">/</td>
+					<td th:text="${school.categories}" />
+				</tr>
+
+			</tbody>
+
+		</table>
+		
+		-->
+
+		<br /> <br />
+
+	</div>
+</div>
+
+<script>
+	$(function() {
+		$("table").stupidtable();
+	});
+</script>
+<script th:src="@{/scripts/jquery/stupidtable.min.js}" />
+<link th:href="@{/css/edt/listOfDrivingSchools.css}" rel="stylesheet" />

@@ -1,0 +1,70 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+				<h1 th:text="${pageInfo.title}">
+					<span></span>
+				</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="alert alert-note">
+					<button data-dismiss="alert" class="close" type="button">x</button>
+					<h2>Napomena:</h2>
+					<p>Ukoliko izostavite vrednost za neku kategoriju ista neće biti prikazana u cenovniku.</p>
+				</div>
+
+				<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${school.id}" /> <input type="hidden"
+						id="schoolUniqueName" th:value="${school.uniqueName}" /> <input type="hidden"
+						id="priceListId" th:value="${priceList.id}" />
+
+					<h3>Dodatne informacije, proizvodi i napomene</h3>
+
+					<div class="text-divider5" />
+
+					<textarea style="height: 150px" id="description" class="span9" name="description"
+						title="Unesite dodatne informacije" placeholder="Dodatne informacije"
+						th:text="${priceList.description}"></textarea>
+
+					<div style="margin-top: 30px;" th:each="plc : ${priceList.listCategoryViewDTOs}">
+
+						<h3 th:text="'Cene za kategoriju ' + ${plc.name}"></h3>
+
+						<div class="text-divider5" />
+
+
+						<div th:each="plsc : ${plc.priceListSubcategoryViewDTOs}">
+
+							<div class="control-group">
+								<label class="control-label" th:text="${plsc.name}"></label>
+								<div class="controls">
+									<input th:attr="categoryId=${plc.id},subcategoryId=${plsc.id}" class="span5" type="text"
+										th:value="${plsc.price}"></input>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<input type="submit" class="btn btn-primary" value="Sačuvaj"></input>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script th:src="@{/scripts/tinymce/tinymce.min.js}"></script>
+<script th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationPriceList.js}"></script>

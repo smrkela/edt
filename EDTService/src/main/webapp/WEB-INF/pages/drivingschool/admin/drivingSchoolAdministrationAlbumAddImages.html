@@ -1,0 +1,40 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Grle</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<div tiles:include="galleryUploader"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="relatedId" th:value="${school.id}" /> <input
+						type="hidden" id="id" th:value="${album.id}" />
+
+					<button class="btn btn-primary" type="submit">Sačuvaj</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script th:src="@{/scripts/jquery/jquery.form.js}"></script>
+
+<script
+	th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationAlbumAddImages.js}"></script>

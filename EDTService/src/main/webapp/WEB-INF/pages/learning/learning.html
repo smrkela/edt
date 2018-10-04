@@ -1,0 +1,131 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li>Aplikacija za učenje</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		
+		<div class="row show-grid clear-both">
+		
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Aplikacija za učenje i testiranje</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<fieldset>
+					<h2>Učenje i spremanje za polaganje teorijskog ispita</h2>
+
+					<p>Na našem sajtu možete se spremati za polaganje teorijskog ispita. Sve što je potrebno jeste da se registrujete (registracija je besplatna) i 
+						možete da počnete.</p>
+					<p>Učenje i testiranje obuhvata sva pitanja objavljena po novom zakonu o saobraćaju. Učenje i testiranje je prilagođeno svakom korisniku posebno. To 
+						znači da ste u mogućnosti da pratite tačno koliko ste pitanja učili, koja su to pitanja, iz kojih oblasti, kada ste sve učili, dokle ste 
+						stigli sa učenjem, itd.</p>
+					<p>Isto tako i testiranje je prilagođeno svakom korisniku: znaćete koliko ste pitanja testirali, kako vam je išlo, dokle ste stigli iz koje oblasti, 
+					   itd. Svi ovi podaci vezuju se za vaš korisnički nalog i biće zapamćeni i nakon što završite sa učenjem i testiranjem. Dakle, možete npr. danas 
+					   naučiti 50 pitanja, sutradan možete da proverite svoje znanje testiranjem naučenih pitanja, pa dan posle toga možete da nastavite dalje sa učenjem 
+					   itd. Svi podaci o učenju i testiranju biće zabeleženi u vašem nalogu i moći ćete da im pristupite bez obzira da li se spremate jedan dan, 
+					   nedelju dana ili par meseci.</p>
+					<p>Napomena: da biste pristupili učenju i testiranju morate imati instaliran Flash Player u Vašem Internet pregledaču. Flash Player je besplatan i 
+					   dostupan za sve Internet pregledače. Ukoliko ga već nemate instaliranog možete ga instalirati sa
+					   <a target="_blank" href="http://www.adobe.com/support/flashplayer/downloads.html">ove adrese</a>. Ukoliko još uvek nemate napravljen nalog možete 
+					   ga napraviti klikom na <a target="_blank" href="http://www.vozacisrbije.com/uloguj-se" id="registerHereLink">ovaj link</a>, gde možete odabrati 
+					  način registracije, klasični ili preko Facebook-a. Ukoliko ste se već registrovali možete početi sa učenjem i testiranjem klikom na dugme ispod.</p>
+
+					<button class="btn btn-primary" onclick="startLearning()">Kreni sa učenjem i testiranjem</button>
+				
+					<div class="addthis_sharing_toolbox" align="right"></div>
+
+				</fieldset>
+
+				<br />
+
+				<!-- GALLERY GRID STARTS HERE -->
+				<div class="portfolio-grid-1 main-block col-wrapper">
+					<h1>Pogled na aplikaciju</h1>
+					<div class="text-divider6">
+						<span></span>
+					</div>
+					<ul id="gallery-main" class="thumbnails gallery">
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/HomePage.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/HomePage.png}" />
+							</a>
+						</li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/Learning.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/Learning.png}" />
+							</a>
+						</li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/LearningProgress.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/LearningProgress.png}" />
+							</a>
+						</li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/LearningQuestion.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/LearningQuestion.png}" />
+						</a></li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/ListOfLearnings.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/ListOfLearnings.png}" />
+						</a></li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/ListOfTesting.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/ListOfTesting.png}" />
+						</a></li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/Discussions.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/Discussions.png}" />
+							</a>
+						</li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/Testing.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/Testing.png}" />
+							</a>
+						</li>
+						<li class="span3 small hp-wrapper item">
+							<a th:href="@{/images/app_gallery/TestResult.png}" rel="group" class="top-link thumbnail"> 
+								<img alt="" th:src="@{/css/bootstrap/img/gal_hover.jpg}" class="hover-shade" />
+								<img alt="" style="width: 220px; height: 160px;" th:src="@{/images/app_gallery/TestResult.png}" />
+							</a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END GALLERY GRID -->
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	function startLearning() {
+
+		window.location = baseUrl + "app/index.html";
+	}
+</script>

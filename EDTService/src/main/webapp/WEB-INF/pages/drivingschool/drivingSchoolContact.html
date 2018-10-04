@@ -1,0 +1,308 @@
+<div class="row show-grid" th:object="${school}">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+
+				<h1 th:text="${'Auto škola ' + school.name + ' - kontakt'}">Grle</h1>
+				
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<!-- BEGIN RIGHT-SIDE CONTACT FORM AREA -->
+
+				<div class="row show-grid">
+
+					<!-- HIDDEN PODACI KOJI SE KORISTE U MAPI -->
+					<input type="hidden" id="name" th:value="${school.name}" /> 
+					<input type="hidden" id="city" th:value="${school.city}" /> 
+					<input type="hidden" id="address" th:value="${school.address}" />
+					<input type="hidden" id="position" th:value="${school.googleMapsURL}" />
+
+					<div class="contact-info span6">
+
+						<!-- COMPANY ADDRESS -->
+						<address>
+							<span class="bold" th:text="${school.address}">Ulica</span>
+							<br />
+							<span class="bold" th:text="${school.city}">Grad</span>
+							<br />
+							<span class="bold" th:text="${school.country}">Država</span>
+							<br />
+							<span th:if="${school.phone == null}">Telefon: <i>Auto-škola nije unela telefon</i></span>
+							<!-- ako nema telefona -->
+							<span th:if="${school.phone != null}" th:text="'Telefon: ' + ${school.phone}">Telefon</span>
+							<br />
+							<span th:if="${school.phone2}" th:text="'Telefon 2: ' + ${school.phone2}">Telefon2</span>
+							<br />
+							<span th:if="${school.fax}" th:text="'Faks: ' + ${school.fax}">Telefon2</span>
+							<br />
+							<span th:if="${school.email}">E-mail: <a th:href="'mailto:'+ ${school.email}"
+								th:text="${school.email}"></a></span>
+							<br />
+							<span th:if="${school.website}">Web Site: <a target="_blank"
+								th:href="'http://'+ ${school.website} + ''" th:text="${school.website}"></a>
+							</span>
+						</address>
+
+						<!-- SOCIAL ICONS -->
+						<ul class="socials unstyled">
+							<!-- 
+							<li><a href="#" class="flickr"></a></li>
+							<li><a href="#" class="youtube"></a></li>
+							<li><a href="#" class="dribbble"></a></li>
+							<li><a href="#" class="pinterest"></a></li>
+							 -->
+							<li th:if="${school.twitterURL}"><a href="#" target="_blank"
+								th:href="'http://'+${school.twitterURL}" class="twitter" title="Naša strana na Twitter-u"></a></li>
+							<li th:if="${school.facebookURL}"><a href="#" target="_blank"
+								th:href="'http://'+${school.facebookURL}" class="facebook" title="Naša strana na Facebook-u"></a></li>
+						</ul>
+
+					</div>
+
+					<!-- HOURS OF OPERATION -->
+					<div class="contact-info span3">
+						<h2>Radno vreme</h2>
+						<table class="table">
+							<tbody>
+								<tr>
+									<td class="small">Ponedeljak:</td>
+									<td class="bold" th:text="${school.workingHoursMonday}">08:00 do 16:00</td>
+								</tr>
+								<tr>
+									<td class="small">Utorak:</td>
+									<td class="bold" th:text="${school.workingHoursTuesday}">08:00 do 16:00</td>
+								</tr>
+								<tr>
+									<td class="small">Sreda:</td>
+									<td class="bold" th:text="${school.workingHoursWednesday}">08:00 do 16:00</td>
+								</tr>
+								<tr>
+									<td class="small">Četvrtak:</td>
+									<td class="bold" th:text="${school.workingHoursThursday}">08:00 do 16:00</td>
+								</tr>
+								<tr>
+									<td class="small">Petak:</td>
+									<td class="bold" th:text="${school.workingHoursFriday}">08:00 do 16:00</td>
+								</tr>
+								<tr>
+									<td class="small">Subota:</td>
+									<td class="bold" th:text="${school.workingHoursSaturday}">Ne radi</td>
+								</tr>
+								<tr>
+									<td class="small">Nedelja:</td>
+									<td class="bold" th:text="${school.workingHoursSunday}">Ne radi</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- END RIGHT-SIDE CONTACT FORM AREA -->
+
+				<!-- GOOGLE MAP -->
+				<div class="row show-grid">
+					<div class="contact-info span9">
+						<!-- th:if="*{googleMapsURL}" -->
+						<h2>Naša lokacija</h2>
+					</div>
+
+					<div class="span9">
+
+						<div th:if="${school.googleMapsURL != null}">
+
+							<style>
+								.gmap {
+									position: relative;
+									line-height: 1.12;
+									overflow: hidden;
+									color: #000;
+									white-space: nowrap;
+									display: block;
+									margin-bottom: 2px;
+									font-weight: 500;
+								}
+								
+								
+								#gmap_canvas img { 
+									max-width: none; 
+								}
+								
+							</style>
+
+							<div id="gmap_canvas" style="height: 500px; width: 100%;"></div>
+
+							<!-- 
+							<iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0"
+								marginwidth="0" th:src="${school.googleMapsURL}" src="https://maps.google.com/maps"></iframe>
+						-->
+
+						</div>
+
+						<div th:if="${school.googleMapsURL == null}">
+							<div class="alert alert-attention">
+								<button data-dismiss="alert" class="close" type="button">×</button>
+								<h2>Nedostaje lokacija</h2>
+								<p>Žao nam je, ali auto-škola nije unela ovaj podatak.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<!-- ABOUT US -->
+				<div class="row show-grid">
+					<div class="contact-info span9">
+						<!-- th:if="*{aboutUs}" -->
+						<h2>O nama</h2>
+					</div>
+
+					<div class="span9">
+						<div th:if="${school.aboutUs != null}">
+							<p th:text="*{aboutUs}">Neki podaci o nama...</p>
+						</div>
+
+						<div th:if="${school.aboutUs == null}">
+							<div class="alert alert-attention">
+								<button data-dismiss="alert" class="close" type="button">×</button>
+								<h2>Nedostaje opis</h2>
+								<p>Žao nam je, ali auto-škola nije unela ovaj podatak.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<!-- CONTACT FORM AREA -->
+				<div class="row show-grid">
+
+					<div class="contact-info span9">
+						<!-- style="visibility: hidden;" -->
+
+						<h2>Kontaktirajte nas</h2>
+					</div>
+
+					<div class="span9">
+
+						<div id="successfullySentMessage" style="display: none" class="alert alert-success">
+							<button data-dismiss="alert" class="close" type="button">×</button>
+							<h2>Mail uspešno poslat!</h2>
+							<p>Hvala Vam za poslati e-mail. Auto-škola će Vam poslati odgovor na mail koji ste
+								naveli.</p>
+						</div>
+
+						<div id="errorSendingMessage" style="display: none" class="alert alert-error">
+							<button data-dismiss="alert" class="close" type="button">×</button>
+							<h2>Greška pri slanju mail-a!</h2>
+							<p>Došlo je do greške pri slanju mail-a. Molimo Vas, pokušajte kasnije ili probajte da
+								direktno kontaktirate auto-školu.</p>
+						</div>
+
+						<div id="errorSendingMessageWrongCode" style="display: none" class="alert alert-error"></div>
+
+					</div>
+
+					<div class="span9">
+						<div th:if="${school.email != null}">
+							<form name="contactForm" id="contactForm" class="form-horizontal">
+
+								<input type="hidden" id="id" name="id" th:value="${school.id}" />
+
+								<div class="control-group">
+									<label class="control-label" for="inputName">Ime i prezime<sup>*</sup></label>
+									<!-- style="width: 125px;" -->
+									<div class="controls">
+										<input name="inputName" type="text" class="span4" id="inputName"
+											title="Unesite Vaše ime i prezime" placeholder="Ime i prezime"></input>
+										<!-- style="margin-left: -35px;" -->
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">E-mail<sup>*</sup></label>
+									<div class="controls">
+										<input name="inputEmail" type="text" class="span4" id="inputEmail"
+											title="Unesite Vašu e-mail adresu" placeholder="E-mail"></input>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="comment" class="control-label">Poruka<sup>*</sup></label>
+									<div class="controls">
+										<textarea name="comment" rows="4" class="span6" id="comment" title="Unesite poruku"
+											placeholder="Poruka"></textarea>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="comment" class="control-label">Sigurnosni kod<sup>*</sup></label>
+									<div class="controls">
+
+										<script type="text/javascript"
+											src="http://www.google.com/recaptcha/api/challenge?k=6Lfqau8SAAAAANryQLxh2EPrOG5iyRwaQ2qFndX2">
+											
+										</script>
+										<noscript>
+											<iframe
+												src="http://www.google.com/recaptcha/api/noscript?k=6Lfqau8SAAAAANryQLxh2EPrOG5iyRwaQ2qFndX2"
+												height="300" width="500" frameborder="0"></iframe>
+											<br />
+											<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+											<input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+										</noscript>
+									</div>
+								</div>
+
+								<div class="control-group form-button-offset">
+									<div class="span2"></div>
+									<input type="submit" class="btn btn-info" value="Pošaljite poruku"
+										style="border-radius: 7px 7px 7px 7px;" />
+								</div>
+							</form>
+						</div>
+
+						<div th:if="${school.email == null}">
+							<div class="alert alert-attention">
+								<button data-dismiss="alert" class="close" type="button">×</button>
+								<h2>Nedostaje e-mail</h2>
+								<p>Žao nam je, ali auto-škola nije unela ovaj podatak. Probajte da direktno kontaktirate
+									auto-školu ili putem telefona.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<br />
+
+<script type="text/javascript" th:src="@{/css/bootstrap/js/bootstrap.js}"></script>
+<!-- <script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script> -->
+
+<script type="text/javascript" th:src="@{/css/bootstrap/js/jquery.flexslider-min.js}"></script>
+<script type="text/javascript" th:src="@{/css/bootstrap/js/jquery.isotope.js}"></script>
+<script type="text/javascript" th:src="@{/css/bootstrap/js/jquery.fancybox.pack.js}"></script>
+<script type="text/javascript" th:src="@{/css/bootstrap/js/custom.js}"></script>
+
+<!--  MAPE -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<!-- SKRIPTA ZA SLANJE MAIL-a -->
+<script type="text/javascript" th:src="@{/scripts/drivingSchool/contactDrivingSchool.js}"></script>

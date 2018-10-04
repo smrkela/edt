@@ -1,0 +1,63 @@
+<div th:if="${confirmed==true}">
+	<div>
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Uspešna aktivacija naloga</li>
+			</ul>
+		</div>
+	</div>
+
+	<h1>Uspešno ste aktivirali svoj nalog</h1>
+
+	<div class="text-divider6">
+		<span></span>
+	</div>
+
+	<div class="alert alert-success">
+
+		<h2>Hvala na registraciji</h2>
+
+		<p>Vaš nalog je sada aktiviran i možete da se ulogujete i počnete sa korišćenjem sajta kao
+			registraovani član sajta.</p>
+
+	</div>
+
+	<a th:href="@{/uloguj-se}">Kliknite ovde da biste se ulogovali</a>.
+
+	<br />
+	<br />
+
+</div>
+
+<div th:if="${confirmed==false}">
+	<div>
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Neuspešna aktivacija naloga</li>
+			</ul>
+		</div>
+	</div>
+
+	<h1>Nije uspešno aktiviran vaš nalog</h1>
+
+	<div class="text-divider6">
+		<span></span>
+	</div>
+
+	<div class="alert alert-error">
+
+		<h2>Hvala na registraciji</h2>
+
+		<p>Nažalost vaš nalog nije uspešno aktiviran. Molimo vas pokušajte kasnije opet da se
+			registrujete.</p>
+
+	</div>
+
+	<a th:href="@{/registruj-se}">Kliknite ovde da biste se ponovo registrovali.</a>.
+
+	<br />
+	<br />
+
+</div>

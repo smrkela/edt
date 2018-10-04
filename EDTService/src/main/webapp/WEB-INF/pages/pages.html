@@ -1,0 +1,108 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Novosti</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div id="left-sidebar" class="span3 sidebar">
+
+				<!-- POSLEDNJE VESTI -->
+
+				<div class="sidebar-news-widget sidebar-block">
+					<h2>Poslednje vesti</h2>
+					<ul>
+						<li th:each="recentPage : ${recentPages}"><a class="photo" href="#"> <img alt=""
+								th:src="@{/resource(path=${recentPage.smallImagePath})}" />
+
+						</a>
+							<p>
+								<a th:href="@{'/vesti/'+${recentPage.uniqueName}}" th:text="${recentPage.title}">Naslov</a>
+							</p>
+							<p class="date">
+								<i class="icon-calendar"></i> <span
+									th:text="${#dates.format(recentPage.creationDate, 'dd/MM/yyyy HH:mm')}"></span>
+							</p></li>
+					</ul>
+				</div>
+
+				<!-- POSLEDNJI KOMENTARI -->
+
+				<div class="sidebar-news-widget sidebar-block">
+					<h2>Poslednji komentari</h2>
+					<ul>
+						<li th:each="comment : ${recentComments}"><a class="photo" href="#"> <img alt=""
+								th:src="@{/resource(path=${comment.author.smallProfileImagePath})}" /></a>
+							<p class="bold" th:text="${comment.author.username}">autor</p>
+							<p>
+								<a href="#" th:href="@{'/vesti/'+${comment.page.uniqueName}}" th:text="${comment.page.title}">Naslov</a>
+							</p>
+							<p
+								th:text="${#strings.length(comment.comment) gt 80 ? (#strings.substring(comment.comment, 0, 80) + '...') : comment.comment}">autor</p>
+							<p class="date">
+								<i class="icon-calendar"></i> <span
+									th:text="${#dates.format(comment.date, 'dd/MM/yyyy HH:mm')}"></span>
+							</p></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="span9 main-column two-columns-left">
+
+				<div class="post-item" th:each="page : ${pages}">
+
+					<h2 th:text="${page.title}">Naslov</h2>
+
+					<div class="text-divider1"></div>
+
+					<img alt="" th:src="@{/resource(path=${page.normalImagePath})}" />
+
+					<p class="post-description" th:utext="${page.normalPreview}">Skraćeni sadržaj</p>
+					
+					<br/>
+					
+					<div class="span7">
+						<a class="post-more" th:href="@{'/vesti/'+${page.uniqueName}}" href="#">Nastavi sa čitanjem&nbsp;&raquo;</a>
+						<br /> <br />
+					</div>
+					
+					<div tiles:include="share"></div>
+					
+					<div class="post-item-panel">
+						<ul>
+							<li class="date">
+								<p>
+									<i class="icon-calendar"></i> <span
+										th:text="${#dates.format(page.creationDate, 'dd/MM/yyyy HH:mm')}"></span>
+								</p>
+							</li>
+							<li><p>
+									<i class="icon-user"></i> <span th:text="${page.authorDTO.username}"></span>
+								</p></li>
+							<li class="comments"><p>
+									<i class="icon-comments-alt"></i><span th:text="${page.numOfComments} + ' komentara'"></span>
+								</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="bs-docs-example">
+					<ul class="pager">
+						<li class="next" th:unless="${isLastPage}"><a
+							th:href="@{/vesti(startingIndex=${nextIndex})}">Starije vesti &rarr; </a></li>
+						<li class="previous" th:unless="${isFirstPage}"><a
+							th:href="@{/vesti(startingIndex=${previousIndex})}">&larr; Novije vesti</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

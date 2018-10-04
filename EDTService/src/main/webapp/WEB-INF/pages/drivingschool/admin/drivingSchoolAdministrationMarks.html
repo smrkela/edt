@@ -1,0 +1,56 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+				<h1>Utisci učenika</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<h2>
+					Prosečna ocena za ovu školu je <span th:text="${averageMark}"></span>
+				</h2>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Ocena</th>
+							<th>Komentar</th>
+							<th>Autor</th>
+							<th>Datum</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="mark : ${marks}">
+							<td th:text="${mark.mark}">2</td>
+							<td th:text="${mark.comment}">Odlicno</td>
+							<td th:text="${mark.author.username}">Autor</td>
+							<td th:text="${#dates.format(mark.date, 'dd/MM/yyyy')}">Datum</td>
+							<td><a
+								th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+								href="javascript:void(0)"
+								th:onclick="'deleteMark('+${mark.id}+')'">obriši</a></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<span th:if="${marks.size()==0}">Nema komentara</span>
+				<span th:unless="${marks.size()==0}" th:text="${marks.size()} + ' komentara'">3 komentara</span>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script
+	th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationMarks.js}"></script>

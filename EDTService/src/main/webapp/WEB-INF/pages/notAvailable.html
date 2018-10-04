@@ -1,0 +1,34 @@
+<div>
+	<div id="breadcrumb">
+		<ul>
+			<li class="home"><a th:href="@{/}">Glavna</a></li>
+			<li>Nepoznata stranica</li>
+		</ul>
+	</div>
+</div>
+
+<div class="span12" style="text-align: center;">
+	<img alt="logo" title="Nedostupna" th:src="@{/images/notAvailable.jpg}" />
+</div>
+
+<h1></h1>
+<div class="text-divider6">
+	<span></span>
+</div>
+
+<div>
+
+	<div class="alert alert-attention">
+
+		<h2>Tražena stranica je nedostupna. :(</h2>
+
+		<p th:utext="${message}">tekst greske</p>
+	</div>
+
+	<a href="javascript:javascript:history.go(-1)">Kliknite ovde da se vratite nazad</a>.
+
+	<br />
+	<br />
+	<br />
+
+</div>

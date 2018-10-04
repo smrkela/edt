@@ -1,0 +1,264 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Lista članstava</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div id="validationMessage" style="display: none" class="alert alert-error"></div>
+				
+				<div>
+					<a class="btn btn-warning btn-small" th:href="@{/uclani-se-u-auto-skolu}">
+						<i class="icon-plus-sign"></i> Učlani se u auto školu
+					</a>
+				</div>
+				
+				<div class="row" th:if="${#lists.size(requests) != 0}">
+
+					<div class="span9">
+						<div class="row-fluid">
+			                <div class="span12">
+		                        <div class="body collapse in" id="actionTable">
+		                            <table class="table responsive">
+		                                <tbody>
+		                                    <tr th:each="request : ${requests}" th:class="${request.status == 'APPROVED'} ? 'success' : (${request.status == 'REJECTED'} ? 'error')">
+		                                                                      	
+												<td style="text-align: center;">
+													<div class="span9">
+								
+														<div class="photo">
+															<div class="img-polaroid">
+																<a href="#" th:href="@{'/spisak-auto-skola/'+ ${request.drivingSchool.uniqueName} + '/profil-auto-skole'}">
+																	<img alt="" th:src="@{/resource(path=${request.drivingSchool.logoPath})}" />
+																</a>
+															</div>
+														</div>
+								
+														<br />
+								
+													</div>
+												</td>
+	
+												<td style="text-align: center;" class="span6">
+													<div> <!-- class="span6" -->
+
+														<table class="table" id="dataTable12">
+								
+															<tbody>
+								
+																<tr>
+																	<td class="bold">Auto škola:</td>
+																	<td>
+																		<b>
+																			<a href="#" th:href="@{'/spisak-auto-skola/'+ ${request.drivingSchool.uniqueName} + '/profil-auto-skole'}" 
+																			   th:text="${request.drivingSchool.name}">auto škola</a>
+																		</b>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="bold">Adresa:</td>
+																	<td class="small" th:text="${request.drivingSchool.address}">Neka nova 7</td>
+																</tr>
+																<tr>
+																	<td class="bold">Telefon:</td>
+																	<td class="small" th:if="${request.drivingSchool.phone}" th:text="${request.drivingSchool.phone}">Neki broj</td>
+																	<td th:unless="${request.drivingSchool.phone}">/</td>
+																</tr>
+																<tr>
+																	<td class="bold">E-mail:</td>
+																	<td class="small" th:if="${request.drivingSchool.email}">
+																		<a href="#" th:href="'mailto:'+ ${request.drivingSchool.email} + ''" th:text="${request.drivingSchool.email}">email</a>
+																	</td>
+																	<td th:unless="${request.drivingSchool.email}">/</td>
+																</tr>
+																<tr>
+																	<td class="bold">Status:</td>
+																	<td th:text="${request.status == 'APPROVED'} ? 'Odobren' : (${request.status == 'REJECTED'} ? 
+																				'Odbijen' : (${request.status == 'PENDING'} ? 'U čekanju'))">status</td>
+																</tr>
+																
+																
+																<!-- SAKRIVENO -->
+																<tr style="display: none;">
+																	<td class="bold">Grad:</td>
+																	<td class="small" th:text="${request.drivingSchool.city}">Grad</td>
+																</tr>
+																
+																<tr style="display: none;">
+																	<td class="bold">Datum zahteva:</td>
+																	<td class="small" th:text="${#dates.format(request.creationDate, 'dd.MM.yyyy, HH:mm')}">datum</td>
+																</tr>
+																
+																<tr style="display: none;">
+																	<td class="bold">Komentar:</td>
+																	<td class="small" th:text="${request.comment}">komentar</td>
+																</tr>
+																
+																<tr style="display: none;">
+																	<td class="bold">Obaveštenja:</td>
+																	<td class="small" th:text="${request.receiveNotifications}">obavestenje</td>
+																</tr>
+																
+																<tr style="display: none;">
+																	<td class="bold">Datum odluke:</td>
+																	<td class="small" th:if="${request.decisionDate}" th:text="${#dates.format(request.decisionDate, 'dd.MM.yyyy, HH:mm')}">datum</td>
+																	<td th:unless="${request.decisionDate}"></td>
+																</tr>
+																
+																<tr style="display: none;">
+																	<td class="bold">Komentar odluke:</td>
+																	<td class="small" th:text="${request.decisionComment}">komentar odluke</td>
+																</tr>
+																
+																<tr style="display: none;">
+																	<td class="bold">Token:</td>
+																	<td class="small" th:text="${request.confirmationToken}">token</td>
+																</tr>
+								
+															</tbody>
+								
+														</table>
+								
+														<button class="btn edit btn-info btn-small">
+															<i class="icon-info-sign"></i> Detalji članstva
+														</button>
+														
+													</div>
+												
+												</td>
+												
+											</tr>
+		                                </tbody>
+		                            </table>
+		                        </div>
+			                </div>
+			            </div>
+					</div>
+				</div>
+				
+
+				<div class="row-fluid" th:if="${#lists.size(requests) == 0}"> 
+					
+					<br /> <br />
+					
+					<h2>Moje škole</h2>
+					
+					<div class="alert alert-info">
+	                	<button data-dismiss="alert" class="close" type="button">x</button>
+	                	<h2>Članstvo u auto školi</h2>
+	                	<p>Trenutno nisi član ni jedne auto škole. Klikni na link ispod da bi se učlanio u neku od zvaničnih i registrovanih auto škola na Sajtu.</p>
+					</div>
+				
+				</div>
+
+				<br /> <br /> <br />
+
+			</div>
+
+		</div>
+	</div>
+	    
+</div>
+
+<!-- #editModal -->
+<div id="editModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="editModalLabel"><i class="icon-edit"></i> Pregled detalja zahteva</h3>
+    </div>
+    <div class="modal-body form-horizontal">
+        <div class="control-group" style="height: 19px;">
+            <label for="drivingSchool" class="control-label" style="width: 170px; margin-right: 10px;">Auto škola</label>
+            <div class="controls">
+                <input type="text" id="drivingSchool" name="drivingSchool" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group" style="height: 19px;">
+            <label for="drivingSchoolAddress" class="control-label" style="width: 170px; margin-right: 10px;">Adresa auto škole</label>
+            <div class="controls">
+                <input type="text" id="drivingSchoolAddress" name="drivingSchoolAddress" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+			<label class="control-label" for="receiveNotifications" style="width: 170px; margin-right: 10px;">Primaj obaveštenja</label>
+			<div class="controls">
+				<input type="checkbox" id="receiveNotifications" name="receiveNotifications" disabled="disabled" />
+			</div>
+		</div>
+		<div class="control-group">
+            <label for="comment" class="control-label" style="width: 170px; margin-right: 10px;">Komentar učenika</label>
+            <div class="controls">
+                <textarea id="comment" name="comment" disabled="disabled"></textarea>
+            </div>
+        </div>  
+        <div class="control-group">
+            <label for="creationDate" class="control-label" style="width: 170px; margin-right: 10px;">Datum kreiranja zahteva</label>
+            <div class="controls">
+                <input type="text" id="creationDate" name="creationDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="status" class="control-label" style="width: 170px; margin-right: 10px;">Status zahteva</label>
+            <div class="controls">
+                <input type="text" id="status" name="status" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="decisionDate" class="control-label" style="width: 170px; margin-right: 10px;">Datum odluke</label>
+            <div class="controls">
+                <input type="text" id="decisionDate" name="decisionDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="decisionComment" class="control-label" style="width: 170px; margin-right: 10px;">Komentar odluke</label>
+            <div class="controls">
+                <textarea id="decisionComment" name="decisionComment" disabled="disabled"></textarea>
+            </div>
+        </div>
+        
+        <input type="hidden" id="confirmationToken" name="confirmationToken"></input>
+    </div>
+    <div class="modal-footer">
+    	<button id="receiveNotificationsBtn" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Primaj obaveštenja</button>
+    	<button id="notReceiveNotificationsBtn" class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Ne primaj obaveštenja</button>
+        <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zatvori</button>
+    </div>
+</div>
+<!-- /#editModal -->
+		
+
+
+<!-- TABLE begin -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/atheme/js/vendor/jquery-migrate-1.1.1.min.js}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript" th:src="@{/atheme/js/vendor/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tablesorter.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/responsive-tables.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/main.js}"></script>
+
+<!-- TABLE end -->
+
+<script>
+	jQuery(function() {
+		bizstrapTable();
+	});
+</script>
+
+<script th:src="@{/scripts/admin/createPage/profile/listOfDrivingSchoolsMembership.js}"></script>

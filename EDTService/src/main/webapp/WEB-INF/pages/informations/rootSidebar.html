@@ -1,0 +1,13 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2>Informacije</h2>
+
+		<ul>
+			<li th:each="category : ${pageCategories}"><a href="#"
+				th:href="@{'#' +${category.name}}" th:text="${category.name}">Naslov</a></li> 
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

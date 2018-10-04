@@ -1,0 +1,102 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Izmena licence autoskole</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${drivingSchool.id}" />
+					<input type="hidden" id="id" th:value="${license.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="validFromDiv">Datum od</label>
+						<div class="controls">
+							<div class="input-append date" id="validFromDiv"
+								data-date="12-02-2012" data-date-format="yyyy-mm-dd" th:attr="data-date=${#dates.format(license.validFrom, 'yyyy-MM-dd')}">
+								<input class="span3" id="validFrom" size="16" type="text"
+									th:value="${#dates.format(license.validFrom, 'yyyy-MM-dd')}"
+									readonly="readonly" name="validFrom"
+									data-message="Unesite datum pocetka vazenja"> <span
+									class="add-on"><i class="icon-calendar"></i></span> </input>
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="validToDiv">Datum do</label>
+						<div class="controls">
+							<div class="input-append date" id="validToDiv" th:attr="data-date=${#dates.format(license.validTo, 'yyyy-MM-dd')}"
+								data-date="12-02-2012" data-date-format="yyyy-mm-dd">
+								<input class="span3" id="validTo" size="16" type="text"
+									th:value="${#dates.format(license.validTo, 'yyyy-MM-dd')}" 
+									readonly="readonly"
+									name="validTo" data-message="Unesite datum kraja vazenja">
+								<span class="add-on"><i class="icon-calendar"></i></span> </input>
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="active">Aktivna</label>
+						<div class="controls">
+							<input type="checkbox" id="active" name="active"
+								data-message="Da li je aktivna licenca"
+								th:checked="${license.active}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="licenseType">Tip licence</label>
+						<div class="controls">
+							<select id="licenseType" name="licenseType" class="span3"
+								data-message="Izaberite tip licence">
+								<option>--Izaberi tip licence--</option>
+								<option th:each="licenseType : ${licenseTypes}"
+									th:value="${licenseType.name()}"
+									th:text="${licenseType.toString()}"
+									th:selected="${license.licenseType != null and license.licenseType eq licenseType.name()}"></option>
+							</select>
+						</div>
+					</div>
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Sačuvaj</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/date.js}"></script>
+<script type="text/javascript"
+	th:src="@{/atheme/js/lib/daterangepicker.js}"></script>
+<script type="text/javascript"
+	th:src="@{/atheme/js/lib/bootstrap-datepicker.js}"></script>
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script
+	th:src="@{/scripts/admin/createPage/updateDrivingSchoolLicense.js}"></script>

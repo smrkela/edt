@@ -1,0 +1,26 @@
+<object id="flashcontent"
+	classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550px"
+	height="230px">
+	<param name="movie" th:attr="value=@{/images/GalleryUploader.swf}" />
+	<param name="flashVars"
+		th:attr="value='uploadVars=a=b&amp;mode=single&amp;variableName='+${#objects.nullSafe(attachmentName, 'attachments')}+'&amp;sessionIdValue='+${token}" />
+
+	<!--[if !IE]>-->
+	<object type="application/x-shockwave-flash"
+		th:attr="data=@{/images/GalleryUploader.swf}" width="500px"
+		height="200px">
+		<param name="flashVars"
+			th:attr="value='uploadVars=a=b&amp;backgroundImageUrl='+${imageUrl}+'&amp;fileSizeLimit='+${fileSizeLimit}+'&amp;fileCountLimit='+${fileCountLimit}+'&amp;mode=single&amp;variableName='+${#objects.nullSafe(attachmentName, 'attachments')}+'&amp;sessionIdValue='+${token}" />
+
+		<!--<![endif]-->
+
+		<p>Fallback or 'alternate' content goes here. This content will
+			only be visible if the SWF fails to load.</p>
+
+		<!--[if !IE]>-->
+	</object>
+	<!--<![endif]-->
+
+</object>
+
+<script th:src="@{/scripts/jquery/swfobject.js}"></script>

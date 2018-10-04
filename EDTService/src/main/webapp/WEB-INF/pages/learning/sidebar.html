@@ -1,0 +1,27 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2>Učenje</h2>
+		<ul>
+			<li th:class="${pageInfo.name == 'priprema-za-ucenje'} ? 'active'"
+				class="active"><a
+				th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+			<li th:class="${pageInfo.name == 'aplikacija'} ? 'active'"><a
+				th:href="@{/app/index.html}">Aplikacija za učenje</a></li>
+			<li
+				th:class="${pageInfo.name == 'priprema-za-vozacki-ispit-testovi-aplikacija'} ? 'active'"><a
+				th:href="@{/priprema-za-vozacki-ispit-testovi-aplikacija}">O
+					aplikaciji za učenje</a></li>
+			<li th:class="${pageInfo.name == 'aktivni-ucenici'} ? 'active'"><a
+				th:href="@{/aktivni-ucenici}">Aktivni učenici</a></li>
+			<li th:class="${pageInfo.name == 'test-dana'} ? 'active'"><a
+				th:href="@{/test-dana}">Test dana</a></li>
+			<li th:class="${pageInfo.name == 'testovi'} ? 'active'"><a
+				th:href="@{/testovi}">Probni testovi</a></li>
+			<li th:class="${pageInfo.name == 'maraton'} ? 'active'"><a
+				th:href="@{/maraton}">Maraton</a></li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

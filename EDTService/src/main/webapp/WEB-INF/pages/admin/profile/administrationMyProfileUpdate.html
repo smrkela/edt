@@ -1,0 +1,65 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Izmena osnovnih podataka</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<div tiles:include="imageUploader"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<div class="control-group">
+						<label class="control-label" for="firstName">Ime</label>
+						<div class="controls">
+							<input type="text" id="firstName" name="firstName" title="Unesite ime" placeholder="Unesite ime" th:value="${user.firstName}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="lastName">Prezime</label>
+						<div class="controls">
+							<input type="text" id="lastName" name="lastName" title="Unesite ime" placeholder="Unesite ime" th:value="${user.lastName}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="drivingCategory">Kategorija vožnje</label>
+						<div class="controls">
+							<select id="drivingCategory" name="drivingCategory" data-placeholder="Izaberite kategoriju" class="span3 chzn-select-deselect" >
+								<option value=""></option>
+								<option th:each="drivingCategory : ${drivingCategories}" th:value="${drivingCategory.id}" th:text="${drivingCategory.name}"
+								th:selected="${user.drivingCategory} ? ${drivingCategory.name eq user.drivingCategory.name}"></option> 
+							</select>
+							<span id="tooltipForDrivingCategory" title="Izaberite kategoriju"> </span>
+						</div>
+					</div>
+
+					<button class="btn btn-primary" type="submit">Sačuvaj</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/chosen.jquery.min.js}"></script>
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script th:src="@{/scripts/admin/createPage/profile/administrationMyProfileUpdate.js}"></script>

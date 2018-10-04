@@ -1,0 +1,23 @@
+<form action="#" th:action="@{/informacije_o_profilima_auto_skola}"
+	th:object="${postTest}" method="post">
+	<input id="tiName" type="text" th:field="*{name}" th:value="*{name}" />
+	<input id="btnSubmit" type="submit" value="Submit" />
+</form>
+
+<script>
+	$(function() {
+		$('#btnSubmit').click(function(e) {
+
+			e.preventDefault();
+
+			var valueName = $('#tiName').val();
+
+			$.post(baseUrl + 'informacije_o_profilima_auto_skola', {
+				name : valueName
+			}, function(data) {
+				alert("Greška");
+			});
+
+		});
+	});
+</script>

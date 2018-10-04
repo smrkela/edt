@@ -1,0 +1,98 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/administracija}">Administracija</a></li>
+				<li>Izveštaji</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Izveštaji</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<form id="form" class="form-horizontal">
+
+					<div class="control-group">
+						<label class="control-label" for="dateFromDiv">Datum od</label>
+						<div class="controls">
+							<div class="input-append date" id="dateFromDiv"
+								data-date="12-02-2012" data-date-format="yyyy-mm-dd"
+								th:attr="data-date=${#dates.format(startDate, 'yyyy-MM-dd')}">
+								<input class="span3" id="dateFrom" size="16" type="text"
+									th:value="${#dates.format(startDate, 'yyyy-MM-dd')}"
+									readonly="readonly" name="dateFrom"
+									data-message="Unesite datum pocetka vazenja"> <span
+									class="add-on"><i class="icon-calendar"></i></span> </input>
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="dateToDiv">Datum do</label>
+						<div class="controls">
+							<div class="input-append date" id="dateToDiv"
+								data-date="12-02-2012" data-date-format="yyyy-mm-dd"
+								th:attr="data-date=${#dates.format(finishDate, 'yyyy-MM-dd')}">
+								<input class="span3" id="dateTo" size="16" type="text"
+									th:value="${#dates.format(finishDate, 'yyyy-MM-dd')}"
+									readonly="readonly" name="dateTo"
+									data-message="Unesite datum kraja vazenja"> <span
+									class="add-on"><i class="icon-calendar"></i></span> </input>
+							</div>
+						</div>
+					</div>
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Ponovo
+						učitaj izveštaj</button>
+
+				</form>
+				
+				<br/>
+
+				<table>
+					<tr>
+						<td>Broj ulogovanih korisnika:</td>
+						<td style="font-weight: bold" th:text="${numOfLoggedInUsers}">5</td>
+					</tr>
+					<tr>
+						<td>Broj registrovanih korisnika:</td>
+						<td style="font-weight: bold" th:text="${numOfRegisteredUsers}">5</td>
+					</tr>
+					<tr>
+						<td>Broj korisnika aplikacije:</td>
+						<td style="font-weight: bold" th:text="${numOfAppUsers}">5</td>
+					</tr>
+				</table>
+
+				<br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/date.js}"></script>
+<script type="text/javascript"
+	th:src="@{/atheme/js/lib/daterangepicker.js}"></script>
+<script type="text/javascript"
+	th:src="@{/atheme/js/lib/bootstrap-datepicker.js}"></script>
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script th:src="@{/scripts/admin/createPage/reports.js}"></script>

@@ -1,0 +1,99 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1 th:text="${pageInfo.title}">Administracija</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<a class="btn btn-link btn-small" th:href="@{/administracija-auto-skole/obavestenja/dodaj(id=${school.id})}">
+					<i class="icon-plus-sign"></i> Dodaj novo obaveštenje
+				</a>
+				<br />
+				<br />
+				
+				<!-- Tabela sa svim obavestenjima -->
+				<div class="row-fluid">
+                    <div class="span12">
+                        <div class="box">
+                            <header>
+                                <h5 style="font-size: 14px;">&nbsp;</h5>
+                            </header>
+                            <div id="collapse4" class="body">
+                                <table id="dataTable" class="table table-condensed table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Naslov</th>
+                                            <th style="text-align: center;">Datum objave</th>
+                                            <th style="text-align: center;">Akcija</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    	<tr th:each="notification : ${notifications}">
+
+											<td th:text="${notification.title}" class="bold">Naslov</td>
+											<td th:text="${#dates.format(notification.creationDate, 'dd/MM/yyyy HH:mm')}">datum</td>
+											<td>
+												<a class="btn btn-link btn-small" th:href="@{/administracija-auto-skole/obavestenja/izmeni(id=${school.id}, notificationId=${notification.id})}">
+													<i class="icon-pencil"></i> izmeni
+												</a> 
+												<a class="btn btn-link btn-small" th:href="@{/administracija-auto-skole/obavestenja/obrisi(id=${school.id}, notificationId=${notification.id})}">
+													<i class="icon-minus-sign"></i> obriši
+												</a>
+												
+												<a th:if="${notification.requestNotificationReadConfirmation}"
+													class="btn btn-link btn-small" th:href="@{/administracija-auto-skole/obavestenja/potvrde(id=${school.id}, notId=${notification.id})}">
+													<i class="icon-check"></i> potvrde
+												</a>
+												
+											</td>
+										</tr>
+					
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<br />
+				<br />
+				<br />
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- TABLE begin -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/atheme/js/vendor/jquery-migrate-1.1.1.min.js}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript" th:src="@{/atheme/js/vendor/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tablesorter.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/responsive-tables.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/main.js}"></script>
+
+<!-- TABLE end -->
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script type="text/javascript" th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationNotifications.js}"></script>

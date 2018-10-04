@@ -1,0 +1,372 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/ucenje/izbor}">Izbor kategorija</a></li>
+				<li><a th:href="@{${lessonLink}}" th:text="${lessonTitle}">Trenutna
+						lekcija</a></li>
+				<li th:text="${title}">Naziv pitanja</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<!-- BEGIN LEFT-SIDEBAR -->
+			<div id="left-sidebar" class="span2 sidebar sidebar-small">
+				<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+				<div class="side-nav sidebar-block">
+					<h2>Učenje</h2>
+
+					<ul>
+						<li>Kategorija vozila <br /> <span
+							style="font-weight: bold;" th:text="${drivingCategory}" />
+						</li>
+						<li>Kategorija pitanja <br /> <span
+							style="font-weight: bold;" th:text="${questionCategory}" />
+						</li>
+						<li>Broj pitanja <br /> <span style="font-weight: bold;"
+							th:text="${numberOfQuestions}" />
+						</li>
+						<li>Broj strana <br /> <span style="font-weight: bold;"
+							th:text="${numberOfPages}" />
+						</li>
+						<li>Trenutna strana <br /> <span style="font-weight: bold;"
+							th:text="${currentPageIndex + 1}" />
+						</li>
+						<li><a th:href="@{${lessonLink}}">Idi
+								na lekciju</a></li>
+					</ul>
+
+				</div>
+			</div>
+			<!-- END LEFT-SIDEBAR -->
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span10 main-column">
+
+				<div tiles:include="share"></div>
+
+				<h1 th:text="${title}">Pitanje</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="row">
+
+					<div class="span10">
+						<a class="btn btn-link" th:href="@{${previousQuestionLink}}"><i
+							class="glyphicon icon-arrow-left"> </i> Prethodno pitanje</a> <a
+							class="btn btn-link" th:href="@{${nextQuestionLink}}">Sledeće
+							pitanje <i class="glyphicon icon-arrow-right"> </i>
+						</a>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="span10 questionBox">
+
+						<div class="row" th:object="${question}">
+
+							<div class="span10">
+
+								<p class="questionTitle" th:text="'#' + *{id} + ' ' + *{text}">Tekst
+									pitanja</p>
+								<p class="questionRemark" th:if="*{! #strings.isEmpty(remark)}"
+									th:text="*{remark}">Napomena</p>
+
+							</div>
+
+						</div>
+
+						<br />
+
+						<div class="row" th:object="${question}">
+
+							<div class="span5"
+								th:if="${#lists.size(question.questionImages)}">
+
+								<div class="row" th:each="image : *{questionImages}"
+									th:object="${image}">
+
+									<div class="span5 questionContent">
+										<img class="img-rounded" th:src="@{/image(path=*{url})}" /> <label
+											class="label label-info" th:text="*{text}"
+											th:if="*{!#strings.isEmpty(text)}">a</label>
+									</div>
+								</div>
+
+							</div>
+
+							<div
+								th:classappend="${#lists.size(question.questionImages)} ? 'span5' : 'span10'">
+
+								<div class="row" th:each="answer, info : *{questionAnswers}"
+									th:object="${answer}">
+									<div
+										th:class="${#lists.size(question.questionImages)} ? 'span5' : 'span10'"
+										th:classappend="${answer.correct} ? 'answerCorrect' : 'answerIncorrect'">
+										<span class="answerText" th:text="*{letter}">a)</span> <span
+											th:text="*{text}">Prvi odgovor</span>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<br />
+
+				<p>
+					Ovo pitanje nosi <span class="badge" th:text="${question.points}"></span>
+					poena.
+				</p>
+
+				<br />
+
+				<!-- KATEGORIJE -->
+
+				<h2>Gde se nalazi ovo pitanje</h2>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="row">
+
+					<div class="span5">
+						<p>Kategorija pitanja:</p>
+
+						<div th:each="category : ${question.questionCategories}">
+							<h5 th:text="${category.name}">Kategorija</h5>
+						</div>
+
+						<br />
+						<p>
+							U svojoj kategoriji, ovo pitanje nalazi se pod rednim brojem <span
+								th:text="${question.number}" class="strong">12</span>.
+						</p>
+
+					</div>
+
+					<div class="span5">
+						<p>Kategorija vožnje:</p>
+
+						<ul class="inline">
+							<li th:each="category : ${question.drivingCategories}">
+								<h5 th:text="${category.name}">Kategorija</h5>
+							</li>
+						</ul>
+
+						<div th:unless="${#lists.size(question.drivingCategories)}">
+							<h5>Ovo pitanje zajedničko je za sve kategorije vožnje.</h5>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- SATISTIKA PITANJA -->
+
+				<h2>Statistika ovog pitanja</h2>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div cass="row">
+
+					<p class="muted">Satistika pitanja se zasniva na iskustvu svih
+						korisnika aplikacije za učenje.</p>
+
+					<p>
+						Težina pitanja (od 100 učenika, koliko njih ne zna odgovor na ovo
+						pitanje): <span class="label label-info"
+							th:text="${stat.difficulty}">56</span>
+					</p>
+
+					<table class="table">
+
+						<tbody>
+							<tr>
+								<td>Broj učenja</td>
+								<td><span class="badge badge-info"
+									th:text="${stat.numberOfLearns}">123</span></td>
+							</tr>
+							<tr>
+								<td>Broj provera</td>
+								<td><span class="badge badge-warning"
+									th:text="${stat.numberOfTests}">123</span></td>
+							</tr>
+							<tr>
+								<td>Broj tačnih provera</td>
+								<td><span class="badge badge-success"
+									th:text="${stat.numberOfCorrectTests}">123</span></td>
+							</tr>
+							<tr>
+								<td>Broj netačnih provera</td>
+								<td><span class="badge badge-important"
+									th:text="${stat.numberOfIncorrectTests}">123</span></td>
+							</tr>
+							<tr>
+								<td>Broj korisnika koji je učio ovo pitanje</td>
+								<td><span class="badge"
+									th:text="${stat.numberOfLearningUsers}">123</span></td>
+							</tr>
+							<tr>
+								<td>Broj korisnika koji je proveravao ovo pitanje</td>
+								<td><span class="badge"
+									th:text="${stat.numberOfTestingUsers}">123</span></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+				<!-- PORUKE -->
+
+				<h2>Diskusije o ovom pitanju</h2>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="comments">
+
+					<div class="text-info">Ukoliko imaš nedoumica vezanih za ovo
+						pitanje, smatraš da nije tačno ili ti odgovor deluje nejasno, ovde
+						možeš to da napišeš. Takođe ukoliko znaš odgovor na pitanje koje
+						je neko drugi postavio, ovde možeš odgovoriti na takvo pitanje i
+						pomoći drugima.</div>
+
+					<br />
+
+					<div class="comment-object"
+						th:each="message : ${messages.messages}">
+
+						<div class="row show-grid comment-details">
+
+							<div class="span5">
+								<a class="name" href="#" th:text="${message.userName}">Korisnicko
+									ime</a>
+							</div>
+
+							<div class="span5">
+								<p class="comment-date" th:if="${message.canDelete}">
+									<a
+										th:href="@{/deleteQuestionMessage(messageId=${message.id},pageNumber=${currentIndex})}">obriši</a>
+								</p>
+								<p class="comment-date"
+									th:text="${#dates.format(message.reportDate, 'dd/MM/yyyy HH:mm')}">July
+									11, 2012 at 10:51 am</p>
+							</div>
+
+						</div>
+
+						<div class="row show-grid comment-item">
+							<table class="comment-table span10">
+								<tr>
+									<td style="width: 50px"><img alt=""
+										th:src="@{/resource(path=${'/users/'+message.userId+'/smallImage'})}" /></td>
+									<td class="baloon"></td>
+									<td class="comment-body">
+										<p th:text="${message.messageText}">Tekst komentara</p>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="imagesBox"
+						th:if="${#lists.size(messages.messages) == 0}">Trenutno nema
+						poruka o ovom pitanju.</div>
+
+				</div>
+
+				<!-- Stranicenje -->
+				<div class="bs-docs-example" style="text-align: center;"
+					th:if="${#lists.size(messages.messages)}">
+					<div class="pagination">
+						<ul>
+							<li><a
+								th:href="@{'/ucenje/pitanja/' + ${question.id} + '/' + ${questionTextUrl}}"
+								href="#">&laquo;&laquo;</a></li>
+
+							<li><a
+								th:href="@{'/ucenje/pitanja/' + ${question.id} + '/' + ${questionTextUrl} + '/' + ${nextIndex}}"
+								href="#">&laquo;</a></li>
+
+							<li th:each="index : ${indices}"><a
+								th:class="${currentIndex == index + 1} ? 'bold'"
+								th:href="@{'/ucenje/pitanja/' + ${question.id} + '/' + ${questionTextUrl} + '/' + ${index + 1}}"
+								href="#" th:text="${index + 1}"></a></li>
+
+							<li><a
+								th:href="@{'/ucenje/pitanja/' + ${question.id} + '/' + ${questionTextUrl} + '/' + ${nextIndex}}"
+								href="#">&raquo;</a></li>
+
+							<li><a
+								th:href="@{'/ucenje/pitanja/' + ${question.id} + '/' + ${questionTextUrl} + '/' + ${lastIndex}}"
+								href="#">&raquo;&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<hr />
+
+				<div class="reply-form"
+					th:if="${#authorization.expr('isAuthenticated()')}">
+					<div class="row show-grid">
+
+						<h2 class="offset1">Ostavi poruku</h2>
+
+						<form id="form">
+
+							<input type="hidden" th:value="${messages.question.id}"
+								id="questionId" />
+
+							<div class="control-group span8 offset1">
+								<div class="controls">
+									<textarea class="span8" rows="4" id="comment"></textarea>
+								</div>
+							</div>
+							<div class="control-group offset1 form-button-offset">
+								<input style="margin-left: 10;" type="submit"
+									class="btn btn-primary" value="Pošalji poruku" />
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="alert alert-note"
+					th:unless="${#authorization.expr('isAuthenticated()')}">
+
+					<p>Morate biti ulogovani da biste ostavili poruku.</p>
+				</div>
+
+				<br />
+
+
+			</div>
+
+
+			<br /> <br />
+
+		</div>
+	</div>
+</div>
+
+<link th:href="@{/css/edt/questionView.css}" rel="stylesheet" />
+<script th:src="@{/scripts/createQuestionMessage.js}"></script>

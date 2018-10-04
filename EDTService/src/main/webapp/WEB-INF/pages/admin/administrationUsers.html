@@ -1,0 +1,64 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Administracija korisnika</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th>Prezime i ime</th>
+							<th>Korisničko ime</th>
+							<th>Email</th>
+							<th>Datum registracije</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="user : ${users}">
+
+							<td th:text="${user.lastName} + ' ' + ${user.firstName}">Peric Pera</td>
+							<td th:text="${user.username}">pera</td>
+							<td th:text="${user.email}">pera@pera.com</td>
+							<td
+								th:text="(${user.registrationDate == null} ? '/' : ${#dates.format(user.registrationDate, 'dd/MM/yyyy HH:mm')})">datum</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+
+				<br />
+
+			</div>
+
+			<div class="bs-docs-example">
+				<ul class="pager">
+					<li class="next" th:unless="${isLastPage}"><a
+						th:href="@{/administracija/korisnici(startingIndex=${nextIndex})}">Sledeće&rarr; </a></li>
+					<li class="previous" th:unless="${isFirstPage}"><a
+						th:href="@{/administracija/korisnici(startingIndex=${previousIndex})}">&larr; Prethodne</a></li>
+				</ul>
+			</div>
+
+			<br />
+			<br />
+			<br />
+
+		</div>
+	</div>
+</div>

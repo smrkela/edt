@@ -1,0 +1,86 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Dodavanje pitanja</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="id" th:value="${question.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="question-id">ID Pitanja</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="question-id"
+								name="question-id" data-message="Unesite id pitanja"
+								th:value="${question.questionId}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="number">Broj pitanja</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="number" name="number"
+								data-message="Unesite broj pitanja" th:value="${question.number}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="text">Tekst</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="text" name="text"
+								data-message="Unesite tekst" th:value="${question.text}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="remark">Napomena</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="remark" name="remark"
+								data-message="Unesite napomenu" th:value="${question.remark}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="points">Bodova</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="points" name="points"
+								data-message="Unesite napomenu" th:value="${question.points}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="help-url">URL objasnjenja</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="help-url" name="help-url"
+								data-message="Unesite napomenu" th:value="${question.helpUrl}" />
+						</div>
+					</div>
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Sačuvaj</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+
+<script th:src="@{/scripts/admin/createPage/createQuestion.js}"></script>

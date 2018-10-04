@@ -1,0 +1,123 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje
+				</a></li>
+				<li><a th:href="@{/ucenje/izbor}">Izbor kategorija</a></li>
+				<li th:text="${pageInfo.title}"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<!-- BEGIN LEFT-SIDEBAR -->
+			<div id="left-sidebar" class="span3 sidebar sidebar-small">
+				<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+				<div class="side-nav sidebar-block">
+					<h2>Učenje</h2>
+
+					<ul>
+						<li>Kategorija vozila <br /> <span
+							style="font-weight: bold;" th:text="${drivingCategory}" />
+						</li>
+						<li>Kategorija pitanja <br /> <span
+							style="font-weight: bold;" th:text="${questionCategory}" />
+						</li>
+						<li>Broj pitanja <br /> <span style="font-weight: bold;"
+							th:text="${numberOfQuestions}" />
+						</li>
+						<li>Broj strana <br /> <span style="font-weight: bold;"
+							th:text="${numberOfPages}" />
+						</li>
+						<li>Trenutna strana <br /> <span style="font-weight: bold;"
+							th:text="${currentIndex + 1}" />
+						</li>
+						<li><a
+							th:href="@{/ucenje(qcId=${qcId},dcId=${dcId},startingIndex=${previousIndex})}">Idi
+								na prvu stranu </a></li>
+						<li><a
+							th:href="@{/ucenje(qcId=${qcId},dcId=${dcId},startingIndex=${numberOfPages-1})}">Idi
+								na poslednju stranu</a></li>
+					</ul>
+
+				</div>
+			</div>
+			<!-- END LEFT-SIDEBAR -->
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span10 main-column two-columns-left">
+
+				<div tiles:include="share"></div>
+
+				<div th:each="question : ${questions}" class="questionBox"
+					th:object="${question}">
+
+					<p class="questionTitle" th:text="*{id} + '. ' + *{text}">Tekst
+						pitanja</p>
+					<p class="questionRemark" th:if="*{! #strings.isEmpty(remark)}"
+						th:text="*{remark}">Napomena</p>
+
+					<div class="contentBox">
+
+						<div class="imagesBox"
+							th:if="${#lists.size(question.questionImages)}">
+
+							<div class="imageBox" th:each="image : *{questionImages}"
+								th:object="${image}">
+								<img th:src="@{/image(path=*{url})}" /> <label
+									th:text="*{text}" th:if="*{!#strings.isEmpty(text)}">a</label>
+							</div>
+						</div>
+
+						<div class="answersBox">
+
+							<div th:each="answer, info : *{questionAnswers}"
+								th:object="${answer}"
+								th:class="*{correct} ? 'answerCorrect' : 'answerIncorrect'">
+								<span th:text="*{letter}">a)</span> <span th:text="*{text}">Prvi
+									odgovor</span>
+							</div>
+
+						</div>
+
+						<div class="pointsBox" th:text="*{points}">2</div>
+
+					</div>
+
+					<a
+						th:href="@{'/ucenje/pitanja/' + *{id} + '/' + *{questionUrlTitle}}">vidi
+						detalje pitanja</a>
+
+				</div>
+
+				<div class="bs-docs-example" style="text-align: center;">
+					<div class="pagination">
+						<ul>
+							<li><a
+								th:href="@{/ucenje(qcId=${qcId},dcId=${dcId},startingIndex=${previousIndex})}"
+								href="#">&laquo;</a></li>
+
+							<li th:each="index : ${indices}"><a
+								th:class="${currentIndex == index} ? 'pageCurrent'"
+								th:href="@{/ucenje(qcId=${qcId},dcId=${dcId},startingIndex=${index})}"
+								href="#" th:text="${index + 1}"></a></li>
+
+							<li><a
+								th:href="@{/ucenje(qcId=${qcId},dcId=${dcId},startingIndex=${nextIndex})}"
+								href="#">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<link th:href="@{/css/edt/listOfQuestionsForLearning.css}"
+	rel="stylesheet" />

@@ -1,0 +1,28 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2 th:text="${school.name} + ' - Administracija'">Pages</h2>
+		<ul>
+			<li th:class="${pageInfo.name == 'osnovni-podaci-admin'} ? 'active'" class="active"><a href="#"
+				th:href="@{/administracija-auto-skole/osnovni-podaci(id=${school.id})}">Osnovni podaci</a></li>
+			<li th:if="${carsAllowed}" th:class="${pageInfo.name == 'vozila-admin'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/vozni-park(id=${school.id})}">Vozni park</a></li>
+			<li th:if="${notificationsAllowed}" th:class="${pageInfo.name == 'obavestenja-admin'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/obavestenja(id=${school.id})}">Obaveštenja</a></li>
+			<li th:if="${teamAllowed}" th:class="${pageInfo.name == 'tim-admin'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/nas-tim(id=${school.id})}">Naš tim</a></li>
+			<li th:if="${galleryAllowed}" th:class="${pageInfo.name == 'galerija-admin'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/galerija(id=${school.id})}">Galerija</a></li>
+			<li th:if="${marksAllowed}" th:class="${pageInfo.name == 'ocene'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/utisci(id=${school.id})}">Utisci učenika</a></li>
+			<li th:if="${pricesAllowed}" th:class="${pageInfo.name == 'cenovnik'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/upis-i-cene(id=${school.id})}">Upis i cene</a></li>
+			<li th:if="${studentsAllowed}" th:class="${pageInfo.name == 'ucenici-admin'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/ucenici(id=${school.id})}">Učenici</a></li>
+			<li th:if="${membershipAllowed}" th:class="${pageInfo.name == 'zahtevi-za-clanstvo'} ? 'active'"><a
+				th:href="@{/administracija-auto-skole/zahtevi-za-clanstvo(id=${school.id})}">Zahtevi za članstvo</a></li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

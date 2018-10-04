@@ -1,0 +1,99 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Kontakt</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+
+		<h1>Kontakt</h1>
+
+		<div class="text-divider6">
+			<span></span>
+		</div>
+
+		<div class="row main-block">
+
+			<div class="span12">
+
+				<div>
+
+					<p>Za sva pitanja i sugestije slobodno nam pošaljite poruku u formi ispod a mi ćemo Vam odgovoriti u što kraćem mogućem roku.</p>
+
+				</div>
+
+				<div id="contactFormValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<!-- GLAVNI SADRZAJ -->
+				<div class="span12">
+
+					<div class="row show-grid clear-both">
+
+						<!-- KONTAKT FORMA -->
+						<div class="span9 main-column">
+							<!-- two-columns-right -->
+							<div id="result"></div>
+							<form name="contactForm" id="contactForm" class="form-horizontal">
+
+								<div class="control-group">
+									<label class="control-label" for="inputName">IME I PREZIME<sup>*</sup></label>
+									<div class="controls">
+										<input name="inputName" type="text" class="span4" id="inputName"
+											title="Unesite Vaše ime i prezime" placeholder="Ime i prezime"></input>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">VAŠ E-MAIL<sup>*</sup></label>
+									<div class="controls">
+										<input name="inputEmail" type="text" class="span4" id="inputEmail"
+											title="Unesite Vašu email adresu" placeholder="E-mail"></input>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="inputSubject">TEMA<sup>*</sup></label>
+									<div class="controls">
+										<input name="inputSubject" type="text" class="span6" id="inputSubject"
+											title="Unesite temu" placeholder="Tema"></input>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="comment" class="control-label">VAŠA PORUKA<sup>*</sup></label>
+									<div class="controls">
+										<textarea name="comment" rows="4" class="span6" id="comment" title="Unesite poruku"
+											placeholder="Poruka"></textarea>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="comment" class="control-label">SIGURNOSNI KOD<sup>*</sup></label>
+									<div class="controls">
+
+										<div tiles:include="captcha"></div>
+										
+									</div>
+								</div>
+
+								<div class="control-group form-button-offset">
+									<input class="btn btn-primary" type="submit" value="Pošaljite poruku" />
+								</div>
+							</form>
+							<br />
+							<br />
+							
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" th:src="@{/scripts/contact.js}"></script>

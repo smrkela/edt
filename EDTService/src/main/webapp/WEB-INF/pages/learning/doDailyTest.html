@@ -1,0 +1,109 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/test-dana}">Dnevni test</a></li>
+				<li>Polaganje</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<div tiles:include="share"></div>
+
+				<h1 th:text="${title}">Test dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<input id="startTime" type="hidden" hidden="true"
+					th:value="${startTime}"></input> <input id="testId" type="hidden"
+					hidden="true" th:value="${testId}"></input>
+
+				<div th:if="${isUserLoggedIn and not hasUserTakenTest}">
+
+					<div th:each="question,status : ${questions}" class="questionBox"
+						th:object="${question}" name="question"
+						th:id="'question' + ${question.id}">
+
+						<p class="questionTitle"
+							th:text="${numberOfQuestions - status.index} + '. ' + *{text}">Tekst
+							pitanja</p>
+						<p class="questionRemark" th:if="*{! #strings.isEmpty(remark)}"
+							th:text="*{remark}">Napomena</p>
+
+						<div class="contentBox">
+
+							<div class="imagesBox"
+								th:if="${#lists.size(question.questionImages)}">
+
+								<div class="imageBox" th:each="image : *{questionImages}"
+									th:object="${image}">
+									<img th:src="@{/image(path=*{url})}" /> <label
+										th:text="*{text}" th:if="*{!#strings.isEmpty(text)}">a</label>
+								</div>
+							</div>
+
+							<div class="answersBox">
+
+								<div th:each="answer, info : *{questionAnswers}"
+									th:object="${answer}">
+									<span> <input th:if="${question.multiSelect}"
+										th:value="${answer.id}" type="checkbox"
+										th:name="${question.id}" /> <input
+										th:unless="${question.multiSelect}" th:value="${answer.id}"
+										type="radio" th:name="${question.id}" />
+									</span> <span th:text="*{letter}">a)</span> <span th:text="*{text}">Prvi
+										odgovor</span>
+								</div>
+
+							</div>
+
+							<div class="pointsBox">5</div>
+
+						</div>
+
+					</div>
+
+					<br /> <a id="submit" href="#" class="btn btn-success"
+						style="width: 200px"> <i class="icon-check"></i> Završi
+					</a>
+
+				</div>
+
+				<div th:if="${isUserLoggedIn and hasUserTakenTest}">
+
+					<h3>Već ste polagali ovaj test ali možete polagati neki drugi.</h3>
+
+					<a th:href="@{/test-dana/svi-testovi}" class="btn btn-success">Pogledaj
+						i polaži druge testove</a>
+
+				</div>
+
+				<div th:if="${not isUserLoggedIn}">
+
+					<h3>Morate se ulogovati da biste polagali test.</h3>
+
+					<a th:href="@{/uloguj-se}" class="btn btn-primary">Uloguj se</a>
+
+				</div>
+
+				<br /> <br />
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" th:src="@{/scripts/doDailyTest.js}"></script>
+<link th:href="@{/css/edt/listOfQuestionsForLearning.css}"
+	rel="stylesheet" />

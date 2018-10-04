@@ -1,0 +1,60 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1 th:text="${pageInfo.title}">Administracija pitanja - greske</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div th:each="problem : ${questionProblems}"
+					class="row show-grid team-member">
+					<div class="span9">
+
+						<h3 th:text="${problem.userComment eq null ? 'Nema komentara' : problem.userComment}"/>
+						
+						<p>
+							<span>Prijavio:</span>
+							<span th:text="${problem.userDTO.username}"/>
+						</p>
+						
+						<p>
+							<span>Datum:</span>
+							<span th:text="${#dates.format(problem.reportingDate, 'dd/MM/yyyy HH:mm')}"/>
+						</p>
+						
+						<p>
+							<span>Kategorija:</span>
+							<span th:text="${problem.problemCategoryDTO.name}"/>
+						</p>
+						
+						
+						<a class="btn btn-link"
+							th:href="@{/administracija/greske-pitanja/obrisi(id=${problem.id})}"><i
+							class="icon-minus-sign"></i> obriši</a>
+						<a class="btn btn-link"
+							th:href="@{/administracija/greske-pitanja/resi(id=${problem.id})}"><i
+							class="icon-minus-sign"></i> reši</a>
+						<a class="btn btn-link	"
+							th:href="@{/administracija/pitanja/pogledaj(id=${problem.questionDTO.id})}"><i
+							class="icon-eye-open"></i> pogledaj pitanje</a>
+						 <a class="btn btn-link	"
+							th:href="@{/administracija/pitanja/izmeni(id=${problem.questionDTO.id})}"><i
+							class="icon-pencil"></i> izmeni pitanje</a> 
+
+					</div>
+				</div>
+
+				<br /> <br /> <br />
+
+			</div>
+		</div>
+	</div>
+</div>

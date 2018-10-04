@@ -1,0 +1,74 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1 th:text="${'Auto škola ' + school.name + ' - cenovnik'}">Grle</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<div th:if="${priceListExist}">
+
+					<div class="span9" 
+						th:if="${! #strings.isEmpty(priceList.description)}">
+						<h2>Napomene</h2>
+						<p th:utext="${priceList.description}">neke napomene</p>
+						</div>
+
+					<div class="span9"
+						style="border-bottom: 1px solid #F5F5F5; margin-top: 20px; padding-bottom: 20px"
+						th:each="plc : ${priceList.listCategoryViewDTOs}">
+
+						<table class="table-striped span8">
+
+							<thead>
+
+								<tr>
+									<th th:text="${plc.name}"></th>
+									<th style="text-align: right;"
+										th:text="${'Ukupno '+ plc.totalPrice}"></th>
+								</tr>
+
+							</thead>
+
+							<tr th:each="plsc : ${plc.priceListSubcategoryViewDTOs}">
+
+								<td th:text="${plsc.name}"></td>
+								<td style="text-align: right;" th:text="${plsc.price}"></td>
+
+							</tr>
+
+						</table>
+
+					</div>
+
+					<br />
+
+					<div class="note"><span>*</span> <i>Iako se trudimo da cenovnik i cene održavamo ažurnim, iste su podložne promenama tako da nas kontaktirajte da
+						biste bili sigurni u poslednje cene.</i></div>
+
+
+				</div>
+
+				<div class="alert alert-attention" th:unless="${priceListExist}">
+					<h2>Još uvek nismo objavili cenovnik.</h2>
+					<p>Potrudićemo se da naš cenovnik ovde objavimo što pre a do tada možete nas pozovati i dobiti sve bitne informacije.</p>
+				</div>
+
+				<br />
+
+			</div>
+
+		</div>
+	</div>
+</div>

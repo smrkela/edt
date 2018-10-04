@@ -1,0 +1,96 @@
+<link rel="stylesheet"
+	th:href="@{/css/bootstrap/css/jquery.fileupload-ui.css}" />
+
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Grle</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<div tiles:include="imageUploader"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="schoolId" th:value="${school.id}" /> <input
+						type="hidden" id="id" th:value="${car.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="make">Marka</label>
+						<div class="controls">
+							<input type="text" id="make" name="make"
+								title="Unesite marku" placeholder="Unesite marku vozila"
+								th:value="${car.make}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="model">Model</label>
+						<div class="controls">
+							<input type="text" id="model" name="model"
+								title="Unesite model" placeholder="Unesite model vozila"
+								th:value="${car.model}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="type">Tip</label>
+						<div class="controls">
+							<input type="text" id="type" name="type"
+								title="Unesite tip modela" placeholder="Unesite tip modela"
+								th:value="${car.type}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="year">Godište</label>
+						<div class="controls">
+							<input type="text" id="year" name="year"
+								title="Unesite godište" placeholder="Unesite godište vozila"
+								th:value="${car.year}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="description">Opis</label>
+						<div class="controls">
+							<textarea id="description" name="description"
+								title="Unesite opis" placeholder="Unesite opis"
+								th:text="${car.description}" style="height: 150px"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="orderIndex">Redni broj</label>
+						<div class="controls">
+							<input type="text" id="orderIndex" name="orderIndex"
+								title="Unesite ceo broj, auto sa većim broj se prikazuje pre" placeholder="Unesite ceo broj"
+								th:value="${car.orderIndex}" />
+						</div>
+					</div>
+
+					<button class="btn btn-primary" type="submit">Sačuvaj</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script th:src="@{/scripts/jquery/jquery.form.js}"></script>
+<script
+	th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationCarAdd.js}"></script>

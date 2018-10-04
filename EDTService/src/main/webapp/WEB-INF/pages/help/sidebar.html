@@ -1,0 +1,13 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2 th:text="${category.name}">Pomoć</h2>
+
+		<ul> 
+			<li th:each="page : ${pages}" th:class="${pageInfo.name == page.uniqueName} ? 'active'"><a href="#"
+				th:href="@{'/pomoc/' +${page.uniqueName}}" th:text="${page.title}">Naslov</a></li> 
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

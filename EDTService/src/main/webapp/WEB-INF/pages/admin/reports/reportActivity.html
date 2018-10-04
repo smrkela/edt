@@ -1,0 +1,65 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/administracija}">Administracija</a></li>
+				<li>Aktivnost sajta</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Aktivnost sajta</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<h3
+					th:text="${'Od ' + #dates.format(startDate, 'yyyy-MM-dd') + ' do ' + #dates.format(finishDate, 'yyyy-MM-dd')}">Od
+					do</h3>
+
+				<br />
+
+				<table class="table table-bordered table-hover">
+					<!-- <table class="table table-bordered table-hover sortableTable responsive"> -->
+
+					<thead>
+
+						<tr>
+							<th>Poruka</th>
+							<th>Link</th>
+							<th>Vreme</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+						<tr th:each="message : ${messages}">
+
+							<td><b th:text="${message.message}">Neko je nesto nesto
+									uradio</b></td>
+							<td><a th:if="${!#strings.isEmpty(message.link)}" th:href="@{${message.link}}" th:text="${message.linkText}">Administracija</a></td>
+							<td th:text="${message.formattedTime}">pera@pera.com</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+</div>
+

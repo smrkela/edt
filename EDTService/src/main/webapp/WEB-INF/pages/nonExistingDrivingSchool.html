@@ -1,0 +1,24 @@
+<div>
+	<div id="breadcrumb">
+		<ul>
+			<li class="home"><a th:href="@{/}">Glavna</a></li>
+			<li>Nepostojeća auto škola</li>
+		</ul>
+	</div>
+</div>
+
+<h1>Nepostojeća auto škola</h1>
+<div class="text-divider6">
+	<span></span>
+</div>
+
+<div>
+	Tražena auto škola ne postoji. Možda ste pogrešno upisali adresu (upisali ste <span th:text="${name}">naziv</span>).
+	<br />
+	<br />
+	<a href="javascript:javascript:history.go(-1)">Kliknite ovde da se vratite nazad</a>.
+	<br />
+	<br />
+	<br />
+
+</div>

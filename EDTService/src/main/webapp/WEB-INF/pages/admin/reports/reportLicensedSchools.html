@@ -1,0 +1,76 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/administracija}">Administracija</a></li>
+				<li>Izveštaji</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Škole sa licencom</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<br />
+
+				<table class="table table-bordered table-hover">
+					<!-- <table class="table table-bordered table-hover sortableTable responsive"> -->
+
+					<thead>
+
+						<tr>
+							<th>Naziv škole</th>
+							<th>Datum od</th>
+							<th>Datum do</th>
+							<th>Aktivna</th>
+							<th>Tip licence</th>
+							<th>Broj administratora</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+						<tr th:each="school : ${schools}">
+
+							<td><a
+								th:href="@{/administracija/auto-skole/prikazi(id=${school.id})}"><b
+									th:text="${school.name}">pera@pera.com</b></a></td>
+							<td
+								th:text="${#dates.format(school.license.validFrom, 'yyyy-MM-dd')}">pera@pera.com</td>
+							<td
+								th:text="${#dates.format(school.license.validTo, 'yyyy-MM-dd')}">32</td>
+							<td
+								th:style="${school.license.active ? 'background-color:#72C681' : 'background-color:#FAC06A'}"
+								th:text="${school.license.active}">pera@pera.com</td>
+							<td
+								th:style="${school.license.licenseType == 'FULL' ? 'background-color:#EF7975' : school.license.licenseType == 'LIMITED' ? 'background-color:#368ED2' : 'background-color:#89BDE5'}"
+								th:text="${school.license.licenseType}">pera@pera.com</td>
+							<td
+								th:style="${school.numberOfMembers > 0 ? 'background-color:#72C681' : 'background-color:#FAC06A'}"
+								th:text="${school.numberOfMembers}">pera@pera.com</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+</div>
+

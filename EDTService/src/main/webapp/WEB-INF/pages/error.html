@@ -1,0 +1,33 @@
+<div>
+	<div id="breadcrumb">
+		<ul>
+			<li class="home"><a th:href="@{/}">Glavna</a></li>
+			<li>Greška</li>
+		</ul>
+	</div>
+</div>
+
+<div class="span12" style="text-align: center;">
+	<img alt="logo" title="Greška" th:src="@{/images/error404.jpg}" />
+</div>
+
+<h1></h1>
+<div class="text-divider6">
+	<span></span>
+</div>
+
+<div>
+
+	<div class="alert alert-error">
+
+		<h2>Nešto je pošlo naopako. :(</h2>
+
+		<p th:utext="${message}">tekst greske</p>
+	</div>
+
+	<a href="javascript:javascript:history.go(-1)">Kliknite ovde da se vratite nazad</a>.
+	<br />
+	<br />
+	<br />
+
+</div>

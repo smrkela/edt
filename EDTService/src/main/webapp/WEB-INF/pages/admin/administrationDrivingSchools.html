@@ -1,0 +1,71 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Administracija autoškola</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<a class="btn" th:href="@{/administracija/auto-skole/dodaj}"><i class="icon-plus-sign"></i>
+					Dodaj novu auto školu</a>
+				<br />
+				<br />
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th>Naziv</th>
+							<th>Jedinstveni naziv</th>
+							<th>Grad</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="dc : ${drivingSchools}">
+							<td><a th:text="${dc.name}" th:href="@{/administracija/auto-skole/prikazi(id=${dc.id})}">Aaasd</a></td>
+							<td th:text="${dc.uniqueName}"></td>
+							<td th:text="${dc.city}"></td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<!-- DACI: stranicenje -->
+				<div class="bs-docs-example" style="text-align: center;">
+					<div class="pagination">
+						<ul>
+							<li><a th:href="@{/administracija/auto-skole(startingIndex=${firstIndex})}" href="#">&laquo;&laquo;</a></li>
+
+							<li><a th:href="@{/administracija/auto-skole(startingIndex=${previousIndex})}" href="#">&laquo;</a></li>
+
+							<li th:each="index : ${indices}"><a th:class="${currentIndex == index} ? 'bold'"
+								th:href="@{/administracija/auto-skole(startingIndex=${index})}" href="#"
+								th:text="${index + 1}"></a> <!-- pageCurrent --></li>
+
+							<li><a th:href="@{/administracija/auto-skole(startingIndex=${nextIndex})}" href="#">&raquo;</a></li>
+
+							<li><a th:href="@{/administracija/auto-skole(startingIndex=${lastIndex})}" href="#">&raquo;&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+				<br />
+				<br />
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,116 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1 th:text="${user.firstName} + ' ' +${user.lastName}">Ime prezime</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="row">
+
+					<div class="span2 photo">
+						<div class="bordered-img">
+							<img th:alt="${user.username}" th:src="@{/resource(path=${user.normalProfileImagePath})}" />
+						</div>
+					</div>
+
+					<div class="span7">
+
+						<a class="btn btn-info btn-small" th:href="@{/moj-profil/izmeni}">
+							<i class="icon-pencil"></i> izmeni
+						</a>
+						
+						<br/>
+						<br/>
+
+						<table class="table">
+
+							<tr>
+								<td class="bold">Ime</td>
+								<td th:text="${user.firstName}">Ime</td>
+							</tr>
+							<tr>
+								<td class="bold">Prezime</td>
+								<td th:text="${user.lastName}">Prezime</td>
+							</tr>
+							<tr>
+								<td class="bold">Korisničko ime</td>
+								<td th:text="${user.username}">Ime</td>
+							</tr>
+							<tr>
+								<td class="bold">e-mail</td>
+								<td th:text="${user.email}">e-mail</td>
+							</tr>
+							<tr>
+								<td class="bold">Datum registracije</td>
+								<td th:text="${user.registrationDate == null} ? '/' : ${#dates.format(user.registrationDate, 'dd/MM/yyyy HH:mm')}">Datum</td>
+							</tr>
+							<tr>
+								<td class="bold">Kategorija vožnje</td>
+								<td th:text="${user.drivingCategory != null ? user.drivingCategory.name : 'Nije izabrana'}">kategorija</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+
+				<br /> <br /> <br /> 
+
+				<h2 th:if="${#lists.size(drivingSchools) > 0}">Administracija auto škola</h2>
+
+				<div th:if="${#lists.size(drivingSchools) > 0}" class="text-divider6">
+					<span></span>
+				</div>
+
+				<div th:if="${#lists.size(drivingSchools) > 0}" class="row">
+
+					<div th:each="school : ${drivingSchools}" class="span7">
+
+						<a th:href="@{'/spisak-auto-skola/' + ${school.uniqueName} + '/profil-auto-skole'}">
+							<h4 th:text="'Auto škola ' + ${school.name} + ' - ' + ${school.city}">Naziv skole</h4>
+						</a>
+
+					</div>
+
+				</div>
+				
+				<br /> <br /> <br /> 
+				
+				<div class="row-fluid" th:if="${#lists.size(requests) == 0}"> 
+					
+					<h2>Moje škole</h2>
+					
+					<div class="text-divider6">
+						<span></span>
+					</div>
+				
+					<div class="alert alert-info">
+	                	<button data-dismiss="alert" class="close" type="button">x</button>
+	                	<h2>Članstvo u auto školi</h2>
+	                	<p>Trenutno nisi član ni jedne auto škole. Klikni na link ispod da bi se učlanio u neku od zvaničnih i registrovanih auto škola na Sajtu.</p>
+					</div>
+					
+					<div>
+						<a class="btn btn-warning btn-small" th:href="@{/uclani-se-u-auto-skolu}">
+							<i class="icon-plus-sign"></i> Učlani se u auto školu
+						</a>
+					</div>
+				
+				</div>
+
+				<br /> <br /> <br />
+
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2>Nalog</h2>
+		<ul>
+			<li class="active" th:class="${pageInfo.name == 'login'} ? 'active'"><a th:href="@{/uloguj-se}">Uloguj se</a></li>
+			<li th:class="${pageInfo.name == 'register'} ? 'active'"><a th:href="@{/registruj-se}">Registruj se</a></li>
+			<li th:class="${pageInfo.name == 'resetPassword'} ? 'active'"><a th:href="@{/resetuj-sifru}">Resetuj šifru</a></li>
+			<li th:class="${pageInfo.name == 'forgottenUsername'} ? 'active'"><a th:href="@{/zaboravljeno-korisnicko-ime}">Zaboravljeno korisničko ime</a></li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

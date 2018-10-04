@@ -1,0 +1,68 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1 th:text="${'Auto škola ' + school.name + ' - galerija'}">Grle</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<div th:if="${#lists.isEmpty(albums) and #lists.isEmpty(images)}" class="alert alert-note">
+					<h2>Još uvek nema slika.</h2>
+					<p>Trudićemo se da ovde ažurno postavljamo slike o najvažnijim dešavanjima a vi uvek možete
+						da nas pozovete i upitate sve što vas interesuje.</p>
+				</div>
+
+				<div class="post-item" th:each="album : ${albums}">
+
+					<h2>
+						<a th:text="${album.name}"
+							th:href="@{'/spisak-auto-skola/' + ${school.uniqueName} + '/album/' + ${album.id}}">Naslov</a>
+					</h2>
+
+					<p class="post-description" th:text="${album.description}">Sadrzaj</p>
+					<div class="post-item-panel">
+						<ul>
+							<li class="date">
+								<p>
+									<i class="icon-calendar"></i> <span
+										th:text="${#dates.format(album.creationDate, 'dd/MM/yyyy HH:mm')}"></span>
+								</p>
+							</li>
+							<li><p>
+									<i class="icon-user"></i> <span th:text="${album.author.username}"></span>
+								</p></li>
+							<li class="comments"><p>
+									<i class="icon-picture"></i><span th:text="${album.numOfDocuments} + ' slika'"></span>
+								</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Nesvrstane slike -->
+				<div class="portfolio-grid-1 main-block col-wrapper">
+
+					<ul id="gallery-main" class="thumbnails gallery">
+						<li class="span3 small hp-wrapper item" th:each="image : ${images}"><a
+							th:href="@{/resource(path=${image.path})}" rel="group" class="top-link thumbnail"> <img
+								alt="" th:src="@{/css/bootstrap/img/gal_hover.png}" class="hover-shade" /> <img alt=""
+								style="width: 220px; height: 160px;" th:src="@{/resource(path=${image.path})}" />
+						</a></li>
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

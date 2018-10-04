@@ -1,0 +1,215 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li>Test dana</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Test dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+
+				<div class="row">
+
+					<div th:if="${isUserLoggedIn}" class="span4">
+
+						<div th:if="${hasUserTakenTest}">
+
+							<h2
+								th:text="'Trenutno si ' + ${orderNumber} + '. na današnjoj listi!'">Trenutno
+								si 4. na današnjoj listi</h2>
+
+							<table class="table" style="font-size: 14px">
+
+								<thead>
+									<tr>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+
+								<tbody>
+
+									<tr>
+										<td style="color: #777777">Tačnih</td>
+										<td th:text="${userResult.correctAnswers}"
+											style="color: green">12</td>
+									</tr>
+
+									<tr>
+										<td style="color: #777777">Netačnih</td>
+										<td th:text="${userResult.wrongAswers}" style="color: red">12</td>
+									</tr>
+
+									<tr>
+										<td style="color: #777777">Vreme</td>
+										<td th:text="${userResult.timeTakenString}">12</td>
+									</tr>
+
+									<tr>
+										<td style="color: #777777; font-weight: bold">Poena</td>
+										<td th:text="${userResult.points}" style="font-weight: bold">12</td>
+									</tr>
+
+								</tbody>
+
+							</table>
+
+							<a
+								th:href="@{'/test-dana/rezultat/' + ${#dates.format(testDate, 'yyyy-MM-dd')} + '/' + ${username}}">pogledaj
+								detaljne rezultate »</a>
+
+
+						</div>
+
+						<div th:unless="${hasUserTakenTest}" style="font-size: 16px">
+
+							Današnji test te upravo čeka! <br /> <br /> <a
+								th:href="@{/test-dana/polaganje}" class="btn btn-success"><i
+								class="icon-play"></i> Klikni ovde da uradiš dnevni test</a>
+
+						</div>
+
+						<div>
+
+							<br /> <br />
+
+							<h3>Još izazova i poena?</h3>
+							<a th:href="@{/test-dana/svi-testovi}" class="btn">idi na
+								prethodne testove »</a>
+
+						</div>
+
+					</div>
+
+					<div th:unless="${isUserLoggedIn}" class="span4"
+						style="font-size: 14px">
+
+						Morate biti ulogovani da biste uradili test. <br /> <br /> <a
+							th:href="@{/uloguj-se}" class="btn btn-primary"><i
+							class="icon-user"></i> Uloguj se</a> <br /> <br /> <a
+							th:href="@{/test-dana/svi-testovi}" class="btn">pogledaj
+							prethodne testove »</a>
+
+					</div>
+
+					<div class="span5">
+
+						<h2>Najbolji takmičari</h2>
+
+						<table class="table table-striped">
+
+							<thead>
+								<tr>
+									<th style="width: 20px;">#</th>
+									<th>Korisnik</th>
+									<th>Poena</th>
+									<th></th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<tr th:each="result : ${topResults}">
+
+									<td th:text="${result.orderNumber} + '.'"
+										style="font-weight: bold">12</td>
+									<td style="font-weight: bold;"
+										th:text="${result.user.username}">korisničko ime</td>
+									<td
+										th:text="${#numbers.formatInteger(result.points, 1, 'COMMA')}">58</td>
+								</tr>
+
+							</tbody>
+
+						</table>
+
+						<a th:href="@{/test-dana/top-lista}">pogledaj celu top listu »</a>
+
+					</div>
+
+				</div>
+
+				<br /> <br />
+
+				<div th:if="${testIsTaken and todaysMessage != null}" class="well well-small">
+
+					<h2
+						th:text="${todaysMessage}">145
+						takmičara je uradilo ukupno 4132 testa!</h2>
+
+				</div>
+
+				<div th:unless="${testIsTaken}" style="font-size: 16px">Budite
+					prvi koji će uraditi današnji test!</div>
+
+				<br />
+
+				<h2 th:if="${testIsTaken}">Rezultati današnjeg testa</h2>
+
+				<div th:if="${testIsTaken}" class="text-divider1">
+					<span></span>
+				</div>
+
+				<table th:if="${testIsTaken}" class="table table-striped">
+
+					<thead>
+						<tr>
+							<th style="width: 20px">#</th>
+							<th style="width: 60px">Korisnik</th>
+							<th></th>
+							<th>Tačnih odgovora</th>
+							<th>Netačnih odgovora</th>
+							<th>Procenat tačnih</th>
+							<th>Vreme</th>
+							<th>Poena</th>
+							<th></th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="result : ${results}">
+
+							<td th:text="${result.orderNumber} + '.'"
+								style="font-weight: bold">12</td>
+							<td><img alt="" style="margin-bottom: 0px"
+								th:src="@{/resource(path=${result.user.smallProfileImagePath})}" /></td>
+							<td style="font-weight: bold;"><a
+								th:href="@{'/test-dana/rezultat/' + ${#dates.format(testDate, 'yyyy-MM-dd')} + '/' + ${result.user.username} + '/'}"
+								th:text="${result.user.username}">username</a></td>
+							<td th:text="${result.correctAnswers}">12</td>
+							<td th:text="${result.wrongAswers}">8</td>
+							<td th:text="${result.correctPercent} + '%'">60%</td>
+							<td th:text="${result.timeTakenString}">2 minuta 15 sekundi</td>
+							<td th:text="${result.points}">58</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br /> <a th:href="@{/pomoc/test-dana}">Pogledajte detalje o
+					tome kako funkcioniše test dana.</a> <br /> <br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

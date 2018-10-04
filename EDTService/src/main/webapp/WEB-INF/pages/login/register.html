@@ -1,0 +1,120 @@
+<div class="row show-grid">
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Registracija</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="registerFormValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<form id="registerForm" class="form-horizontal">
+
+					<input type="hidden" id="signInProvider" name="signInProvider" th:value="${user.signInProvider}" />
+
+					<div class="control-group">
+						<label class="control-label" for="firstName">Ime<sup>*</sup></label>
+						<div class="controls">
+							<input type="text" id="firstName" name="firstName" th:value="${user.firstName}" title="Unesite Vaše ime" placeholder="Ime" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="lastName">Prezime<sup>*</sup></label>
+						<div class="controls">
+							<input type="text" id="lastName" name="lastName" th:value="${user.lastName}" title="Unesite Vaše prezime" placeholder="Prezime" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="username">Korisničko ime<sup>*</sup></label>
+						<div class="controls">
+							<input type="text" id="username" name="username" th:value="${user.username}" title="Unesite korisničko ime" placeholder="Korisničko ime" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="password">Šifra<sup>*</sup></label>
+						<div class="controls">
+							<input type="password" title="Unesite šifru" name="password" id="password" placeholder="Šifra" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="passwordRepeat">Ponovite šifru<sup>*</sup></label>
+						<div class="controls">
+							<input type="password" title="Ponovite unetu šifru" name="passwordRepeat" id="passwordRepeat" placeholder="Ponovite gore unetu šifru" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="email">E-mail<sup>*</sup></label>
+						<div class="controls">
+							<input type="email" id="email" name="email" th:value="${user.email}" title="Unesite validan e-mail" placeholder="E-mail" />
+						</div>
+					</div>
+
+					<div class="control-group" th:unless="${user.signInProvider}">
+						<label class="control-label" for="emailRepeat">Ponovite e-mail<sup>*</sup></label>
+						<div class="controls">
+							<input type="email" id="emailRepeat" name="emailRepeat" th:value="${user.email}" title="Ponovite uneti e-mail" 
+									placeholder="Ponovite gore uneti e-mail" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="drivingCategory">Kategorija<sup>*</sup></label>
+						<div class="controls">
+							<select id="drivingCategory" name="drivingCategory" data-placeholder="Izaberite kategoriju" class="span3 chzn-select-deselect" >
+								<option value=""></option>
+								<option th:each="drivingCategory : ${drivingCategories}" th:value="${drivingCategory.id}" th:text="${drivingCategory.name}"></option>
+							</select>
+							<span id="tooltipForDrivingCategory" title="Izaberite kategoriju"> </span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="gender">Pol<sup>*</sup></label>
+						<div class="controls" style="margin-top: 5px">
+							<input style="margin-top: -2px" id="male" name="isMale" type="radio" title="Izaberite pol" th:checked="${user.isMale}" 
+								th:value="${user.isMale}" /> Muški <br /> 
+							<input name="isMale" style="margin-top: -2px" id="female" type="radio" title="Izaberite pol" th:checked="${user.isMale == false}"
+								th:value="${user.isMale == false}" /> Ženski
+						</div>
+					</div>
+
+					<div class="control-group" th:unless="${user.signInProvider}">
+						<label for="comment" class="control-label">Sigurnosni kod<sup>*</sup></label>
+						<div class="controls">
+
+							<div tiles:include="captcha"></div>
+
+						</div>
+					</div>
+
+					<button class="btn btn-primary" type="submit">Registruj se</button>
+				</form>
+
+				<!-- END ARTICLE CONTENT AREA -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/chosen.jquery.min.js}"></script>
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script type="text/javascript" th:src="@{/scripts/register.js}"></script>

@@ -1,0 +1,123 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1>Potvrda obaveštenja</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<h2 th:text="${notification.title}" style="text-decoration: underline;">obavestenje</h2>
+	            
+	            <h5 th:text="${#dates.format(notification.creationDate, 'dd.MM.yyyy HH:mm')}">datum</h5>
+	            
+	            <h5 th:text="${(#strings.length(notification.content) lt 240) ? 
+	            				 #strings.substring(notification.content,0, #strings.length(notification.content)) :
+	            				 #strings.substring(notification.content,0,240) + ' ....'}">tekst</h5>
+	            
+	            <br/>
+	            
+	            <h7 th:text="${'Ovo obaveštenje je potvrdilo ' + noOfConfirmations + ' od ukupno ' + #lists.size(confirmations) + ' učenika.'}"></h7>
+	            
+	            <!-- LISTA SVIH POTVRDA -->
+                <div class="row-fluid" th:if="${#lists.size(confirmations) gt 0}">
+                    <div class="span12">
+                        <div class="box">
+                            <header>
+                                <h5 style="font-size: 14px;">&nbsp;</h5>
+                            </header>
+                            <div id="collapse4" class="body">
+                                <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Ime i prezime</th>
+                                            <th style="text-align: center;">Adresa</th>
+                                            <th style="text-align: center;">E-mail</th>
+                                            <th style="text-align: center;">Potvrda</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="confirmation : ${confirmations}">
+                                            
+                                            <td th:text="${confirmation.student.firstName} + ' ' + ${confirmation.student.lastName}" style="text-align: center;">ime ucenika</td>
+                                            
+											<td style="text-align: center;">
+												<span th:if="${!#strings.isEmpty(confirmation.student.address)}" th:text="${confirmation.student.address} + ', '"></span>
+												<span th:if="${!#strings.isEmpty(confirmation.student.city)}" th:text="${confirmation.student.city}"></span>
+											</td>
+											
+                                            <td th:text="${confirmation.student.email}" style="text-align: center;">datum</td>
+                                                                                        
+                                            <td style="text-align: center;">
+                                            	<span th:if="${confirmation.confirmed==null or !confirmation.confirmed}">
+													<i id="confirmed" name="confirmed" title="Učenik nije potvrdio obaveštenje" class="icon-check" 
+														style="color: #c1b6b6; font-size: 14px"></i>
+												</span>
+												<span th:if="${confirmation.confirmed}">
+													<i id="confirmed" name="confirmed" title="Učenik je potvrdio obaveštenje" class="icon-check" 
+														style="color: #058107; font-size: 18px"></i>
+													<span th:text="${#dates.format(confirmation.confirmationDate, 'dd.MM.yyyy HH:mm')}"></span>
+												</span>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- UKOLIKO NEMA POTVRDA -->
+                <div class="row-fluid" th:if="${#lists.size(confirmations) == 0}"> 
+                
+					<div class="alert alert-info">
+	                	<button data-dismiss="alert" class="close" type="button">x</button>
+	                	<h2>Nema potvrda</h2>
+	                	<p>Još uvek ni jedan učenik Vaše auto škole nije potvrdio ovo obaveštenje.</p>
+					</div>
+				
+				</div>
+                
+                
+				<br />
+				<br />
+				<br />
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- TABLE begin -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/atheme/js/vendor/jquery-migrate-1.1.1.min.js}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript" th:src="@{/atheme/js/vendor/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tablesorter.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/responsive-tables.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/main.js}"></script>
+
+<!-- TABLE end -->
+
+<script>
+	jQuery(function() {
+		formGeneral();
+// 		bizstrapTable();
+	});
+</script>
+
+<script type="text/javascript" th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationNotificationConfirmation.js}"></script>

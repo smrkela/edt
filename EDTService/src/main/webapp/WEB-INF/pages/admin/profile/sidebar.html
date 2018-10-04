@@ -1,0 +1,17 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2>Moj Profil</h2>
+
+		<ul>
+			<li th:class="${pageInfo.name == 'osnovni-podaci'} ? 'active'" class="active"><a
+				href="#" th:href="@{/moj-profil}">Osnovni podaci</a></li>
+		</ul>
+		<ul>
+			<li th:class="${pageInfo.name == 'lista-clanstava'} ? 'active'" class="active"><a
+				href="#" th:href="@{/lista-clanstava}">Lista članstava</a></li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

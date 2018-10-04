@@ -1,0 +1,75 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Dodavanje autoskole</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="id" th:value="${drivingSchool.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="name">Naziv</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="name" name="name"
+								data-message="Unesite naziv" th:value="${drivingSchool.name}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="uniqueName">Jedinstveno ime</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="uniqueName"
+								name="uniqueName" data-message="Unesite jedinstveni naziv"
+								th:value="${drivingSchool.uniqueName}" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="isHidden">Ne prikazivati skolu</label>
+						<div class="controls">
+							<input type="checkbox" style="width: 300px" id="isHidden"
+								name="uniqueName" data-message="Da li treba sakriti auto školu"
+								th:checked="${drivingSchool.isHidden}"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="hasPermit">Ima dozvolu</label>
+						<div class="controls">
+							<input type="checkbox" style="width: 300px" id="hasPermit"
+								name="uniqueName" data-message="Da li auto škola ima dozvolu"
+								th:checked="${drivingSchool.hasPermit}" />
+						</div>
+					</div>
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Sačuvaj</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br/>
+<br/>
+
+<script th:src="@{/scripts/admin/createPage/jquery-te-1.3.6.min.js}"></script>
+<script th:src="@{/scripts/admin/createPage/createDrivingSchool.js}"></script>
+<link th:href="@{/css/admin/createPage/jquery-te-1.3.6.css}"
+	rel="stylesheet" />

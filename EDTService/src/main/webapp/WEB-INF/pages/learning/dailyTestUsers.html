@@ -1,0 +1,135 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/test-dana/svi-testovi}">Svi testovi</a></li>
+				<li>Rezultati testa dana</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1 th:text="${title}">Test dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<div class="row">
+
+					<div th:if="${isUserLoggedIn}" class="span4">
+
+						<div th:if="${hasUserTakenTest}" >
+
+							<h2 th:text="'Trenutno si ' + ${orderNumber} + '. na ovom testu!'">Trenutno si 4. na ovom testu</h2>
+
+						</div>
+
+						<div th:unless="${hasUserTakenTest}" style="font-size: 16px">
+
+							Polaganje ovog testa te čeka!
+
+							<br />
+							<br />
+
+							<a th:href="@{'/test-dana/polaganje/' + ${#dates.format(testDate, 'yyyy-MM-dd')}}" class="btn btn-success"><i class="icon-play"></i>
+								Klikni ovde da uradiš ovaj test</a>
+
+						</div>
+
+						<div>
+
+							<br />
+							<br />
+
+							<h3>Još izazova i poena?</h3>
+							<a th:href="@{/test-dana/svi-testovi}" class="btn">idi na prethodne testove »</a>
+
+						</div>
+
+					</div>
+
+					<div th:unless="${isUserLoggedIn}" class="span4" style="font-size: 14px">
+
+						Morate biti ulogovani da biste uradili test.
+
+						<br />
+						<br />
+
+						<a th:href="@{/uloguj-se}" class="btn btn-primary"><i class="icon-user"></i> Uloguj se</a>
+
+						<br />
+						<br />
+
+						<a th:href="@{/test-dana/svi-testovi}" class="btn">pogledaj prethodne testove »</a>
+
+					</div>
+
+				</div>
+
+				<br />
+
+				<div th:unless="${testIsTaken}" style="font-size: 16px">Budite prvi koji će uraditi ovaj test!</div>
+
+				<br/>
+
+				<table th:if="${testIsTaken}" class="table table-striped">
+
+					<thead>
+						<tr>
+							<th style="width: 20px">#</th>
+							<th style="width: 60px">Korisnik</th>
+							<th></th>
+							<th>Tačnih odgovora</th>
+							<th>Netačnih odgovora</th>
+							<th>Procenat tačnih</th>
+							<th>Vreme</th>
+							<th>Poena</th>
+							<th></th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="result : ${results}">
+
+							<td th:text="${result.orderNumber} + '.'" style="font-weight: bold">12</td>
+							<td><img alt="" style="margin-bottom: 0px"
+								th:src="@{/resource(path=${result.user.smallProfileImagePath})}" /></td>
+							<td style="font-weight: bold;" >
+								<a th:href="@{'/test-dana/rezultat/' + ${#dates.format(testDate, 'yyyy-MM-dd')} + '/' + ${result.user.username} + '/'}" th:text="${result.user.username}">username</a>
+							</td>
+							<td th:text="${result.correctAnswers}">12</td>
+							<td th:text="${result.wrongAswers}">8</td>
+							<td th:text="${result.correctPercent} + '%'">60%</td>
+							<td th:text="${result.timeTakenString}">2 minuta 15 sekundi</td>
+							<td th:text="${result.points}">58</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<hr />
+				
+				<div class="addthis_sharing_toolbox" align="right"></div>
+				
+				<br />
+				<br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

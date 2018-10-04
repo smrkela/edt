@@ -1,0 +1,18 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<ul> 
+			<li th:class="${pageInfo.name == 'lista-autoskola'} ? 'active'" class="active"><a
+				href="#" th:href="@{'/spisak-auto-skola'}"><i
+					class="icon-th-list"></i> Auto škole</a></li>
+			<li th:class="${pageInfo.name == 'mapa-auto-skola'} ? 'active'"><a
+				th:href="@{'/spisak-auto-skola/mapa'}"><i class="icon-map-marker"></i>
+					Mapa auto škola</a></li>
+			<li th:class="${pageInfo.name == 'obavestenja'} ? 'active'"><a
+				th:href="@{'/spisak-auto-skola/obavestenja'}"><i
+					class="icon-comments"></i> Obaveštenja</a></li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

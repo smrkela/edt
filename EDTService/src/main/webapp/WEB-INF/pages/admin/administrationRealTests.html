@@ -1,0 +1,67 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Administracija testova</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<ul class="unstyled">
+					<li th:each="category : ${categories}"><a class="btn btn-link"
+						th:href="@{/administracija/testovi/dodaj(c=${category.id})}">
+							<i class="icon-plus-sign"></i> Dodaj <b
+							th:text="${category.name}">B</b>
+					</a></li>
+				</ul>
+
+				<br /> <br />
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th style="padding: 2px;">Naziv</th>
+							<th style="padding: 2px;">Kategorija</th>
+							<th style="padding: 2px;">Datum</th>
+							<th style="padding: 2px;"></th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="test : ${tests}">
+
+							<td style="padding: 2px;"><a
+								th:href="@{/administracija/testovi/izmeni(id=${test.id})}"
+								th:text="${test.name}">naslov</a></td>
+							<td th:text="${test.category.name}" style="padding: 2px;">kategorija</td>
+							<td
+								th:text="${#dates.format(test.creationDate, 'dd/MM/yyyy HH:mm')}"
+								style="padding: 2px;">datum</td>
+							<td style="padding: 2px;"><a class="btn btn-link btn-small"
+								th:href="@{/administracija/testovi/izmeni(id=${test.id})}"><i
+									class="icon-pencil"></i> izmeni</a> <a
+								class="btn btn-link btn-small"
+								th:href="@{/administracija/testovi/obrisi(id=${test.id})}"><i
+									class="icon-minus-sign"></i> obriši</a></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br /> <br /> <br />
+
+			</div>
+		</div>
+	</div>
+</div>

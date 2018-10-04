@@ -1,0 +1,95 @@
+<html data-ng-app="edt" data-ng-controller="mainController">
+<head>
+<base th:href="@{/}"></base>
+<title data-ng-bind="pageService.title()"></title>
+
+<!-- VENDORS -->
+<script type="text/javascript"
+	src="learningApp/assets/libs/jquery1.11/jquery-1.11.2.min.js">
+	
+</script>
+
+<script type="text/javascript" src="learningApp/assets/libs/pace/js/pace.js"></script>
+<link rel="stylesheet" href="learningApp/assets/libs/pace/css/pace.css" />
+
+<link rel="stylesheet" href="learningApp/assets/libs/bootstrap3/css/bootstrap.min.css" />
+
+<link rel="stylesheet"
+	href="learningApp/assets/libs/bootstrap3/css/color_scheme.css" />
+<link rel="stylesheet" href="learningApp/assets/libs/ngdialog/css/ngDialog.min.css" />
+<link rel="stylesheet"
+	href="learningApp/assets/libs/ngdialog/css/ngDialog-theme-discussion.css" />
+<link rel="stylesheet" href="learningApp/assets/libs/bootflat/css/bootflat.min.css" />
+<link rel="stylesheet" href="learningApp/assets/css/styles.css" />
+
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<script type="text/javascript">
+	var baseUrl;
+
+	jQuery(document).ready(function($) {
+
+		// jQuery('.main-content').hide().fadeIn(600);
+		setUpUrls();
+	});
+
+	function setUpUrls() {
+
+		baseUrl = jQuery("#baseUrl").val();
+	}
+</script>
+
+</head>
+
+<body>
+	<div class="container">
+
+		<input id="baseUrl" style="display: none" th:value="@{/}" />
+
+		<div class="row">
+			<div data-ng-include="'learningApp/app/shared/header.html'"></div>
+		</div>
+
+		<div class="row main-view">
+			<div data-ui-view=""></div>
+		</div>
+
+		<div class="row">
+			<div data-ng-include="'learningApp/app/shared/footer.html'"></div>
+		</div>
+
+	</div>
+
+	<!-- VENDORS -->
+	<script type="text/javascript"
+		src="learningApp/assets/libs/bootstrap3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="learningApp/assets/libs/angular1.3/angular.min.js">
+		
+	</script>
+	<script type="text/javascript"
+		src="learningApp/assets/libs/angular1.3/angular-animate.min.js">
+		
+	</script>
+	<script type="text/javascript"
+		src="learningApp/assets/libs/angular1.3/angular-ui-router.min.js"></script>
+	<script type="text/javascript"
+		src="learningApp/assets/libs/angular1.3/angular-cookies.js"></script>
+	<script type="text/javascript"
+		src="learningApp/assets/libs/ngdialog/js/ngDialog.min.js"></script>
+	<script type="text/javascript"
+		src="learningApp/assets/libs/smoothscroll/smoothscroll.js"></script>
+		
+	<script type="text/javascript"
+		src="learningApp/assets/libs/analytics/angular-google-analytics.min.js"></script>
+		
+	<!-- APP -->
+
+	<script type="text/javascript" src="wro/learning-app.js"></script>
+
+	<!-- BOOTFLAT -->
+	<script type="text/javascript"
+		src="learningApp/assets/libs/bootflat/js/icheck.min.js"></script>
+
+</body>
+</html>

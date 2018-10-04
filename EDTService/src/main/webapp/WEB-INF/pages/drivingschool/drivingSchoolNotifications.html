@@ -1,0 +1,75 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1 th:text="${'Auto škola ' + school.name + ' - obaveštenja'}">Grle</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<div th:if="${#lists.isEmpty(notifications)}" class="alert alert-note">
+					<h2>Još uvek nema obaveštenja.</h2>
+					<p>Trudićemo se da Vas ovde ažurno obaveštavamo o najvažnijim dešavanjima a Vi uvek možete
+						da nas pozovete i upitate sve što Vas interesuje.</p>
+				</div>
+
+				<div class="post-item" th:each="notification : ${notifications}">
+
+					<h2 th:text="${notification.title}">Naslov</h2>
+
+					<div class="text-divider3">
+						<span></span>
+					</div>
+
+					<p class="post-description" th:utext="${notification.content}">Sadržaj</p>
+
+					<a class="post-more" th:href="@{'/spisak-auto-skola/' + ${school.uniqueName} + '/obavestenja-auto-skole/obavestenje/' + ${notification.id}}" href="#">
+						Pogledaj komentare&nbsp;&raquo;
+					</a>
+
+				
+					<div class="post-item-panel">
+						<ul>
+							<li class="date">
+								<p>
+									<i class="icon-calendar"></i> <span
+										th:text="${#dates.format(notification.creationDate, 'dd/MM/yyyy HH:mm')}"></span>
+								</p>
+							</li>
+							<li><p>
+									<i class="icon-user"></i> <span th:text="${notification.authorDTO.username}"></span>
+								</p></li>
+							<li class="comments"><p>
+									<i class="icon-comments-alt"></i><span
+										th:text="${notification.numOfComments} + ' komentara'"></span>
+								</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="bs-docs-example">
+					<ul class="pager">
+						<li class="next" th:unless="${isLastPage}"><a
+							th:href="@{'/obavestenja-auto-skole/' + ${school.uniqueName} + '/'+ ${nextIndex}}">Starije
+								vesti &rarr; </a></li>
+						<li class="previous" th:unless="${isFirstPage}"><a
+							th:href="@{'/obavestenja-auto-skole/' + ${school.uniqueName} + '/'+ ${previousIndex}}">&larr;
+								Novije vesti</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

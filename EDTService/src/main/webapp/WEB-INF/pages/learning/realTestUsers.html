@@ -1,0 +1,199 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/testovi}">Probni testovi</a></li>
+				<li th:text="'Test ' + ${testName}">Rezultati testa</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1 th:text="${title}">Test</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+
+				<div class="row">
+
+					<div class="span9">
+
+						<p th:text="${description}">Opis testa</p>
+
+					</div>
+
+					<div th:if="${isUserLoggedIn}" class="span9">
+
+						<div th:if="${hasUserTakenTest}" class="well">
+
+							<h2
+								th:text="'Trenutno si ' + ${orderNumber} + '. na ovom testu!'">Trenutno
+								si 4. na ovom testu</h2>
+
+						</div>
+
+						<div th:unless="${hasUserTakenTest}" class="well">
+
+							<h2>Polaganje ovog testa te čeka!</h2>
+
+						</div>
+
+						<div>
+
+							<a th:href="@{'/testovi/polaganje/' + ${testId}}"
+								class="btn btn-success"><i class="icon-play"></i> Klikni
+								ovde da uradiš ovaj test</a>
+
+						</div>
+
+					</div>
+
+					<div th:unless="${isUserLoggedIn}" class="span4"
+						style="font-size: 14px">
+
+						Moraš biti ulogovan da bi radio test. <br /> <br /> <a
+							th:href="@{/uloguj-se}" class="btn btn-primary"><i
+							class="icon-user"></i> Uloguj se</a> <br /> <br /> <a
+							th:href="@{/testovi}" class="btn">pogledaj ostale testove »</a>
+
+					</div>
+
+				</div>
+
+				<br />
+
+				<div th:unless="${testIsTaken}" style="font-size: 16px">Budi
+					prvi koji će uraditi ovaj test!</div>
+
+				<br />
+
+				<!-- REZULTATI TRENUTNOG KORISNIKA -->
+
+				<div th:if="${hasUserTakenTest}">
+
+					<h3>Moji rezultati</h3>
+
+					<div class="text-divider1">
+						<span></span>
+					</div>
+
+					<table class="table table-striped">
+
+						<thead>
+							<tr>
+								<th style="width: 20px">#</th>
+								<th>Datum</th>
+								<th>Tačnih odgovora</th>
+								<th>Netačnih odgovora</th>
+								<th>Procenat tačnih</th>
+								<th>Vreme</th>
+								<th>Poena</th>
+								<th></th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr th:each="result : ${userResults}">
+
+								<td th:text="${result.orderNumber} + '.'"
+									style="font-weight: bold">12</td>
+								<td style="font-weight: bold;"><a
+									th:href="@{'/testovi/rezultat/' + ${result.id}}"
+									th:text="${#dates.format(result.creationDate, 'dd/MM/yyyy')}">username</a></td>
+								<td th:text="${result.correctAnswers}">12</td>
+								<td th:text="${result.wrongAswers}">8</td>
+								<td
+									th:text="${#numbers.formatInteger(result.correctPercent, 1, 'COMMA')} + '%'">60%</td>
+								<td th:text="${result.timeTakenString}">2 minuta 15 sekundi</td>
+								<td th:text="${result.points}">58</td>
+								<td><img alt="tačno" title="Položen test"
+									th:if="${result.hasPassedTest}"
+									th:src="@{/images/correct-sign.png}"
+									style="max-height: 18px; margin-bottom: 2px;" /><img
+									alt="tačno" title="Nije položen test"
+									th:unless="${result.hasPassedTest}"
+									th:src="@{/images/not-correct-sign.png}"
+									style="max-height: 18px; margin-bottom: 2px;" /></td>
+							</tr>
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+				<br /> <br />
+
+				<div th:if="${testIsTaken}">
+
+					<h3>Najbolji rezultati poslednjih 7 dana</h3>
+
+					<div class="text-divider1">
+						<span></span>
+					</div>
+
+					<table class="table table-striped">
+
+						<thead>
+							<tr>
+								<th style="width: 20px">#</th>
+								<th style="width: 60px">Korisnik</th>
+								<th></th>
+								<th>Tačnih odgovora</th>
+								<th>Netačnih odgovora</th>
+								<th>Procenat tačnih</th>
+								<th>Vreme</th>
+								<th>Poena</th>
+								<th></th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr th:each="result : ${results}">
+
+								<td th:text="${result.orderNumber} + '.'"
+									style="font-weight: bold">12</td>
+								<td><img alt="" style="margin-bottom: 0px"
+									th:src="@{/resource(path=${result.user.smallProfileImagePath})}" /></td>
+								<td style="font-weight: bold;"><a
+									th:href="@{'/testovi/rezultat/' + ${result.id}}"
+									th:text="${result.user.username}">username</a></td>
+								<td th:text="${result.correctAnswers}">12</td>
+								<td th:text="${result.wrongAswers}">8</td>
+								<td
+									th:text="${#numbers.formatInteger(result.correctPercent, 1, 'COMMA')} + '%'">60%</td>
+								<td th:text="${result.timeTakenString}">2 minuta 15 sekundi</td>
+								<td th:text="${result.points}">58</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+				<hr />
+
+				<div class="addthis_sharing_toolbox" align="right"></div>
+
+				<br /> <br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

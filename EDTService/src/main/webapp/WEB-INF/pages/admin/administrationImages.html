@@ -1,0 +1,64 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Administracija slika</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<a class="btn btn-link" th:href="@{/administracija/slike/dodaj}"><i class="icon-plus-sign"></i>
+					Dodaj novi album</a>
+
+				<table class="table">
+
+					<thead>
+
+						<tr>
+
+							<th>Naziv albuma</th>
+							<th>Opis</th>
+							<th>Broj slika</th>
+							<th></th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+						<tr th:each="album : ${albums}">
+
+							<td><a th:href="@{/administracija/slike/uredi-slike(id=${album.id})}"
+								th:text="${album.name}">Album</a></td>
+							<td th:text="${album.description}"></td>
+							<td th:text="${album.numOfDocuments}"></td>
+							<td><a class="btn btn-link btn-small"
+								th:href="@{/administracija/slike/izmeni(id=${album.id})}"><i class="icon-pencil"></i>
+									izmeni</a> <a class="btn btn-link btn-small"
+								th:href="@{/administracija/slike/dodaj-slike(id=${album.id})}"><i
+									class="icon-minus-sign"></i> dodaj slike</a> <a class="btn btn-link btn-small"
+								th:href="@{/administracija/slike/obrisi(id=${album.id})}"><i class="icon-minus-sign"></i>
+									obriši</a></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br />
+				<br />
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>

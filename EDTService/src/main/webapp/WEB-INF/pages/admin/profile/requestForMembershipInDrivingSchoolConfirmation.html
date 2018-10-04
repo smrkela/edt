@@ -1,0 +1,63 @@
+<div th:if="${confirmed==true}">
+	<div>
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Uspešna potvrda zahteva za članstvo</li>
+			</ul>
+		</div>
+	</div>
+
+	<h1>Uspešno ste potvrdili zahtev za članstvo</h1>
+
+	<div class="text-divider6">
+		<span></span>
+	</div>
+
+	<div class="alert alert-success">
+
+		<h2>Hvala na potvrdi.</h2>
+
+		<p>Uspešno ste potvrdili zahtev za članstvo u Vašoj auto školi korisnika <span th:text="${userName}" style="font-style: italic;"></span>.</p>
+
+	</div>
+
+	<a th:href="@{/uloguj-se}">Kliknite ovde da biste se ulogovali ili registrovali.</a>
+
+	<br />
+	<br />
+
+</div>
+
+<div th:if="${confirmed==false}">
+	<div>
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Neuspešna potvrda zahteva za članstvo</li>
+			</ul>
+		</div>
+	</div>
+
+	<h1>Zahtev za članstvo nije potvrđen</h1>
+
+	<div class="text-divider6">
+		<span></span>
+	</div>
+
+	<div class="alert alert-error">
+
+		<h2>Greška pri potvrdi</h2>
+
+		<p th:if="${error==false}">Na žalost, zahtev za članstvo nije uspešno potvrđen.</p>
+		
+		<p th:if="${error==true}"><span th:text="${errorDescription}"></span></p>
+
+	</div>
+
+	<a th:href="@{/uloguj-se}">Kliknite ovde da biste se ulogovali ili registrovali.</a>
+
+	<br />
+	<br />
+
+</div>

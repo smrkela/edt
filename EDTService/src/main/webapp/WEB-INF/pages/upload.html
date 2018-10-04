@@ -1,0 +1,10 @@
+<form th:action="@{/upload}" th:object="${fileItem}" method="post"
+	enctype="multipart/form-data">
+	<div class="control-group">
+		<label class="control-label" for="file">Fajl</label>
+		<div class="controls">
+			<input id="file" type="file" th:field="*{file}" placeholder="Fajl" />
+		</div>
+	</div>
+	<button type="submit">Pošalji</button>
+</form>

@@ -1,0 +1,138 @@
+<div class="row show-grid">
+
+	<!-- BREAD CRUMBS -->
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/test-dana}">Dnevni test</a></li>
+				<li>Rezultat</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1 th:text="${title}">Test dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+				
+				<!-- RESULT -->
+				<div style="padding-bottom: 5px">	
+					<h3 th:text="${message}">Trenutno si 2. na danasnjoj listi</h3>
+					<div>
+						<span style="color: #777777">
+								Tačnih odgovora: <span th:text="${userResult.correctAnswers}" style="color: green">2</span>
+						</span>
+						<span style="color: #777777; padding-left: 30px">
+								Netačnih odgovora: <span th:text="${userResult.wrongAswers}" style="color: red">3</span>
+						</span>
+						<span style="color: #777777; padding-left: 30px">
+								Vreme: <span th:text="${userResult.timeTakenString}">3</span>
+						</span>
+						<span style="color: #777777; font-weight: bold; padding-left: 30px">
+								Ukupno poena: <span th:text="${userResult.points}" style="font-weight: bold">4</span>
+						</span>
+					</div>
+				</div>
+				
+						
+				<div class="text-divider1">
+					<span></span>
+				</div>
+
+
+				<!-- ANSWERS -->
+				<div th:each="dailyTestResult,status : ${dailyTestResults}" class="questionBox" th:object="${dailyTestResult}">
+
+					<p class="questionTitle" th:text="${numberOfQuestions - status.index} + '. ' + *{question.text}">Tekst pitanja</p>
+					<p class="questionRemark" th:if="*{! #strings.isEmpty(question.remark)}" th:text="*{question.remark}">Napomena</p>
+
+					<div class="contentBox">
+
+						<div class="imagesBox" th:if="${#lists.size(dailyTestResult.question.questionImages)}">
+
+							<div class="imageBox" th:each="image : *{question.questionImages}" th:object="${image}">
+								<img th:src="@{/image(path=*{url})}" /> <label th:text="*{text}" th:if="*{!#strings.isEmpty(text)}">a</label>
+							</div>
+						</div>
+
+						<!-- ako je korisnik dao odgovor, formatirati prikaz sa slikama -->
+						<div class="answersBox" th:if="${dailyTestResult.hasAnswered}">
+
+							<div th:each="answer, info : *{question.questionAnswers}" th:class="${answer.correct} ? 'answerCorrect' : 'answerIncorrect'">
+								
+								<!-- ako je korisnik odgovorio i pogodio onda tacno, ako je odgovorio i nije pogodio netacno, u suprotnom nista -->
+								
+								<span style="padding: 5px; vertical-align: middle; width: 15px; background-color: #F5F5F5" 
+																th:if="${dailyTestResult.isIncorrectlyAnswered(answer.id)}">
+									<img alt="tačno" title="Tačan odgovor" th:src="@{/images/not-correct-sign.png}" style="max-height: 18px; margin-bottom: 2px;" />
+								</span>
+										
+								<span style="padding: 5px; vertical-align: middle; width: 15px; background-color: #F5F5F5" 
+																th:if="${dailyTestResult.isCorrectlyAnswered(answer.id)}">
+									<img alt="tačno" title="Tačan odgovor" th:src="@{/images/correct-sign.png}" style="max-height: 18px; margin-bottom: 2px;" />
+								</span>
+								
+								<span style="padding: 5px; vertical-align: middle; padding-left: 27px; background-color: #F5F5F5" 
+													th:unless="${dailyTestResult.isCorrectlyAnswered(answer.id) OR dailyTestResult.isIncorrectlyAnswered(answer.id)}">
+								</span>
+								
+								
+								<span th:text="${answer.letter}">a)</span>
+								<span th:text="${answer.text}">Prvi odgovor</span>
+							</div>
+
+						</div>
+						
+						<!-- ako nije korisnik dao odgovor, formatirati prikaz bez slika i uvlacenja -->
+						<div class="answersBox" th:if="${!dailyTestResult.hasAnswered}">
+
+							<div th:each="answer, info : *{question.questionAnswers}" th:class="${answer.correct} ? 'answerCorrect' : 'answerIncorrect'">
+								<span th:text="${answer.letter}">a)</span>
+								<span th:text="${answer.text}">Prvi odgovor</span>
+							</div>
+							
+							<div class= "notAnswered" >
+								Nije odgovoreno.
+							</div>
+
+						</div>
+						
+						<div class="pointsBox" th:text="*{question.points}">2</div>
+
+					</div>
+
+				</div>	
+				
+				<!-- AKO ODGOVORI NISU DOSTUPNI ISPISUJEMO PORUKU (ovo vazi za starije testove) -->
+				
+				<div>
+					<h3 th:if="${#lists.isEmpty(dailyTestResults)}">
+						Za ovaj test nije dostupna lista pitanja sa datim odgovorima. 
+					</h3>
+				</div>			
+				
+				<hr />
+				
+				<div class="addthis_sharing_toolbox" align="right"></div>
+				
+				<br />
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<link th:href="@{/css/edt/listOfQuestionsForLearning.css}" rel="stylesheet" />

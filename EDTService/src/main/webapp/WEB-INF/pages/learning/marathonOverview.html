@@ -1,0 +1,127 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li>Maraton</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Maraton</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+
+				<div class="well well-small">
+
+					<h2
+						th:text="${#numbers.formatInteger(data.totalUsers, 1, 'COMMA')} + ' takmičara je  uradilo ukupno ' + ${#numbers.formatInteger(data.totalTestsDone,1,'COMMA')} +' testova!'">145
+						takmičara je uradilo ukupno 4132 testa!</h2>
+
+				</div>
+
+				<div th:if="${isUserLoggedIn}">
+
+					<div th:if="${hasUserTakenTests}" class="alert alert-success">
+
+						<h2
+							th:text="'Radio si ukupno ' + ${data.totalTestsByCurrentUser} + ' testova a sa uspešnošću od ' + ${#numbers.formatInteger(data.totalCorrectnessByCurrentUser, 1, 'COMMA')} +'%!'">Radio
+							si 4 testova i skupio ukupno 543 poena!</h2>
+
+					</div>
+
+					<div th:unless="${hasUserTakenTests}" style="font-size: 16px">
+
+						<h2>Još uvek nemaš ni jedan test urađen... :(</h2>
+
+					</div>
+
+					<br />
+
+					<div>
+
+						<a th:href="@{'/maraton/polaganje'}" class="btn btn-success"><i
+							class="icon-play"></i> Pokreni maraton</a> &nbsp; <a
+							th:href="@{/maraton/polaganje/nastavak}" class="btn btn-warning"
+							th:if="${hasActiveMarathon}"><i class="icon-time"></i> Nastavi
+							prethodni maraton</a>
+
+					</div>
+
+				</div>
+
+				<div th:unless="${isUserLoggedIn}">Ulogujte se i priključite
+					se ostalima u maratonskom testu poznavanja saobraćajnih pravila i
+					propisa!</div>
+
+				<br />
+
+				<div>
+
+					<h3>Najbolji rezultati poslednjih 7 dana</h3>
+
+					<div class="text-divider1">
+						<span></span>
+					</div>
+
+					<table class="table table-striped">
+
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Korisnik</th>
+								<th></th>
+								<th>Tačnih odg.</th>
+								<th>Ukupno odg.</th>
+								<th>Uspešnost</th>
+								<th>Vreme</th>
+								<th>Poena</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr th:each="test,status : ${data.tests}">
+								<td th:text="${status.count} + '.'" style="font-weight: bold">12</td>
+								<td><img alt="" style="margin-bottom: 0px"
+									th:src="@{/resource(path=${test.profileImagePath})}" /></td>
+								<td style="font-weight: bold" th:text="${test.userName}">korisnik</td>
+								<td th:text="${test.correctQuestions}" style="font-weight: bold">12</td>
+								<td th:text="${test.totalQuestions}" style="font-weight: bold">12</td>
+								<td th:text="${test.correctness} + '%'">45%</td>
+								<td th:text="${test.timeTakenString}">12</td>
+								<td th:text="${test.points}">58</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+
+					<br />
+
+				</div>
+
+				<hr />
+
+				<div class="addthis_sharing_toolbox" align="right"></div>
+
+				<br /> <br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

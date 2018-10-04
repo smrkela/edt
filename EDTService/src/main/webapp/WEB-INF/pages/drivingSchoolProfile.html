@@ -1,0 +1,135 @@
+<div class="row show-grid" th:object="${school}">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/spisak-auto-skola}">Auto škole</a></li>
+				<li th:text="*{name}"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+
+				<h1 th:text="'Auto škola ' + *{name}">Grle</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<a th:if="${canAdminister}"
+					th:href="@{'/administracija-auto-skole/' + *{uniqueName}}">Administracija</a>
+
+				<p th:text="*{legalName}">Autoskola Grle</p>
+				
+				<div style="margin-left: 0px; color: #777777; vertical-align: middle;" class="span7">
+					<img th:each="positiveMark : ${positiveMarks}" th:src="@{/images/star.png}" style="width: 16px; height: 16px; margin-bottom: 4px" /> 
+					<img th:each="negativeMark : ${negativeMarks}" th:src="@{/images/star_gray.png}" style="width: 16px; height: 16px; margin-bottom: 4px" />
+				</div>
+				
+				<div class="row show-grid">
+
+					<div class="span3">
+
+						<br />
+
+						<div class="photo">
+							<div class="bordered-img">
+								<img alt="" th:src="@{/resource(path=*{logoPath})}" />
+							</div>
+						</div>
+
+						<br />
+
+					</div>
+
+					<div class="span6">
+
+						<table class="table">
+
+							<tbody>
+
+								<tr>
+									<td class="bold">Grad:</td>
+									<td class="small" th:text="*{city}">Batajnica</td>
+								</tr>
+								<tr>
+									<td class="bold">Adresa:</td>
+									<td class="small" th:text="*{address}">Neka nova 7</td>
+								</tr>
+								<tr>
+									<td class="bold">Telefon:</td>
+									<td class="small" th:if="*{phone}" th:text="*{phone}">Neki broj</td>
+									<td th:unless="*{phone}">/</td>
+								</tr>
+								<tr th:if="*{phone2}">
+									<td class="bold">Telefon 2:</td>
+									<td class="small" th:text="*{phone2}">Neki broj 2</td>
+								</tr>
+								<tr>
+									<td class="bold">Kategorije:</td>
+									<td class="small" th:if="*{categories}" th:text="*{categories}">Neki broj</td>
+									<td th:unless="*{categories}">/</td>
+								</tr>
+								<tr>
+									<td class="bold">Web site:</td>
+									<td class="small" th:if="*{website}">
+										<a href="#" target="_blank" th:href="'http://'+ *{website} + ''" th:text="*{website}">www.nekisajt.com</a>
+									</td>
+									<td th:unless="*{website}">/</td>
+								</tr>
+
+								<tr>
+									<td class="bold">E-mail:</td>
+									<td class="small" th:if="*{email}"><a href="#" th:href="'mailto:'+ *{email} + ''" th:text="*{email}">www.nekisajt.com</a></td>
+									<td th:unless="*{email}">/</td>
+								</tr>
+
+								<tr>
+									<td class="bold">Matični broj:</td>
+									<td class="small" th:text="*{registryNumber != null ? registryNumber : '/'}">Nesto nesto</td>
+								</tr>
+
+								<tr>
+									<td class="bold">Broj dozvole:</td>
+									<td class="small" th:text="*{permitNumber != null ? permitNumber : '/'}">Broj dozvole</td>
+								</tr>
+
+								<tr>
+									<td class="bold">Datum dozvole:</td>
+									<td class="small" th:text="*{permitDate != null ? #dates.format(permitDate, 'dd/MM/yyyy') : '/'}">Neki datum</td>
+								</tr>
+
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+
+							</tbody>
+
+						</table>
+
+					</div>
+
+				</div>
+
+				<div th:unless="${hasLicense}">
+					<i> <i class="icon-info-sign"></i>&nbsp;Ovo je vaša auto škola? Saznajte kako i zbog čega treba da napravite vaš nalog na sajtu
+						Vozači Srbije klikom <a th:href="@{'/pomoc/za-auto-skole'}">ovde</a>.
+					</i>
+				</div>
+
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>

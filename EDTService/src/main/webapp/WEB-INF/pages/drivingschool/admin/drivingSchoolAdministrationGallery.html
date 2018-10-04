@@ -1,0 +1,51 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1 th:text="${pageInfo.title}">Administracija</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<p class="note"
+					th:text="'Trenutno imate ' + ${numberOfImages} + ' slika u galeriji. Najviše možete imati '+${numberOfImagesLimit}+'.'">
+					Obavestenje</p>
+
+				<a class="btn" th:href="@{/administracija-auto-skole/galerija/dodaj(id=${school.id})}"><i
+					class="icon-plus-sign"></i> Dodaj novi album</a>
+				<br />
+				<br />
+
+				<div th:each="album : ${albums}" class="row show-grid team-member">
+					<div class="span9">
+						<h2 th:text="${album.name} + ' ('+${album.numOfDocuments}+' slika)'"></h2>
+						<h3 th:text="${album.description}"></h3>
+
+						<a class="btn btn-link"
+							th:href="@{/administracija-auto-skole/galerija/izmeni(id=${school.id}, albumId=${album.id})}"><i
+							class="icon-pencil"></i> izmeni</a> <a class="btn btn-link"
+							th:href="@{/administracija-auto-skole/galerija/dodaj-slike(id=${school.id}, albumId=${album.id})}"><i
+							class="icon-minus-sign"></i> dodaj slike</a> <a class="btn btn-link"
+							th:href="@{/administracija-auto-skole/galerija/uredi-slike(id=${school.id}, albumId=${album.id})}"><i
+							class="icon-minus-sign"></i> uredi slike</a> <a class="btn btn-link"
+							th:href="@{/administracija-auto-skole/galerija/obrisi(id=${school.id}, albumId=${album.id})}"><i
+							class="icon-minus-sign"></i> obriši</a>
+
+					</div>
+				</div>
+
+				<br />
+				<br />
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>

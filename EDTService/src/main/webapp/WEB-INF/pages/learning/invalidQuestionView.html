@@ -1,0 +1,87 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/ucenje/izbor}">Izbor kategorija</a></li>
+				<li>Pogrešno pitanje</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<!-- BEGIN LEFT-SIDEBAR -->
+			<div id="left-sidebar" class="span3 sidebar sidebar-small">
+				<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+				<div class="side-nav sidebar-block">
+					<h2>Učenje</h2>
+
+					<ul>
+						<li>Kategorija vozila <br /> <span
+							style="font-weight: bold;" th:text="${drivingCategory}" />
+						</li>
+						<li>Kategorija pitanja <br /> <span
+							style="font-weight: bold;" th:text="${questionCategory}" />
+						</li>
+						<li>Broj pitanja <br /> <span style="font-weight: bold;"
+							th:text="${numberOfQuestions}" />
+						</li>
+						<li>Broj strana <br /> <span style="font-weight: bold;"
+							th:text="${numberOfPages}" />
+						</li>
+						<li>Trenutna strana <br /> <span style="font-weight: bold;"
+							th:text="${currentPageIndex + 1}" />
+						</li>
+					</ul>
+
+				</div>
+			</div>
+			<!-- END LEFT-SIDEBAR -->
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+
+				<div tiles:include="share"></div>
+
+				<h1>Pogrešno pitanje</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="row">
+
+					<div class="span9">
+
+						<h3>Traženo pitanje se ne nalazi u izabranim kategorijama
+							pitanja i vozila.</h3>
+
+						<div>
+							Izabrana kategorija pitanja: <b th:text="${questionCategoryName}">Vozila</b>
+							<br /> Izabrana kategorija vozila: <b
+								th:text="${drivingCategoryName}">B</b>
+						</div>
+
+						<br /> <a class="btn btn-warning" th:href="@{/ucenje/izbor}"><i
+							class="glyphicon icon-hand-up"> </i> Idi na izbor kategorije i
+							uči</a> <br /> <br />
+					</div>
+				</div>
+
+				<br />
+
+
+			</div>
+
+
+			<br /> <br />
+
+		</div>
+	</div>
+</div>
+
+<link th:href="@{/css/edt/questionView.css}" rel="stylesheet" />
+<script th:src="@{/scripts/createQuestionMessage.js}"></script>

@@ -1,0 +1,109 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+
+				<h1 th:text="${'Auto škola ' + school.name + ' - utisci učenika'}">Grle</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div tiles:include="share"></div>
+
+				<h2 th:unless="${#lists.isEmpty(marks)}">
+					Prosečna ocena za ovu školu je <span th:text="${averageMark}"></span>
+				</h2>
+				
+
+				<div th:if="${#lists.isEmpty(marks)}" class="alert alert-attention">
+					<h2>Još uvek nismo ocenjeni.</h2>
+					<p>
+						Ukoliko imate iskustva sa našom školom slobodno ostavite svoju ocenu i komentar.
+						<br />
+					</p>
+				</div>
+
+				<div th:if="${#authorization.expr('isAuthenticated()') and !userMarkedSchool}">
+
+					<h3 th:if="!${userMarkedSchool}">Oceni školu (10 - najviša ocena, 1 - najmanja ocena):</h3>
+
+					<div class="text-divider3" />
+
+					<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+					<form id="form" class="form-horizontal">
+						<input type="hidden" id="schoolId" th:value="${school.id}" />
+						<div class="control-group">
+							<label class="control-label" for="name">Ocena</label>
+							<div class="controls">
+								<select id="mark" name="mark" title="Odaberite ocenu">
+									<option value="">--Odaberite ocenu--</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="name">Komentar</label>
+							<div class="controls">
+								<textarea id="comment" name="comment" title="Unesite komentar"
+									placeholder="Unesite komentar" class="span7" style="height: 100px"></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<input type="submit" class="btn btn-primary" value="Sačuvaj"></input>
+						</div>
+					</form>
+				</div>
+				
+				<div class="alert alert-warning" th:if="${!#authorization.expr('isAuthenticated()')}">Da
+					bi ste ocenili ovu školu i ostavili komentar morate biti ulogovani.</div>
+
+				<p th:if="${marks.size()==1}">1 komentar:</p>
+				<p th:if="${marks.size()>1}" th:text="${marks.size()} + ' komentara:'">12 komentara</p>
+				
+				<blockquote th:each="mark : ${marks}">
+
+					<div class="row">
+
+						<div class="span6">
+							<p th:text="'Ocena: '+${mark.mark}"></p>
+							<p th:text="${mark.comment}"></p>
+						</div>
+
+						<div class="span2">
+							<p th:if="${mark.editedByLoggedInUser}">
+								<a href="javascript:void(0)" th:onclick="'removeMark('+${mark.id}+')'">obriši</a>
+							</p>
+							<p>
+								<span class="autor" th:text="${mark.author.username}">Autor</span> ,<span
+									th:text="${#dates.format(mark.date, 'dd/MM/yyyy')}">Datum</span>
+							</p>
+						</div>
+
+					</div>
+
+				</blockquote>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script th:src="@{/scripts/drivingSchool/drivingSchoolMarks.js}"></script>

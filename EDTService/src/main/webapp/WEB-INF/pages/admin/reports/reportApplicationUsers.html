@@ -1,0 +1,68 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/administracija}">Administracija</a></li>
+				<li>Izveštaji</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Korisnici aplikacije</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<h3
+					th:text="${'Od ' + #dates.format(startDate, 'yyyy-MM-dd') + ' do ' + #dates.format(finishDate, 'yyyy-MM-dd')}">Od
+					do</h3>
+
+				<br />
+
+				<table class="table table-bordered table-hover">
+					<!-- <table class="table table-bordered table-hover sortableTable responsive"> -->
+
+					<thead>
+
+						<tr>
+							<th>Ime i prezime</th>
+							<th>Email</th>
+							<th>Poena</th>
+							<th>Poslednji login</th>
+							<th>Registracija</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+						<tr th:each="user : ${users}">
+
+							<td><b th:text="${user.firstName} + ' ' + ${user.lastName}">pera@pera.com</b></td>
+							<td th:text="${user.email}">pera@pera.com</td>
+							<td th:text="${user.points}">32</td>
+							<td th:text="${user.lastLogin}">pera@pera.com</td>
+							<td th:text="${user.registrationDate} ? ${#dates.format(user.registrationDate, 'yyyy-MM-dd')}">pera@pera.com</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+</div>
+

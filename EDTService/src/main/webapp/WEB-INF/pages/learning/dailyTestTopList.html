@@ -1,0 +1,111 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/test-dana}">Test dana</a></li>
+				<li>Top lista testova dana</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Top lista testova dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+
+				<div th:if="${isUserLoggedIn}">
+
+					<div th:if="${isUserInTopList}" style="font-size: 14px">
+
+						<h2
+							th:text="'Trenutno si ' + ${orderNumber} + '. na večitoj listi!'">Trenutno
+							si 4. na večitoj listi</h2>
+
+					</div>
+
+					<div th:unless="${isUserInTopList}" style="font-size: 16px">
+
+						<h2
+							th:text="'Trenutno se ne nalaziš među prvih ' + ${numberOfResults} + '. na večitoj listi. Popravi svoj rezultat polažući prethodne testove!'">
+							Trenutno si 4. na večitoj listi</h2>
+
+					</div>
+
+				</div>
+
+				<div th:unless="${isUserLoggedIn}">Ulogujte se i priključite
+					se ostalima u svakodnevnom zabavnom testu poznavanja saobraćajnih
+					pravila i propisa!</div>
+
+				<br />
+
+				<h2>Najbolji takmičari dnevnih testova</h2>
+				<div class="text-divider1">
+					<span></span>
+				</div>
+
+				<table class="table table-striped">
+
+					<thead>
+						<tr>
+							<th style="width: 20px">#</th>
+							<th style="width: 60px">Korisnik</th>
+							<th></th>
+							<th>Broj testova</th>
+							<th>Tačnih odgovora</th>
+							<th>Netačnih odgovora</th>
+							<th>Procenat tačnih</th>
+							<th>Ukupno vreme</th>
+							<th>Poena</th>
+							<th></th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:each="result : ${results}">
+
+							<td th:text="${result.orderNumber} + '.'"
+								style="font-weight: bold">12</td>
+							<td><img alt="" style="margin-bottom: 0px"
+								th:src="@{/resource(path=${result.user.smallProfileImagePath})}" /></td>
+							<td style="font-weight: bold;" th:text="${result.user.username}">korisnicko
+								ime</td>
+							<td th:text="${#numbers.formatInteger(result.numberOfTests, 1, 'COMMA')}">12</td>
+							<td th:text="${#numbers.formatInteger(result.correctAnswers, 1, 'COMMA')}">12</td>
+							<td th:text="${#numbers.formatInteger(result.wrongAswers, 1, 'COMMA')}">8</td>
+							<td th:text="${result.correctPercent} + '%'">60%</td>
+							<td th:text="${result.timeTakenShortString}">2 minuta 15
+								sekundi</td>
+							<td
+								th:text="${#numbers.formatInteger(result.points, 1, 'COMMA')}">58</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<hr />
+
+				<div class="addthis_sharing_toolbox" align="right"></div>
+
+				<br /> <br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

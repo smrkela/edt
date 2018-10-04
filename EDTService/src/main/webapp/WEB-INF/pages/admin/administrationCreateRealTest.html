@@ -1,0 +1,72 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Dodavanje testa</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none"
+					class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="id" th:value="${data.id}" />
+					<input type="hidden" id="categoryId" th:value="${data.categoryId}" />
+
+					<div class="control-group">
+						<label class="control-label" for="title">Naziv</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="title" name="title"
+								data-message="Unesite naziv" title="Unesite naziv"
+								th:value="${data.name}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="orderIndex">Redni index</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="orderIndex"
+								name="orderIndex" data-message="Unesite redni index"
+								title="Unesite redni index" th:value="${data.orderIndex}" />
+						</div>
+					</div>
+
+					<br /> <label> Id-evi pitanja: </label>
+
+					<div th:each="questionId, info : ${data.questionIds}">
+
+						<div class="control-group">
+							<label class="control-label" th:text="${info.count} + '.'"></label>
+							<div class="controls">
+								<input th:attr="id=${info.index}" name="questionId"
+									class="span5" type="text" th:value="${questionId}"></input>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<br />
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Sačuvaj</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+
+<script th:src="@{/scripts/admin/administrationRealTestAdd.js}"></script>

@@ -1,0 +1,45 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li th:text="${pageInfo.title}"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- VEST -->
+
+			<div class="span9 main-column two-columns-left">
+				<h1>
+					Pomoć <small>sva vaša pitanja o sajtu</small>
+				</h1>
+
+				<div th:each="category : ${pageCategories}">
+
+					<h2 th:attr="id=${category.name}" th:text="${category.name}">Naslov</h2>
+					<div class="text-divider1"></div>
+					<p th:text="${category.note}">Napomena</p>
+					<div class="bs-docs-example">
+						<ul>
+							<li th:each="page : ${category.pages}"><a
+								th:href="@{'/pomoc/'+ ${page.uniqueName}}" th:text="${page.title}"></a></li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<br /> <br /> <br />
+
+	</div>
+
+</div>

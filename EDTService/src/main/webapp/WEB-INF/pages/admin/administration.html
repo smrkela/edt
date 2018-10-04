@@ -1,0 +1,48 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li>Administracija</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Administracija</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<ul>
+
+					<li><a href="#" th:href="@{/administracija/kategorije-vesti}">Kategorije strana</a></li>
+					<li><a href="#" th:href="@{/administracija/vesti}">Vesti</a></li>
+					<li><a href="#" th:href="@{/administracija/informacije}">Informacije</a></li>
+					<li><a href="#" th:href="@{/administracija/pomoc}">Pomoć</a></li>
+					<li><a th:href="@{/administracija/pitanja}">Pitanja</a></li>
+					<li><a th:href="@{/administracija/greske-pitanja}">Greske pitanja</a></li>
+					<li><a th:href="@{/administracija/auto-skole}">Auto škole</a></li>
+					<li><a th:href="@{/administracija/korisnici}">Korisnici</a></li>
+					<li><a th:href="@{/administracija/slike}">Slike</a></li>
+					<li><a th:href="@{/administracija/fajlovi}">Fajlovi</a></li>
+					<li><a th:href="@{/administracija/adminServisi}">Admin Servisi</a></li>
+					<li><a th:href="@{/administracija/reports}">Izveštaji</a></li>
+					<li><a th:href="@{/administracija/testovi}">Testovi</a></li>
+					<li><a th:href="@{/administracija/pretraga-pitanja}">Pretraga pitanja</a></li>
+
+				</ul>
+
+				<br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+</div>

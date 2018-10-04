@@ -1,0 +1,106 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1 th:text="'Administracija - ' + ${drivingSchool.name} + ' ' +${drivingSchool.city}">Administracija</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="row show-grid team-member">
+
+					<div class="span3 photo">
+						<div class="bordered-img">
+							<img alt="" th:src="@{/resource(path=${drivingSchool.logoPath})}" class="img-rounded" />
+						</div>
+					</div>
+
+					<div class="span6">
+
+						<span>
+							<h2 th:text="${drivingSchool.name}"></h2>
+							<h3 th:text="${drivingSchool.uniqueName}"></h3>
+							<h4 th:text="${drivingSchool.city}"></h4>
+							<h4 th:text="'Skrivena: ' + ${drivingSchool.isHidden == true ? 'DA' : 'NE'}"></h4>
+							<h4 th:text="'Ima dozvolu: ' + ${drivingSchool.hasPermit == true ? 'DA' : 'NE'}"></h4>
+
+						</span> <a class="btn btn-link	"
+							th:href="@{'/administracija-auto-skole/'+ ${drivingSchool.uniqueName}}"><i
+							class="icon-pencil"></i> administracija</a> <a class="btn btn-link	"
+							th:href="@{/administracija/auto-skole/izmeni(id=${drivingSchool.id})}"><i
+							class="icon-pencil"></i> izmeni</a> <a class="btn btn-link"
+							th:href="@{/administracija/auto-skole/obrisi(id=${drivingSchool.id})}"><i
+							class="icon-minus-sign"></i> obriši</a>
+						<br />
+
+					</div>
+
+				</div>
+
+				<div class="row show-grid team-member">
+
+					<h2>Clanovi</h2>
+
+					<a class="btn btn-link	"
+						th:href="@{/administracija/auto-skole/clanovi/dodaj(id=${drivingSchool.id})}"><i
+						class="icon-pencil"></i> dodaj clana</a>
+
+					<div th:each="member : ${members}">
+
+						<span class="row show-grid">
+							<h3>
+								<a th:text="${member.user.firstName} + ' ' + ${member.user.lastName}"
+									th:href="@{/administracija/auto-skole/clanovi/izmeni(id=${member.id})}">Clan</a>
+							</h3> <span><span th:text="${member.role}">uloga</span> <a
+								th:href="@{/administracija/auto-skole/clanovi/obrisi(id=${member.id})}">obrisi</a></span>
+
+						</span>
+
+					</div>
+				</div>
+
+				<div class="row">
+
+					<h2>Licenca</h2>
+
+					<a class="btn btn-link	"
+						th:href="@{/administracija/auto-skole/licenca(id=${drivingSchool.id})}"><i
+						class="icon-pencil"></i> izmeni licencu</a> <span class="row show-grid">
+
+						<div th:if="${license}">
+
+							<div>
+								<span>Važi od:</span> <span th:text="${license.validFrom}" />
+							</div>
+							<div>
+								<span>Važi do:</span> <span th:text="${license.validTo}" />
+							</div>
+							<div>
+								<span>Aktivna:</span> <span th:text="${license.active}" />
+							</div>
+							<div>
+								<span>Licenca:</span> <span th:text="${license.licenseType}" />
+							</div>
+							<div>
+								<span>Datum pravljenja:</span> <span th:text="${license.creationDate}" />
+							</div>
+
+						</div>
+
+						<div th:unless="${license}">Ova škola nema definisanu licencu.</div>
+
+					</span>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

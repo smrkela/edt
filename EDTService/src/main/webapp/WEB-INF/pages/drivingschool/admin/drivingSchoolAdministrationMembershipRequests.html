@@ -1,0 +1,264 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Administracija</h1>
+				<input type="hidden" id="schoolId" th:value="${school.id}" />
+				<div class="text-divider6">
+					<span></span>
+				</div>
+				
+				<div id="deleteMembershipRequestValidationMessage" style="display: none" class="alert alert-error"></div>
+				
+				<!-- LISTA SVIH ZAHTEVA -->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="box">
+                            <header>
+                                <h5 style="font-size: 14px;">&nbsp;</h5>
+                            </header>
+                            <div id="collapse4" class="body">
+                                <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Ime korisnika</th>
+                                            <th style="text-align: center;">E-mail korisnika</th>
+                                            <th style="text-align: center;">Datum korisnika</th>
+                                            <th style="text-align: center;">Status</th>
+                                            <th style="text-align: center;">Detalji</th>
+                                            
+                                            <!-- HIDDEN -->
+                                            <th style="text-align: center; display: none;">comment</th>
+                                            <th style="text-align: center; display: none;">receiveNotifications</th>
+                                            <th style="text-align: center; display: none;">confirmationToken</th>
+                                            <th style="text-align: center; display: none;">decisionDate</th>
+                                            <th style="text-align: center; display: none;">decisionComment</th>
+                                            
+                                            <!-- Podaci o povezanom uceniku -->
+                                            <th style="text-align: center; display: none;">Ime studenta</th>
+                                            <th style="text-align: center; display: none;">E-mail studenta</th>
+                                            <th style="text-align: center; display: none;">Telefon studenta</th>
+                                            <th style="text-align: center; display: none;">Adresa studenta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="request : ${membershipRequests}" th:class="${request.status == 'APPROVED'} ? 'success' : (${request.status == 'REJECTED'} ? 'error')">
+                                            
+                                            <td th:text="${request.user.firstName} + ' ' + ${request.user.lastName}" style="text-align: center;">ime ucenika</td>
+                                            
+											<td th:text="${request.user.email}" style="text-align: center;">e-mail ucenika</td>
+											
+                                            <td th:text="${#dates.format(request.creationDate, 'dd.MM.yyyy, HH:mm')}" style="text-align: center;">datum</td>
+                                                                                        
+                                            <td th:text="${request.status == 'APPROVED'} ? 'Odobren' : (${request.status == 'REJECTED'} ? 'Odbijen' : (${request.status == 'PENDING'} ? 'U čekanju'))"
+															style="text-align: center;">status</td>
+                                            
+                                            <td style="text-align: center;">
+												<span>
+													<button id="info" class="btn edit btn-link" title="Vidi dodatne informacije." style="padding: 4px 4px;">
+														<i class="icon-info-sign"></i>
+													</button>
+												</span>
+												<span th:if="${request.status == 'REJECTED'}">
+													<button id="delete" class="btn delete btn-link" title="Obriši zahtev za članstvo." style="padding: 4px 4px;">
+														<i class="icon-minus-sign"></i>
+													</button>
+												</span>
+											</td>
+											
+											<!-- HIDDEN -->
+                                            <td th:text="${request.comment}" style="display: none;">comment</td>
+                                            <td th:text="${request.receiveNotifications}" style="display: none;">receiveNotifications</td>
+                                            <td th:text="${request.confirmationToken}" style="display: none;">confirmationToken</td>
+                                            <td th:text="${request.decisionDate != null ? #dates.format(request.decisionDate, 'dd.MM.yyyy, HH:mm') : null}" 
+                                            	style="display: none;">decisionDate</td>
+                                            <td th:text="${request.decisionComment}" style="display: none;">decisionComment</td>
+                                            
+                                            
+                                            <td th:text="${request.drivingSchoolStudent != null ? request.drivingSchoolStudent.firstName + ' ' + 
+                                            			 request.drivingSchoolStudent.lastName : null}" style="display: none;">Ime studenta</td>
+                                            <td th:text="${request.drivingSchoolStudent != null ? request.drivingSchoolStudent.email : null}" 
+                                            	style="display: none;">E-mail studenta</td>
+                                            <td th:text="${request.drivingSchoolStudent != null ? request.drivingSchoolStudent.phone : null}" 
+                                            	style="display: none;">Telefon studenta</td>
+                                            <td th:text="${request.drivingSchoolStudent != null ? request.drivingSchoolStudent.address + ', ' + 
+                                            			   request.drivingSchoolStudent.city : null}" style="display: none;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+			    <br />
+			    
+			    <div id="connectionValidationMessage" style="display: none" class="alert alert-error"></div>
+                            
+				<br />
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!-- #editModal -->
+<div id="editModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="editModalLabel"><i class="icon-edit"></i> Pregled detalja zahteva</h3>
+    </div>
+    <div class="modal-body form-horizontal">
+        <div class="control-group" style="height: 19px;">
+            <label for="userName" class="control-label" style="width: 170px; margin-right: 10px;">Ime korisnika</label>
+            <div class="controls">
+                <input type="text" id="userName" name="userName" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group" style="height: 19px;">
+            <label for="userEmail" class="control-label" style="width: 170px; margin-right: 10px;">E-mail korisnika</label>
+            <div class="controls">
+                <input type="text" id="userEmail" name="userEmail" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+			<label class="control-label" for="receiveNotifications" style="width: 170px; margin-right: 10px;">Prijem obaveštenja</label>
+			<div class="controls">
+				<input type="checkbox" id="receiveNotifications" name="receiveNotifications" disabled="disabled" />
+			</div>
+		</div>
+		<div class="control-group">
+            <label for="comment" class="control-label" style="width: 170px; margin-right: 10px;">Komentar korisnika</label>
+            <div class="controls">
+                <textarea id="comment" name="comment" disabled="disabled"></textarea>
+            </div>
+        </div>  
+        <div class="control-group">
+            <label for="creationDate" class="control-label" style="width: 170px; margin-right: 10px;">Datum kreiranja zahteva</label>
+            <div class="controls">
+                <input type="text" id="creationDate" name="creationDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="status" class="control-label" style="width: 170px; margin-right: 10px;">Status zahteva</label>
+            <div class="controls">
+                <input type="text" id="status" name="status" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group" id="decisionDateDiv">
+            <label for="decisionDate" class="control-label" style="width: 170px; margin-right: 10px;">Datum odluke</label>
+            <div class="controls">
+                <input type="text" id="decisionDate" name="decisionDate" disabled="disabled"></input>
+            </div>
+        </div>
+        <div class="control-group" id="decisionCommentDiv">
+            <label for="decisionComment" class="control-label" style="width: 170px; margin-right: 10px;">Komentar odluke</label>
+            <div class="controls">
+                <textarea id="decisionComment" name="decisionComment" disabled="disabled"></textarea>
+            </div>
+        </div>
+        <div class="control-group" style="display: none;">
+            <label for="tokenConfirmation" class="control-label" style="width: 170px; margin-right: 10px;">Token</label>
+            <div class="controls">
+                <input type="text" id="tokenConfirmation" name="tokenConfirmation" disabled="disabled"></input>
+            </div>
+        </div>
+        
+        <!-- Prikazati podatke ucenika (DrivingSchoolStudent) u slucaju da postoji veza izmedju zahteva i ucenika -->
+        <div class="form-actions" id="studentForm" style="padding-left: 0px;">
+        	<div class="header">
+		        <h4 id="editModalLabel"><i class="icon-eye-open"></i> Dodatne informacije o učeniku</h4>
+		    </div>
+        	<div class="control-group" style="height: 19px;">
+	            <label for="studentName" class="control-label">Ime učenika</label>
+	            <div class="controls">
+	                <input type="text" id="studentName" name="studentName" disabled="disabled"></input>
+	            </div>
+	        </div>
+	        <div class="control-group" style="height: 19px;">
+	            <label for="studentEmail" class="control-label">E-mail učenika</label>
+	            <div class="controls">
+	                <input type="text" id="studentEmail" name="studentEmail" disabled="disabled"></input>
+	            </div>
+	        </div>
+	        <div class="control-group" style="height: 19px;">
+	            <label for="studentPhone" class="control-label">Telefon učenika</label>
+	            <div class="controls">
+	                <input type="text" id="studentPhone" name="studentPhone" disabled="disabled"></input>
+	            </div>
+	        </div>
+	        <div class="control-group" style="height: 19px;">
+	            <label for="studentAddress" class="control-label">Adresa učenika</label>
+	            <div class="controls">
+	                <input type="text" id="studentAddress" name="studentAddress" disabled="disabled"></input>
+	            </div>
+	        </div>
+	        <button id="removeStudent" class="btn btn-danger" data-dismiss="modal" type="submit" style="float: right;">Raskini vezu</button>
+        </div>
+    </div>
+    <div class="modal-footer">
+    	<button id="submitAndNewBtn" class="btn btn-success btn-block" data-dismiss="modal" type="submit"><i class="icon-plus-sign"></i> Odobri zahtev - novi učenik</button>
+    	<button id="submitAndExistingBtn" class="btn btn-success btn-block" data-dismiss="modal" type="submit"> <i class="icon-plus-sign"></i> Odobri zahtev - postojeći učenik</button>
+    	<button id="rejectBtn" class="btn btn-danger btn-block" data-dismiss="modal" type="submit">Odbij zahtev</button>
+    	<button id="cancelBtn" class="btn btn-warning btn-block" data-dismiss="modal" type="submit">Odluči kasnije</button>
+    	<button id="newStudentBtn" class="btn btn-success btn-block" data-dismiss="modal" type="submit">Novi učenik</button>
+    	<button id="existingStudentBtn" class="btn btn-success btn-block" data-dismiss="modal" type="submit">Poveži sa postojećim učenikom</button>
+        <button id="closeBtn" class="btn btn-info btn-block" data-dismiss="modal" aria-hidden="true">Zatvori</button>
+    </div>
+</div>
+<!-- /#editModal -->
+
+
+<!-- #deleteModal -->
+<div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="editModalLabel"><i class="icon-remove-sign" style="font-size: 20px"></i> Brisanje zahteva za članstvo</h3>
+    </div>
+    <div class="modal-body form-horizontal">
+    	<input type="hidden" id="schoolId" name="schoolId" disabled="disabled"></input>
+    	<input type="hidden" id="token" name="token" disabled="disabled"></input>
+        <div class="control-group" style="height: 19px;">
+            <h2>Da li zaista želite da obrišete ovaj zahtev za članstvo?</h2>
+        </div>
+    </div>
+    <div class="modal-footer">
+    	<button id="deleteBtn" class="btn btn-danger" data-dismiss="modal" type="submit">Obriši</button>
+        <button id="closeBtn" class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zatvori</button>
+    </div>
+</div>
+<!-- /#deleteModal -->
+
+<!-- FORM RELATED -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/atheme/js/vendor/jquery-migrate-1.1.1.min.js}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript" th:src="@{/atheme/js/vendor/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tablesorter.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/responsive-tables.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/main.js}"></script>
+
+<!-- TABLE end -->
+
+<script>
+	jQuery(function() {
+		bizstrapTable();
+	});
+</script>
+
+<script th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationMembershipRequests.js}"></script>

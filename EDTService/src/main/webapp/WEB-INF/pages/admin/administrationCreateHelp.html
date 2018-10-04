@@ -1,0 +1,82 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<!-- BEGIN ARTICLE CONTENT AREA -->
+
+				<h1 th:text="${pageInfo.title}">Dodavanje stranice za pomoć</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div id="formValidationMessage" style="display: none" class="alert alert-error"></div>
+
+				<form id="form" class="form-horizontal">
+
+					<input type="hidden" id="id" th:value="${page.id}" />
+
+					<div class="control-group">
+						<label class="control-label" for="title">Naziv</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="title" name="title" data-message="Unesite naslov"
+								title="Unesite naziv" th:value="${page.title}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="uniqueName">Jedinstveni naziv</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="uniqueName" name="uniqueName"
+								data-message="Unesite jedinstveno ime" title="Unesite jedinstveno ime"
+								th:value="${page.uniqueName}" />
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="category">Kategorija</label>
+						<div class="controls">
+							<select id="category" style="width: 300px" name="category"
+								data-message="Izaberite kategoriju" title="Izaberite kategoriju">
+								<option>--Izaberi kategoriju--</option>
+								<option th:each="category : ${pageCategories}" th:value="${category.id}"
+									th:text="${category.name}"
+									th:selected="${page.categoryDTO != null and page.categoryDTO.id eq category.id}"></option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="orderIndex">Redni index</label>
+						<div class="controls">
+							<input type="text" style="width: 300px" id="orderIndex" name="orderIndex"
+								data-message="Unesite redni index" title="Unesite redni index" th:value="${page.orderIndex}" />
+						</div>
+					</div>
+
+					<br />
+					<label>Sadržaj</label>
+					<textarea id="content" name="content" data-message="Unesite sadržaj" th:value="${page.content}"
+						title="Unesite sadržaj" th:text="${page.content}" style="height: 300px" />
+
+					<br />
+
+					<button id="createPageButton" class="btn btn-primary pull-right">Sačuvaj</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br />
+<br />
+
+<script th:src="@{/scripts/tinymce/tinymce.min.js}"></script>
+<script th:src="@{/scripts/admin/createPage/createHelp.js}"></script>

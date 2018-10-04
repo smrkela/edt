@@ -1,0 +1,27 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column" th:object="${school}">
+
+				<h1>Ne možete dodati novi album</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div th:text="${message}">Poruka</div>
+
+				<div>
+					<a th:href="@{/administracija-auto-skole/galerija(id=${school.id})}">Nazad na galeriju</a>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>

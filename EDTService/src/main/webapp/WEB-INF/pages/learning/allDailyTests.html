@@ -1,0 +1,118 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li><a th:href="@{/test-dana}">Test dana</a></li>
+				<li>Lista svih testova dana</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+			<div tiles:include="sidebar"></div>
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Svi testovi dana</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div tiles:include="share"></div>
+				
+				<div class="well well-small"> 
+
+					<h2
+						th:text="${#numbers.formatInteger(result.totalUsers, 1, 'COMMA')} + ' takmičara je  uradilo ukupno ' + ${#numbers.formatInteger(result.totalTestsDone,1,'COMMA')} +' testova!'">145
+						takmičara je uradilo ukupno 4132 testa!</h2>
+
+				</div>
+
+				<div th:if="${isUserLoggedIn}">
+
+					<div th:if="${hasUserTakenTests}" class="alert alert-success">
+
+						<h2 th:text="'Radio si ukupno ' + ${result.totalTestsByCurrentUser} + ' testova i skupio ' + ${#numbers.formatInteger(result.totalPointsByCurrentUser, 1, 'COMMA')} +' poena!'">Radio
+							si 4 testova i skupio ukupno 543 poena!</h2>
+
+					</div>
+
+					<div th:unless="${hasUserTakenTests}" style="font-size: 16px">
+
+						<h2>Još uvek nemaš ni jedan test urađen... :(</h2>
+
+					</div>
+
+				</div>
+
+				<div th:unless="${isUserLoggedIn}">Ulogujte se i priključite
+					se ostalima u svakodnevnom zabavnom testu poznavanja saobraćajnih
+					pravila i propisa!</div>
+
+				<br />
+
+				<div th:each="month : ${result.months}">
+
+					<h1 th:text="${month.monthName} + ' ' + ${month.year}">Januar
+						2014</h1>
+
+					<table class="table table-striped">
+
+						<thead>
+							<tr>
+								<th>Datum testa</th>
+								<th>Broj korisnika</th>
+								<th>Tvoji poeni</th>
+								<th></th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr th:each="test : ${month.tests}">
+
+								<td style="font-weight: bold"><a
+									th:text="${test.dateString}"
+									th:href="@{'/test-dana/korisnici/' + ${#dates.format(test.date, 'yyyy-MM-dd')}}">datum</a>
+								</td>
+								<td th:text="${test.numberOfUsers}">12</td>
+								<td th:text="${test.numberOfPoints}"
+									th:if="${test.hasUserTakenTest}" style="font-weight: bold">12</td>
+								<td th:if="${not test.hasUserTakenTest and isUserLoggedIn}">
+									<a
+									th:href="@{'/test-dana/polaganje/' + ${#dates.format(test.date, 'yyyy-MM-dd')}}"
+									class="btn btn-success btn-small">polaži sada</a>
+								</td>
+								<td><span th:if="${test.hasUserTakenTest}"> <a
+										th:href="@{'/test-dana/rezultat/' + ${#dates.format(test.date, 'yyyy-MM-dd')} + '/' + ${username}}">pogledaj
+											rezultate</a>
+								</span></td>
+								<td th:if="${not test.hasUserTakenTest and not isUserLoggedIn}"><a
+									th:href="@{/uloguj-se}">uloguj se i polaži</a></td>
+							</tr>
+
+						</tbody>
+
+					</table>
+
+					<br />
+
+				</div>
+
+				<hr />
+
+				<div class="addthis_sharing_toolbox" align="right"></div>
+
+				<br /> <br />
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

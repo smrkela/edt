@@ -1,0 +1,202 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column">
+
+				<h1 th:text="${pageInfo.title}">Administracija</h1>
+				<input type="hidden" id="schoolId" th:value="${school.id}" />
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div>
+					<a class="btn span3" th:href="@{/administracija-auto-skole/ucenici/dodaj(id=${school.id}, membership='false')}">
+						<i class="icon-plus-sign"></i> Dodaj novog učenika
+					</a> 
+					
+					<div class="span2"></div>
+					
+					<div class="control-group span3">
+						<div class="controls">
+							<select id="selectStatus" data-placeholder="Izaberite status" class="chzn-select-deselect" name="selectStatus">
+								<option value=""></option>
+								<option th:each="selectType : ${selectTypes.entrySet()}" th:value="${selectType.key}" th:text="${selectType.value}" 
+										th:selected="${selectType.key eq select}">
+									Select
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<br /> <br />
+
+				<!-- Tabela sa svim ucenicima -->
+				<div class="row-fluid">
+                    <div class="span12">
+                        <div class="box">
+                            <header>
+                                <h5 style="font-size: 14px;">&nbsp;</h5>
+                            </header>
+                            <div id="collapse4" class="body">
+                                <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center; display: none;">ID</th>
+                                            <th style="text-align: center;">Ime i prezime</th>
+                                            <th style="text-align: center;">Adresa</th>
+                                            <th style="text-align: center;">E-mail</th>
+                                            <th style="text-align: center; width: 71px;">Status</th>
+                                            <th style="text-align: center; width: 45px;">Akcija</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="student : ${students}">
+                                            
+                                            <td th:text="${student.id}" style="text-align: center; display: none;">id</td>
+                                            
+                                            <td th:text="${student.firstName} + ' ' + ${student.lastName}" style="text-align: center;">Ime ucenika</td>
+                                            
+											<td style="text-align: center;">
+												<span th:if="${!#strings.isEmpty(student.address)}" th:text="${student.address} + ', '"></span>
+												<span th:if="${!#strings.isEmpty(student.city)}" th:text="${student.city}"></span>
+											</td>
+											
+                                            <td th:text="${student.email}" style="text-align: center;">E-mail ucenika</td>
+                                                                                        
+                                            <td style="text-align: center;">
+                                            	<span th:if="${student.isFirstAidPassed}">
+													<i id="firstAidPassed" name="firstAidPassed" title="Učenik položio ispit prve pomoći" class="icon-check" 
+														style="color: #058107; font-size: 18px"></i>
+												</span>
+												<span th:if="${!student.isFirstAidPassed}">
+													<i id="firstAidNotPassed" name="firstAidNotPassed" title="Učenik još nije položio ispit prve pomoći" class="icon-check" 
+														style="color: #c1b6b6; font-size: 14px"></i>
+												</span>
+												
+												<span th:if="${student.isTheoryPassed}">
+													<i id="theoryPassed" name="theoryPassed" title="Učenik položio teorijski deo ispita" class="icon-book" 
+														style="color: #058107; font-size: 18px"></i>
+												</span>
+												<span th:if="${!student.isTheoryPassed}">
+													<i id="theoryNotPassed" name="theoryNotPassed" title="Učenik još nije položio teorijski deo ispita" class="icon-book" 
+														style="color: #c1b6b6; font-size: 14px"></i>
+												</span>
+												
+												<span th:if="${student.isPracticePassed}">
+													<i id="practicePassed" name="practicePassed" title="Učenik položio praktični deo ispita" class="icon-truck" 
+														style="color: #058107; font-size: 18px"></i>
+												</span>
+												<span th:if="${!student.isPracticePassed}">
+													<i id="practiceNotPassed" name="practiceNotPassed" title="Učenik još nije položio praktični deo ispita" class="icon-truck" 
+														style="color: #c1b6b6; font-size: 14px"></i>
+												</span>
+												
+												<span th:if="${student.isAllPassed}">
+													<i id="allPassed" name="allPassed" title="Učenik položio sve" class="icon-ok-sign"  style="color: #058107; font-size: 18px"></i>
+												</span>
+												<span th:if="${!student.isAllPassed}">
+													<i id="allNotPassed" name="allNotPassed" title="Učenik nije položio sve" class="icon-ok-sign" 
+														style="color: #c1b6b6; font-size: 14px"></i>
+												</span>
+											</td>
+                                            
+                                            <td style="text-align: center;">
+												<span>
+													<a id="editStudent" name="editStudent" class="btn btn-link" title="Izmeni učenika" style="padding: 4px;"
+														th:href="@{/administracija-auto-skole/ucenici/izmeni(id=${school.id}, studentId=${student.id})}">
+														<i class="icon-pencil"></i>
+													</a>
+												</span>
+												<span>
+													<button id="deleteStudent" class="btn edit btn-link" title="Obriši učenika." style="padding: 4px;">
+														<i class="icon-minus-sign"></i>
+													</button>
+												</span>
+											</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- #deleteModal -->
+<div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="editModalLabel"><i class="icon-remove-sign" style="font-size: 20px"></i> Brisanje učenika</h3>
+    </div>
+    <div class="modal-body form-horizontal">
+    	<input type="hidden" id="studentId" name="studentId" disabled="disabled"></input>
+        <div class="control-group" style="height: 19px;">
+            <h2>Da li zaista želite da obrišete informacije o ovom učeniku?</h2>
+        </div>
+    </div>
+    <div class="modal-footer">
+    	<button id="deleteBtn" class="btn btn-danger" data-dismiss="modal" type="submit">Obriši</button>
+        <button id="closeBtn" class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zatvori</button>
+    </div>
+</div>
+<!-- /#deleteModal -->
+
+
+<!-- DROPDOWN begin -->
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.mousewheel.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/prettify.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dualListBox-1.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/bootstrap-inputmask.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.autosize-min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.inputlimiter.1.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tagsinput.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/chosen.jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.uniform.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.toggle.buttons.js}"></script>
+
+<script type="text/javascript" th:src="@{/scripts/jquery/jquery.form.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/date.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/daterangepicker.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/bootstrap-datepicker.js}"></script>
+
+<!-- DROPDOWN end -->
+
+
+<!-- TABLE begin -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/atheme/js/vendor/jquery-migrate-1.1.1.min.js}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript" th:src="@{/atheme/js/vendor/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tablesorter.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/DT_bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/responsive-tables.js}"></script>
+
+<script type="text/javascript" th:src="@{/atheme/js/main.js}"></script>
+
+<!-- TABLE end -->
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script type="text/javascript" th:src="@{/scripts/drivingSchool/admin/drivingSchoolAdministrationStudents.js}"></script>

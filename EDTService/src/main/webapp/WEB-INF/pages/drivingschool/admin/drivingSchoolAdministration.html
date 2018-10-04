@@ -1,0 +1,79 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/spisak-auto-skola}">Auto škole</a></li>
+				<li><a th:href="@{'/spisak-auto-skola/' + ${school.uniqueName} + '/profil-auto-skole'}" th:text="${school.name}">Naziv auto škole</a></li>
+				<li th:text="${pageInfo.title}"></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+			<div class="span9 main-column">
+
+				<h1 th:text="${school.name} + ' - Administracija'">Administracija</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<ul th:object="${school}" style="list-style-type: none;">
+					<li>
+						<a th:href="@{/administracija-auto-skole/osnovni-podaci(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/basic.png}"></img> Osnovni podaci
+						</a>
+					</li>
+					<li th:if="${carsAllowed}">
+						<a th:href="@{/administracija-auto-skole/vozni-park(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/cars.png}"></img> Vozni park
+						</a>
+					</li>
+					<li th:if="${notificationsAllowed}">
+						<a th:href="@{/administracija-auto-skole/obavestenja(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/notifications.png}"></img> Obaveštenja
+						</a>
+					</li>
+					<li th:if="${teamAllowed}">
+						<a th:href="@{/administracija-auto-skole/nas-tim(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/team.png}"></img> Naš tim
+						</a>
+					</li>
+					<li th:if="${galleryAllowed}">
+						<a th:href="@{/administracija-auto-skole/galerija(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/gallery.png}"></img> Galerija
+						</a>
+					</li>
+					<li th:if="${marksAllowed}">
+						<a th:href="@{/administracija-auto-skole/utisci(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/marks.png}"></img> Utisci
+						</a>
+					</li>
+					<li th:if="${pricesAllowed}">
+						<a th:href="@{/administracija-auto-skole/upis-i-cene(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/prices.png}"></img> Upis i cene
+						</a>
+					</li>
+					<li th:if="${studentsAllowed}">
+						<a th:href="@{/administracija-auto-skole/ucenici(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/student.png}"></img> Učenici
+						</a>
+					</li>
+					<li th:if="${membershipAllowed}">
+						<a th:href="@{/administracija-auto-skole/zahtevi-za-clanstvo(id=*{id})}">
+							<img th:src="@{/images/drivingschoolsadmin/membershipRequest.png}"></img> Zahtevi za članstvo
+						</a>
+					</li>
+				</ul>
+
+				<br /> <br /> <br />
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<!-- BEGIN LEFT-SIDEBAR -->
+<div id="left-sidebar" class="span3 sidebar">
+	<!-- LEFT-SIDEBAR: SIDEBAR NAVIGATION -->
+	<div class="side-nav sidebar-block">
+		<h2>Administracija</h2>
+
+		<ul>
+			<li th:class="${pageInfo.name == 'kategorije-vesti'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/kategorije-vesti}">Kategorije stranica</a>
+			</li>
+			<li th:class="${pageInfo.name == 'vesti'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/vesti}">Vesti</a>
+			</li>
+			<li th:class="${pageInfo.name == 'informacije'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/informacije}">Informacije</a>
+			</li>
+			<li th:class="${pageInfo.name == 'pomoc'} ? 'active'" class="active">
+				<a href="#" th:href="@{/administracija/pomoc}">Pomoć</a>
+			</li>
+			<li th:class="${pageInfo.name == 'pitanja'} ? 'active'">
+				<a th:href="@{/administracija/pitanja}">Pitanja</a>
+			</li>
+			<li th:class="${pageInfo.name == 'greske-pitanja'} ? 'active'">
+				<a th:href="@{/administracija/greske-pitanja}">Greske pitanja</a>
+			</li>
+			<li th:class="${pageInfo.name == 'autoskole'} ? 'active'">
+				<a th:href="@{/administracija/auto-skole}">Auto škole</a>
+			</li>
+			<li th:class="${pageInfo.name == 'korisnici'} ? 'active'">
+				<a th:href="@{/administracija/korisnici}">Korisnici</a>
+			</li>
+			<li th:class="${pageInfo.name == 'slike'} ? 'active'">
+				<a th:href="@{/administracija/slike}">Slike</a>
+			</li>
+			<li th:class="${pageInfo.name == 'fajlovi'} ? 'active'">
+				<a th:href="@{/administracija/fajlovi}">Fajlovi</a>
+			</li>
+			<li th:class="${pageInfo.name == 'adminServisi'} ? 'active'">
+				<a th:href="@{/administracija/adminServisi}">Admin Servisi</a>
+			</li>
+			<li th:class="${pageInfo.name == 'reportsPage'} ? 'active'">
+				<a th:href="@{/administracija/reports}">Izveštaji</a>
+			</li>
+			<li th:class="${pageInfo.name == 'testsPage'} ? 'active'">
+				<a th:href="@{/administracija/testovi}">Testovi</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- END LEFT-SIDEBAR -->

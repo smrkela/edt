@@ -1,0 +1,101 @@
+<div class="row show-grid">
+
+	<div tiles:include="breadcrumbs"></div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<div tiles:include="sidebar"></div>
+
+			<div class="span9 main-column two-columns-left">
+
+				<h1>Zahtev za članstvo</h1>
+
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<div class="row">
+
+					<div class="span9">
+
+						<form id="form" class="form-horizontal">
+		
+							<div class="control-group">
+								<label class="control-label" for="drivingSchool">Auto škola<span>*</span></label>
+								<div class="controls">
+									<select id="drivingSchool" name="drivingSchool" data-placeholder="Izaberite auto školu" title="Izaberite auto školu" 
+										class="span6 chzn-select-deselect" >
+										<option value=""></option>
+										<option th:each="school : ${schools}" th:value="${school.id}" 
+												th:text="${school.name} + ' ( ' + ${school.city} + ', ' + ${school.address} +' )'"></option>
+									</select>
+									<span id="tooltipForDrivingSchool" title="Izaberite auto školu"> </span>
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="receiveNotifications">Primaj obaveštenja</label>
+								<div class="controls">
+									<input type="checkbox" id="receiveNotifications" name="receiveNotifications" />
+								</div>
+							</div>
+		
+							<div class="control-group">
+								<label class="control-label" for="comment">Napomena</label>
+								<div class="controls">
+									<textarea id="comment" name="comment" title="Dužina komentara ne sme biti preko 2.000 karaktera" class="span6" style="height: 150px"  
+												placeholder="Unesite sadržaj napomene" />
+								</div>
+							</div>
+							
+							<div id="formValidationMessage"  class="alert alert-error" style="display: none" > 
+								<button class="close" type="button" data-dismiss="alert">×</button>
+								E-mail auto škole koju ste izabrali nam je nepoznat. Molimo Vas, unesite e-mail auto škole ispod kako bismo joj prosledili Vaš zahtev.
+							</div>
+							
+							<div class="control-group" id="emailValidation" style="display: none">
+								<label class="control-label" for="eMail">E-mail auto škole</label>
+								<div class="controls">
+									<input type="text" class="input" id="eMail" name="eMail" placeholder="E-mail auto škole" title="Unesite validan e-mail"/>
+								</div>
+							</div>
+
+							<div class="control-group form-button-offset">
+									<input class="btn btn-primary" type="submit" value="Pošalji zahtev" />
+							</div>
+						</form>
+					</div>
+
+				</div>
+
+				<br /> <br /> <br />
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- FORM RELATED -->
+
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.mousewheel.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/prettify.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.dualListBox-1.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/bootstrap-inputmask.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.autosize-min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.inputlimiter.1.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.tagsinput.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/chosen.jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.uniform.min.js}"></script>
+<script type="text/javascript" th:src="@{/atheme/js/lib/jquery.toggle.buttons.js}"></script>
+
+<script type="text/javascript" th:src="@{/scripts/jquery/jquery.form.js}"></script>
+
+<script>
+	jQuery(function() {
+		formGeneral();
+	});
+</script>
+
+<script th:src="@{/scripts/admin/createPage/profile/requestForMembershipInDrivingSchool.js}"></script>

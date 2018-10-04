@@ -1,0 +1,113 @@
+<div class="row show-grid">
+
+	<div class="span12">
+		<div id="breadcrumb">
+			<ul>
+				<li class="home"><a th:href="@{/}">Glavna</a></li>
+				<li><a th:href="@{/priprema-za-vozacki-ispit-testovi}">Učenje</a></li>
+				<li>Izbor kategorija</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span12">
+		<div class="row show-grid clear-both">
+
+			<!-- BEGIN ARTICLE CONTENT AREA -->
+
+			<div class="span12">
+
+				<h1>Čitanje na sajtu</h1>
+				<div class="text-divider6">
+					<span></span>
+				</div>
+
+				<h3>
+					<img alt="" th:src="@{/images/home/book_100.jpg}" /> Izaberi
+					kategoriju pitanja i kategoriju vozila za koje želiš da učiš:
+				</h3>
+
+				<form method="get" th:action="@{/ucenje}">
+
+					<div class="row">
+
+						<div class="span12">
+
+							<div class="row">
+
+								<div class="span5">
+
+									<h2>Kategorija pitanja</h2>
+									<div class="text-divider3">
+										<span></span>
+									</div>
+
+									<div class="span6" th:each="qCat : ${questionCategories}"
+										th:object="${qCat}">
+										<label class="radio"> <input type="radio"
+											id="questionsCategory" name="qcId" th:value="*{id}"
+											th:checked="*{id} == ${selectedQuestionCategoryId}" /> <span th:text="*{name}">Tekst</span>
+										</label>
+									</div>
+
+								</div>
+
+								<div class="span4">
+
+									<h2>Kategorija vozila</h2>
+									<div class="text-divider3">
+										<span></span>
+									</div>
+
+									<div class="span6" th:each="vCat : ${drivingCategories}"
+										th:object="${vCat}">
+										<label class="radio"> <input type="radio"
+											id="vehicleCategory" name="dcId" th:value="*{id}"
+											th:checked="*{id} == ${selectedDrivingCategoryId}" /> <span th:text="*{name}">Tekst</span>
+										</label>
+									</div>
+
+								</div>
+
+								<div class="span3">
+
+									<h2>&nbsp;</h2>
+									<div class="text-divider3">
+										<span></span>
+									</div>
+
+									<button id="createPageButton" class="btn btn-info">
+										<i class="glyphicon icon-play"></i> Kreni sa čitanjem
+									</button>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</form>
+
+				<br />
+
+				<div class="alert alert-info">
+
+					<h2>Aplikacija za učenje</h2>
+					<p>
+						Ne zaboravi da možeš učiti i preko aplikacije koja ima brojne
+						napredne funkcije kao što je i praćenje tvog rada i napretka! <br />
+						<a th:href="@{/online-ucenje}">Klikni ovde da odeš na
+							aplikaciju.</a>
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
