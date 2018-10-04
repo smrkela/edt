@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="homePage" template="template.html">
+		<put-attribute name="content" value="home.html" />
+	</definition>
+
+	<definition name="forbidden" template="template.html">
+		<put-attribute name="content" value="forbidden.html" />
+	</definition>
+
+	<definition name="error" template="template.html">
+		<put-attribute name="content" value="error.html" />
+	</definition>
+
+	<definition name="notAvailable" template="template.html">
+		<put-attribute name="content" value="notAvailable.html" />
+	</definition>
+
+	<definition name="nonExistingDrivingSchool" template="template.html">
+		<put-attribute name="content" value="nonExistingDrivingSchool.html" />
+	</definition>
+
+	<definition name="learningPage" template="template.html">
+		<put-attribute name="content" value="learning/learning.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="pagePage" template="template.html">
+		<put-attribute name="content" value="page.html" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="informationPage" template="template.html">
+		<put-attribute name="content" value="informations/information.html" />
+		<put-attribute name="sidebar" value="informations/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- INFORMACIJE -->
+
+	<definition name="informationsPage" template="template.html">
+		<put-attribute name="content" value="informations/informationsPage.html" />
+		<put-attribute name="sidebar" value="informations/rootSidebar.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA ODREDJENE POMOCI -->
+
+	<definition name="helpPage" template="template.html">
+		<put-attribute name="content" value="help/helpPage.html" />
+		<put-attribute name="sidebar" value="help/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- LANDING STRANICA ZA POMOC -->
+
+	<definition name="helpsPage" template="template.html">
+		<put-attribute name="content" value="help/helpsPage.html" />
+		<put-attribute name="sidebar" value="help/rootSidebar.html"
+			cascade="true" />
+	</definition>
+
+	<!-- AUTOSKOLE -->
+
+	<definition name="schoolInfoPage" template="template.html">
+		<put-attribute name="content" value="posttest.html" />
+	</definition>
+
+	<definition name="listOfDrivingSchools" template="template.html">
+		<put-attribute name="content"
+			value="drivingschools/listOfDrivingSchools.html" />
+		<put-attribute name="sidebar" value="drivingschools/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolsNotifications" template="template.html">
+		<put-attribute name="content"
+			value="drivingschools/drivingSchoolsNotifications.html" />
+		<put-attribute name="sidebar" value="drivingschools/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/shareMini.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="listOfDrivingSchoolsForCity" template="template.html">
+		<put-attribute name="content"
+			value="drivingschools/listOfDrivingSchoolsForCity.html" />
+		<put-attribute name="sidebar" value="drivingschools/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolsMap" template="template.html">
+		<put-attribute name="content"
+			value="drivingschools/drivingSchoolsMap.html" />
+		<put-attribute name="sidebar" value="drivingschools/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolProfile" template="template.html">
+		<put-attribute name="content" value="drivingSchoolProfile.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="listOfQuestionsForLearning" template="template.html">
+		<put-attribute name="content"
+			value="learning/listOfQuestionsForLearning.html" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="prepareForLearning" template="template.html">
+		<put-attribute name="content" value="learning/prepareForLearning.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="learningSelection" template="template.html">
+		<put-attribute name="content" value="learning/learningSelection.html" />
+	</definition>
+
+	<!-- QUESTION VIEW -->
+
+	<definition name="questionView" template="template.html">
+		<put-attribute name="content" value="learning/questionView.html" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="invalidQuestionView" template="template.html">
+		<put-attribute name="content" value="learning/invalidQuestionView.html" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- LISTA UCENIKA KOJI SU SKORO BILI AKTIVNI NA APLIKACIJI -->
+	<definition name="recentActiveStudents" template="template.html">
+		<put-attribute name="content" value="learning/recentActiveStudents.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA ZA TEST DANA -->
+
+	<definition name="dailyTest" template="template.html">
+		<put-attribute name="content" value="learning/dailyTest.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA SVIM KORISNICIMA ODREDJENOG TESTA DANA -->
+
+	<definition name="dailyTestUsers" template="template.html">
+		<put-attribute name="content" value="learning/dailyTestUsers.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA SVIM KORISNICIMA ODREDJENOG TESTA -->
+
+	<definition name="realTestUsers" template="template.html">
+		<put-attribute name="content" value="learning/realTestUsers.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA ZA POLAGANJE TESTA DANA -->
+
+	<definition name="doDailyTest" template="template.html">
+		<put-attribute name="content" value="learning/doDailyTest.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA ZA POLAGANJE TESTA -->
+
+	<definition name="doRealTest" template="template.html">
+		<put-attribute name="content" value="learning/doRealTest.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA REZULTATIMA SVIH TESTOVA DANA -->
+
+	<definition name="dailyTestTopList" template="template.html">
+		<put-attribute name="content" value="learning/dailyTestTopList.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA SVIM TESTOVIMA -->
+	<definition name="allDailyTests" template="template.html">
+		<put-attribute name="content" value="learning/allDailyTests.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA DETALJNIM REZULTATIMA TESTA DANA -->
+	<definition name="dailyTestUserResult" template="template.html">
+		<put-attribute name="content" value="learning/dailyTestUserResult.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA DETALJNIM REZULTATIMA TESTA DANA KADA KORISNIK NIJE ULOGOVAN -->
+	<definition name="dailyTestUserResultNotLoggedIn" template="template.html">
+		<put-attribute name="content"
+			value="learning/dailyTestUserResultNotLoggedIn.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="dailyTestUserResultNotTakenTest" template="template.html">
+		<put-attribute name="content"
+			value="learning/dailyTestUserResultNotTakenTest.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA DETALJNIM REZULTATIMA TESTA -->
+	<definition name="realTestUserResult" template="template.html">
+		<put-attribute name="content" value="learning/realTestUserResult.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- STRANICA SA DETALJNIM REZULTATIMA TESTA KADA KORISNIK NIJE ULOGOVAN -->
+	<definition name="realTestUserResultNotLoggedIn" template="template.html">
+		<put-attribute name="content"
+			value="learning/realTestUserResultNotLoggedIn.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="realTestUserResultNotTakenTest" template="template.html">
+		<put-attribute name="content"
+			value="learning/realTestUserResultNotTakenTest.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<!-- PRIKAZ SVIH TESTOVA -->
+
+	<definition name="realTestsOverview" template="template.html">
+		<put-attribute name="content" value="learning/realTestsOverview.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<!-- MARATON -->
+	
+	<!-- PRIKAZ SVIH TESTOVA -->
+
+	<definition name="marathonOverview" template="template.html">
+		<put-attribute name="content" value="learning/marathonOverview.html" />
+		<put-attribute name="sidebar" value="learning/sidebar.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="doMarathon" template="template.html">
+		<put-attribute name="content" value="learning/doMarathon.html" />
+	</definition>
+	
+	<!-- LOGIN RELATED -->
+
+	<definition name="loginPage" template="template.html">
+		<put-attribute name="content" value="login/login.html" />
+		<put-attribute name="sidebar" value="login/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="login/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="registerPage" template="template.html">
+		<put-attribute name="content" value="login/register.html" />
+		<put-attribute name="sidebar" value="login/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="login/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="captcha" value="components/captcha.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="registerSuccessPage" template="template.html">
+		<put-attribute name="content" value="login/registerSuccess.html" />
+	</definition>
+
+	<definition name="askResetPasswordPage" template="template.html">
+		<put-attribute name="content" value="login/askResetPassword.html" />
+		<put-attribute name="sidebar" value="login/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="login/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="captcha" value="components/captcha.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="forgottenUsernamePage" template="template.html">
+		<put-attribute name="content" value="login/forgottenUsername.html" />
+		<put-attribute name="sidebar" value="login/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="login/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="captcha" value="components/captcha.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="activateUserPage" template="template.html">
+		<put-attribute name="content" value="login/activateUser.html" />
+	</definition>
+
+	<definition name="resetPasswordPage" template="template.html">
+		<put-attribute name="content" value="login/resetPassword.html" />
+		<put-attribute name="sidebar" value="login/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="login/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- -->
+
+	<definition name="uploadPage" template="template.html">
+		<put-attribute name="content" value="upload.html" />
+	</definition>
+
+	<definition name="forumPage" template="template.html">
+		<put-attribute name="content" value="forum.html" />
+	</definition>
+
+	<!-- DEFINICIJA ZA CONTACT STRANICU -->
+	<definition name="contactPage" template="template.html">
+		<put-attribute name="content" value="contact.html" />
+		<put-attribute name="captcha" value="components/captcha.html"
+			cascade="true" />
+	</definition>
+
+	<!-- DEFINICIJA ZA USPESNO SLANJE MAIL-A -->
+	<definition name="contactSuccessPage" template="template.html">
+		<put-attribute name="content" value="contactSuccess.html" />
+	</definition>
+
+	<definition name="pages" template="template.html">
+		<put-attribute name="content" value="pages.html" />
+		<put-attribute name="share" value="components/shareMini.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolContact" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolContact.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolEmployees" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolTeam.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolCars" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolCars.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolNotifications" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolNotifications.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolNotification" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolNotification.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+
+	<!-- Potvrda obavestenja auto skole -->
+	<definition name="drivingSchoolNotificationConfirmation"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolNotificationConfirmation.html" />
+	</definition>
+
+	<!-- Lista svih potvrda za odredjeno obavestenje -->
+	<definition name="drivingSchoolNotificationConfirmations"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationNotificationConfirmations.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolMarks" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolMarks.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolGallery" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolGallery.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolGalleryAlbum" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolGalleryAlbum.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministration" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministration.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationTeam" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationTeam.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationTeamAdd"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationTeamAdd.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+		<put-attribute name="imageUploader" value="components/imageUploader.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationStudents"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationStudents.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+
+	<!-- Dodavanje novog ucenika u admministraciji auto skole -->
+	<definition name="drivingSchoolAdministrationStudentAdd"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationStudentAdd.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<!-- Povezivanje odobrenog clanstva sa postojecim ucenikom -->
+	<definition name="drivingSchoolAdministrationStudentConnectToExisting"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationStudentConnectToExisting.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+
+	<definition name="drivingSchoolAdministrationBasicInfo"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationBasicInfo.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+		<put-attribute name="imageUploader" value="components/imageUploader.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationNotifications"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationNotifications.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationNotificationAdd"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationNotificationAdd.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationCars" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationCars.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationCarAdd"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationCarAdd.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+		<put-attribute name="imageUploader" value="components/imageUploader.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationGallery"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationGallery.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<!-- DODAVANJE ALBUMA -->
+
+	<definition name="drivingSchoolAdministrationAlbumAdd"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationAlbumAdd.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolCannotAddAlbum" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolCannotAddAlbum.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationAlbumAddImages"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationAlbumAddImages.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+		<put-attribute name="galleryUploader" value="components/galleryUploader.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationMarks"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationMarks.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationAlbumManageImages"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationAlbumManageImages.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationAlbumImageUpdate"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationAlbumImageUpdate.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolPriceList" template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/drivingSchoolPriceList.html" />
+		<put-attribute name="sidebar" value="drivingschool/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="drivingschool/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="share" value="components/share.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="drivingSchoolAdministrationPriceList"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationPriceList.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<!-- ADMINISTRACIJA -->
+
+	<definition name="administration" template="template.html">
+		<put-attribute name="content" value="admin/administration.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationPages" template="template.html">
+		<put-attribute name="content" value="admin/administrationPages.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationInformations" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationInformations.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationHelps" template="template.html">
+		<put-attribute name="content" value="admin/administrationHelps.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreatePage" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreatePage.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="imageUploader" value="components/imageUploader.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreateInformations"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreateInformations.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreateHelp" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreateHelp.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationPageCategories" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationPageCategories.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreatePageCategory"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreatePageCategory.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationQuestions" template="template.html">
+		<put-attribute name="content" value="admin/administrationQuestions.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationQuestionView" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationQuestionView.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreateQuestion" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreateQuestion.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationGroupedQuestionProblems"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationGroupedQuestionProblems.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationQuestionProblems" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationQuestionProblems.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreateDrivingSchool"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreateDrivingSchool.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationDrivingSchools" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationDrivingSchools.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationShowDrivingSchool" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationDrivingSchool.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationUpdateDrivingSchoolLicense"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationUpdateDrivingSchoolLicense.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationUsers" template="template.html">
+		<put-attribute name="content" value="admin/administrationUsers.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationImages" template="template.html">
+		<put-attribute name="content" value="admin/administrationImages.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationImageAlbumAdd" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationImageAlbumAdd.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationImageAlbumAddImages"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationImageAlbumAddImages.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="galleryUploader" value="components/galleryUploader.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationImageAlbumManageImages"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationImageAlbumManageImages.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationImageAlbumImageUpdate"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationImageAlbumImageUpdate.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationFiles" template="template.html">
+		<put-attribute name="content" value="admin/administrationFiles.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationDrivingSchoolMemberAdd"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationDrivingSchoolMemberAdd.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationMyProfile" template="template.html">
+		<put-attribute name="content"
+			value="admin/profile/administrationMyProfile.html" />
+		<put-attribute name="sidebar" value="admin/profile/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/profile/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationRealTests" template="template.html">
+		<put-attribute name="content" value="admin/administrationRealTests.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="administrationCreateRealTest" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationCreateRealTest.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- ZAHTEV ZA CLANSTVO U AUTO SKOLI -->
+	<definition name="requestForMembershipInDrivingSchool"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/profile/requestForMembershipInDrivingSchool.html" />
+		<put-attribute name="sidebar" value="admin/profile/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/profile/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- ZAHTEV ZA CLANSTVO U AUTO SKOLI USPESNO KREIRAN -->
+	<definition name="requestForMembershipInDrivingSchoolSuccess"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/profile/requestForMembershipInDrivingSchoolSuccess.html" />
+		<put-attribute name="sidebar" value="admin/profile/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/profile/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- LISTA ZAHTEVA ZA CLANSTVO U AUTO SKOLAMA KOD UCENIKA -->
+	<definition name="listOfDrivingSchoolsMembership" template="template.html">
+		<put-attribute name="content"
+			value="admin/profile/listOfDrivingSchoolsMembership.html" />
+		<put-attribute name="sidebar" value="admin/profile/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/profile/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- LISTA ZAHTEVA ZA CLANSTVO U AUTO SKOLI KOD AUTO SKOLE -->
+	<definition name="drivingSchoolAdministrationMembershipRequests"
+		template="template.html">
+		<put-attribute name="content"
+			value="drivingschool/admin/drivingSchoolAdministrationMembershipRequests.html" />
+		<put-attribute name="sidebar" value="drivingschool/admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs"
+			value="drivingschool/admin/breadcrumbs.html" cascade="true" />
+	</definition>
+
+	<!-- POTVRDA ZAHTEVA ZA CLANSTVO U AUTO SKOLI -->
+	<definition name="requestForMembershipInDrivingSchoolConfirmation"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/profile/requestForMembershipInDrivingSchoolConfirmation.html"></put-attribute>
+	</definition>
+
+
+	<definition name="administrationMyProfileUpdate" template="template.html">
+		<put-attribute name="content"
+			value="admin/profile/administrationMyProfileUpdate.html" />
+		<put-attribute name="sidebar" value="admin/profile/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/profile/breadcrumbs.html"
+			cascade="true" />
+		<put-attribute name="imageUploader" value="components/imageUploader.html"
+			cascade="true" />
+	</definition>
+
+	<!-- Admin Services - AdministrationController - adminServices -->
+	<definition name="adminServices" template="template.html">
+		<put-attribute name="content" value="admin/administrationServices.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- Admin Services - AdministrationController - synchronizeDB -->
+	<definition name="adminServicesSyncDB" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationServicesSyncDB.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+
+	<!-- Admin Services - AdministrationController - greska u izvrsavnju -->
+	<definition name="adminServicesError" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationServicesError.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- PRETRAGA PITANJA -->
+
+	<definition name="administrationFindQuestions" template="template.html">
+		<put-attribute name="content"
+			value="admin/administrationFindQuestions.html" />
+		<put-attribute name="sidebar" value="admin/sidebar.html"
+			cascade="true" />
+		<put-attribute name="breadcrumbs" value="admin/breadcrumbs.html"
+			cascade="true" />
+	</definition>
+
+	<!-- DEFINICIJA ZA POLITIKU PRIVATNOSTI -->
+	<definition name="privacyPolicyPage" template="template.html">
+		<put-attribute name="content" value="privacyPolicy.html" />
+	</definition>
+
+
+	<!-- DEFINICIJA ZA USLOVE KORISCENJA -->
+	<definition name="termsOfServicePage" template="template.html">
+		<put-attribute name="content" value="termsOfService.html" />
+	</definition>
+
+	<!-- Izvestaji -->
+
+	<definition name="reportsPage" template="template.html">
+		<put-attribute name="content" value="admin/reports/reports.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="reportsLoggedInUsersPage" template="template.html">
+		<put-attribute name="content"
+			value="admin/reports/reportLoggedInUsers.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="reportsRegisteredUsersPage" template="template.html">
+		<put-attribute name="content"
+			value="admin/reports/reportRegisteredUsers.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="reportsApplicationUsersPage" template="template.html">
+		<put-attribute name="content"
+			value="admin/reports/reportApplicationUsers.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="reportsLicencedDrivingSchoolsPage"
+		template="template.html">
+		<put-attribute name="content"
+			value="admin/reports/reportLicensedSchools.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="reportsDrivingSchoolsLoginPage" template="template.html">
+		<put-attribute name="content"
+			value="admin/reports/reportDrivingSchoolsLogin.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<definition name="reportsActivityPage" template="template.html">
+		<put-attribute name="content" value="admin/reports/reportActivity.html" />
+		<put-attribute name="sidebar" value="admin/reports/sidebar.html"
+			cascade="true" />
+	</definition>
+
+	<!-- LEARNING APP -->
+
+	<definition name="learningAppPage" template="/learningapp/template.html">
+	</definition>
+
+</tiles-definitions>

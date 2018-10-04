@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
+
+    <group name="angular-app">
+        
+        <group-ref>angular</group-ref>
+        <group-ref>bootstrap3</group-ref>
+        <group-ref>bootflat</group-ref>
+        <group-ref>bizstrap</group-ref>
+        
+    </group>
+    
+	<group name="angular">
+		<js>/learningApp/assets/libs/angular1.3/angular.js</js>
+		<js>/learningApp/assets/libs/angular1.3/angular-animate.js</js>
+		<js>/learningApp/assets/libs/angular1.3/angular-cookies.js</js>
+		<js>/learningApp/assets/libs/angular1.3/angular-ui-router.js</js>
+		<js>/learningApp/assets/libs/smoothscroll/smoothscroll.js</js>
+
+		<js>/learningApp/assets/libs/pace/js/pace.js</js>
+		<css>/learningApp/assets/libs/pace/css/pace.css</css>
+
+		<js>/learningApp/assets/libs/ngdialog/js/ngDialog.js</js>
+		<css>/learningApp/assets/libs/ngdialog/css/ngDialog.css</css>
+		<css>/learningApp/assets/libs/ngdialog/css/ngDialog-theme-default.css
+		</css>
+		<css>/learningApp/assets/libs/ngdialog/css/ngDialog-theme-discussion.css
+		</css>
+
+		<js>/learningApp/assets/libs/jquery-1.11/jquery-1.11.2.min.js</js>
+
+	</group>
+
+	<group name="bootstrap3">
+
+		<css>/learningApp/assets/libs/bootstrap3/css/bootstrap.css</css>
+		<css>/learningApp/assets/libs/bootstrap3/css/bootstrap-theme.css</css>
+		<css>/learningApp/assets/libs/bootstrap3/css/color_scheme.css</css>
+
+		<js>/learningApp/assets/libs/bootstrap3/js/bootstrap.js</js>
+		<js>/learningApp/assets/libs/bootstrap3/js/min.js</js>
+
+	</group>
+
+	<group name="bootflat">
+
+		<css>/learningApp/assets/libs/bootflat/css/bootflat.css</css>
+
+		<js>/learningApp/assets/libs/bootflat/js/icheck.min.js</js>
+		<js>/learningApp/assets/libs/bootflat/js/jquery.fs.selecter.min.js
+		</js>
+		<js>/learningApp/assets/libs/bootflat/js/jquery.fs.stepper.min.js</js>
+
+	</group>
+
+	<group name="bizstrap">
+
+		<css>/learningApp/assets/libs/bizstrap/css/color_scheme.css</css>
+		<css>/learningApp/assets/libs/bizstrap/css/custom.css</css>
+		<css>/learningApp/assets/libs/bizstrap/css/flexslider.css</css>
+		<css>/learningApp/assets/libs/bizstrap/css/isotope.css</css>
+		<css>/learningApp/assets/libs/bizstrap/css/jquery.fancybox.css</css>
+		<css>/learningApp/assets/libs/bizstrap/css/style.css</css>
+		<css>/learningApp/assets/libs/bizstrap/css/styler.css</css>
+
+		<js>/learningApp/assets/libs/bizstrap/js/custom.js</js>
+		<js>/learningApp/assets/libs/bizstrap/js/jquery.fancybox.pack.js</js>
+		<js>/learningApp/assets/libs/bizstrap/js/jquery.flexslider-min.js</js>
+		<js>/learningApp/assets/libs/bizstrap/js/jquery.isotope.js</js>
+
+	</group>
+	
+	<group name="learning-app">
+	    
+	    <js>/learningApp/app/**.js</js>
+	    
+	</group>
+
+</groups>
