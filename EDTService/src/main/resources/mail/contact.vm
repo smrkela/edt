@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body style="font-family: Verdana; width: 100%; border-left: 3px solid #0071DB;padding: 5px;">
+		
+		Zdravo administratori,<br/><br/>
+		<p>poslata je nova poruka sa sajta VozaciSrbije.com.<br/>
+		Detalji su sledeći:</p>
+		<table style="width: 100%;font-size: 12px;border: 1px solid #EEEEEE;">
+            <tr>
+                <td width="200px">Korisnik</td><td style="font-weight: bold;">$userName</td>
+            </tr>
+            <tr>
+                <td width="200px">E-mail</td><td style="font-weight: bold;">$userEmail</td>
+            </tr>
+            <tr>
+                <td>Subject</td><td style="font-weight: bold;">$subject</td>
+            </tr>
+            <tr>
+                <td>Poruka</td><td style="font-weight: bold;">$comment</td>
+            </tr>
+        </table>
+		<br/>
+		<br/>
+		<br/>
+		Pozdrav,
+		<br/>
+		<img src="$companyLogo" width="160px" height="49px"/>
+		<br/>
+	</body>
+<html>

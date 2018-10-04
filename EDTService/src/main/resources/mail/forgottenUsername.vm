@@ -1,0 +1,209 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Zaboravljeno korisničko ime</title>
+	</head>
+	<body style="font-family: Verdana; width: 100%; border-left: 3px solid #0071DB;padding: 5px;">
+		<div bgcolor="#3573b9" style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+			<div style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td height="40">&nbsp;</td>
+					</tr>
+					<tr>
+						<td align="center" valign="top" width="100%">
+						<table border="0" width="650" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td align="left" valign="top">
+										<table bgcolor="#1c4e88" border="0" width="100%" cellpadding="0" cellspacing="0">
+											<tbody>
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td height="20">&nbsp;</td>
+													<td width="20">&nbsp;</td>
+												</tr>
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td align="center" valign="top">
+														<table border="0" width="100%" cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td style="padding-top:15px;padding-bottom:5px;color:#ffffff;font-size:27px;font-family:arial,sans" align="center" valign="top">Zdravo $name,
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#8cb3c9;font-size:17px;font-family:arial,sans" align="center" valign="top">Vaše korisniško ime na sajtu VozaciSrbije.com je</td>
+																</tr>
+																<tr>
+																	<td>&nbsp;</td>
+																</tr>	
+																<tr>
+																	<td style="color:#8cb3c9;font-size:17px;font-family:arial,sans" align="center" valign="top">
+																		<table bgcolor="#0d3a6e" border="0" height="45" width="500" cellpadding="0" cellspacing="0">
+																			<tbody>
+																				<tr>
+																					<td align="center" valign="top" width="10">
+																						<img src="$mailLineLeft" style="display:block;border:0" height="45" width="10">
+																					</td>
+																					<td align="center" valign="top" width="500">
+																						<table bgcolor="#0d3a6e" border="0" height="45" width="100%" cellpadding="0" cellspacing="0">
+																							<tbody>
+																								<tr>
+																									<td style="height:2px;line-height:2px;font-size:2px" align="left" height="2" valign="top">
+																										<img src="$mailLineTop" style="display:block;border:0" height="2" width="482">
+																									</td>
+																								</tr>
+																								<tr>
+																									<td style="color:#dae7f5;font-size:15px;font-family:arial,sans;font-weight:500" align="center" height="41" valign="middle">
+																										<span style="color:#dae7f5;font-size:25px;font-family:arial,sans;font-weight:500;text-decoration:none">$username</span>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td style="height:2px;line-height:2px;font-size:2px" align="left" height="2" valign="top">
+																										<img src="$mailLineDown" style="display:block;border:0" height="2" width="482">
+																									</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</td>
+																					<td align="center" valign="top" width="10">
+																						<img src="$mailLineRight" style="display:block;border:0" height="45" width="10">
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>											
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+													<td width="20">&nbsp;</td>
+												</tr>									
+											</tbody>
+										</table>
+
+										<table bgcolor="#1c4e88" border="0" height="46" width="100%" cellpadding="0" cellspacing="0">
+											<tbody>
+												<tr>
+													<td height="46" width="221">
+														<img src="$mailImagesCell" style="display:block;border:0" height="46" width="221">
+													</td>
+													<td height="46" width="208">
+														<img src="$mailImagesCell" style="display:block;border:0" height="46" width="208">
+													</td>
+													<td height="46" width="221">
+														<img src="$mailImagesCell" style="display:block;border:0" height="46" width="221">
+													</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<table bgcolor="#d4eaef" border="0" width="100%" cellpadding="0" cellspacing="0">
+											<tbody>
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td height="20">&nbsp;</td>
+													<td width="20">&nbsp;</td>
+												</tr>
+												
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td style="color:#3f6085;font-size:25px;font-family:arial,sans" align="center" valign="top" width="100%">
+														Pratiti nas na
+													</td>
+													<td height="40">&nbsp;</td>
+												</tr>
+												
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td align="center" width="100%">
+														<table border="0" width="100%" cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td width="40">&nbsp;</td>
+																	
+																	<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																		<a href="https://www.facebook.com/VozaciSrbijeOfficial" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																			<img src="$mailImagesFb" style="display:block;border:0" height="38" width="134"> 
+																		</a>
+																	</td>
+																	
+																	<td width="20">&nbsp;</td>
+																	
+																	<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																		<a href="https://twitter.com/VozaciSrbije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																			<img src="$mailImagesTw" style="display:block;border:0" height="38" width="126"> 
+																		</a>
+																	</td>
+																	
+																	<td width="20">&nbsp;</td>
+																	
+																	<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																		<a href="https://plus.google.com/+Voza%C4%8DiSrbije/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																			<img src="$mailImagesGo" style="display:block;border:0" height="38" width="126"> 
+																		</a>
+																	</td>
+																	
+																	<td width="40">&nbsp;</td>
+																
+																</tr>
+															</tbody>
+														</table>
+													</td>
+													<td width="20">&nbsp;</td>
+												</tr>
+												
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td height="20">&nbsp;</td>
+													<td width="20">&nbsp;</td>
+												</tr>
+												
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td align="center" valign="top">
+														<table border="0" width="100%" cellpadding="0" cellspacing="0">
+															<tbody>
+																<tr>
+																	<td style="color:#3f6085;font-size:23px;font-family:arial,sans" align="center" valign="top">
+																		<a href="http://www.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																			<img src="$mailImagesLogo" style="display:block;border:4;color:black"> 
+																		</a>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+													<td width="20">&nbsp;</td>
+												</tr>
+												
+												<tr>
+													<td width="20">&nbsp;</td>
+													<td height="20">&nbsp;</td>
+													<td width="20">&nbsp;</td>
+												</tr>
+											</tbody>
+										</table>
+									
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+						
+			<div>&nbsp;</div>
+
+			<div>&nbsp;</div>
+			</div>
+
+			<div>&nbsp;</div>
+			</div>
+
+	</body>
+</html>

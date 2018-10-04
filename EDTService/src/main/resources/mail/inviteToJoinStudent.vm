@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Poziv za priključenje Sajtu VozaciSrbije.com</title>
+	</head>
+	<body>
+		<div bgcolor="#3573b9" style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+			<div style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td height="40">&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top" width="100%">
+								<table border="0" width="650" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td align="left" valign="top">
+												<table bgcolor="#1c4e88" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="center" valign="top">
+																<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td style="padding-top:15px;padding-bottom:5px;color:#ffffff;font-size:27px;font-family:arial,sans" align="center" valign="top">Zdravo $name,
+																			</td>
+																		</tr>
+																		<tr>
+																			<td style="color:#8cb3c9;font-size:17px;font-family:arial,sans" align="center" valign="top">auto škola "$drivingSchoolName" Vas je pozvala da se priključite Sajtu VozaciSrbije.com kao i Forumu.</td>
+																		</tr>
+																		<tr>
+																			<td style="color:#8cb3c9;font-size:17px;font-family:arial,sans" align="center" valign="top">Sajt možete koristiti i bez registracije, ali da biste imali pristup svim funkcionalnostima molimo Vas da se registrujete klikom na dugme ispod.</td>
+																		</tr>
+
+																	</tbody>
+																</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="18">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+											
+												<table bgcolor="#1c4e88" border="0" height="46" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td height="46" width="221">
+																<img src="$mailImagesCell" style="display:block;border:0" height="46" width="221">
+															</td>
+															<td height="46" width="208">
+																<a href="http://www.vozacisrbije.com/registruj-se" target="_blank">
+																	<img src="$mailImagesRegister" style="display:block;border:0" height="46" width="208">
+																</a>
+															</td>
+															<td height="46" width="221">
+																<img src="$mailImagesCell" style="display:block;border:0" height="46" width="221">
+															</td>
+														</tr>
+														<tr>
+															<td colspan="3" bgcolor="#d4eaef" height="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table bgcolor="#d4eaef" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="left" valign="top">
+															<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td style="color:#3f6085;font-size:27px;font-family:arial,sans" align="center" valign="top">
+																			Počnite sa učenjem i pripremom odmah!
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="20">&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td align="center" valign="top">
+																		<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																			<tbody>
+																				<tr>
+																					<td width="40">&nbsp;
+																					</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="http://www.vozacisrbije.com/informacije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesInfo" style="display:block;border:0" height="150" width="155"> 
+																						</a>
+																						<div style="color:#000;font-size:13px;font-family:arial,sans;line-height:17px;font-weight:bold;text-decoration:none">
+																							<a href="http://www.vozacisrbije.com/informacije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Pronađite informacije
+																							</a>
+																						</div>
+																						<a href="http://www.vozacisrbije.com/informacije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+
+																						<div>
+																							<a href="http://www.vozacisrbije.com/informacije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Na sajtu možete pronaći mnoštvo bitnih informacija.
+																							</a>
+																						</div>
+																					
+																						<a href="http://www.vozacisrbije.com/informacije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+																					</td>
+																					
+																					<td width="20">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesLearning" style="display:block;border:0" height="150" width="155"> 
+																						</a>
+																						<div style="color:#000;font-size:13px;font-family:arial,sans;line-height:17px;font-weight:bold;text-decoration:none">
+																							<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Učenje i priprema
+																							</a>
+																						</div>
+																						
+																						<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+
+																						<div>
+																							<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Učite i pripremite se na vrlo jednostavan, interaktivan i zanimljiv način.
+																							</a>
+																						</div>
+																						
+																						<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+																					</td>
+																					
+																					<td width="20">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi-aplikacija" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesApp" style="display:block;border:0" height="150" width="155"> 
+																						</a>
+																						
+																						<div style="color:#000;font-size:13px;font-family:arial,sans;line-height:17px;font-weight:bold;text-decoration:none">
+																							<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi-aplikacija" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Pratite svoj napredak
+																							</a>
+																						</div>
+																					
+																						<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi-aplikacija" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+
+																						<div>
+																							<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi-aplikacija" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Sajt Vam omogućava detaljno praćenje i analizu Vaših rezultata.
+																							</a>
+																						</div>
+																					
+																						<a href="http://www.vozacisrbije.com/priprema-za-vozacki-ispit-testovi-aplikacija" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+																					</td>
+																					
+																					<td width="40">&nbsp;</td>
+																				
+																				</tr>
+																			</tbody>
+																		</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table bgcolor="#eeeeee" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="left" valign="top">
+															<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td style="color:#3f6085;font-size:27px;font-family:arial,sans" align="center" valign="top">
+																			Imate pitanja?
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="20">&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td align="center" valign="top">
+																		<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																			<tbody>
+																				<tr>
+																					<td width="40">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="http://www.vozacisrbije.com/kontakt-forma" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesContact" style="display:block;border:0" height="150" width="155"> 
+																						</a>
+																						<div style="color:#000;font-size:13px;font-family:arial,sans;line-height:17px;text-decoration:none">
+																							<a href="http://www.vozacisrbije.com/kontakt-forma" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Kontaktirajte nas
+																							</a>
+																						</div>
+																						<a href="http://www.vozacisrbije.com/kontakt-forma" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+																					</td>
+																					
+																					<td width="20">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="http://www.vozacisrbije.com/pomoc" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesHelp" style="display:block;border:0" height="150" width="155"> 
+																						</a>
+																						<div style="color:#000;font-size:13px;font-family:arial,sans;line-height:17px;text-decoration:none">
+																							<a href="http://www.vozacisrbije.com/pomoc" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Potražite odgovore
+																							</a>
+																						</div>
+																						<a href="http://www.vozacisrbije.com/pomoc" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+																					</td>
+																					
+																					<td width="20">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="http://forum.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesForum" style="display:block;border:0" height="150" width="155"> 
+																						</a>
+																						<div style="color:#000;font-size:13px;font-family:arial,sans;line-height:17px;text-decoration:none">
+																							<a href="http://forum.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								Članci i forum
+																							</a>
+																							</div>
+																						<a href="http://forum.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank"> 
+																						</a>
+																					</td>
+																					
+																					<td width="40">&nbsp;</td>
+																				
+																				</tr>
+																			</tbody>
+																		</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="40">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														
+														<tr>
+															</tr></tbody></table><table bgcolor="#d4eaef" border="0" width="100%" cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td width="20">&nbsp;</td>
+																		<td height="20">&nbsp;</td>
+																		<td width="20">&nbsp;</td>
+																	</tr>
+																	
+																	<tr>
+																		<td width="20">&nbsp;</td>
+																		<td style="color:#3f6085;font-size:25px;font-family:arial,sans" align="center" valign="top" width="100%">
+																			Možete nas pratiti i na
+																		</td>
+																		<td height="40">&nbsp;</td>
+																	</tr>
+																	
+																	<tr>
+																		<td width="20">&nbsp;</td>
+																		<td align="center" width="100%">
+																			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																			<tbody>
+																				<tr>
+																					<td width="40">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="https://www.facebook.com/VozaciSrbijeOfficial" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesFb" style="display:block;border:0" height="54" width="192"> 
+																						</a>
+																					</td>
+																					
+																					<td width="20">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="https://twitter.com/VozaciSrbije" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesTw" style="display:block;border:0" height="52" width="180"> 
+																						</a>
+																					</td>
+																					
+																					<td width="20">&nbsp;</td>
+																					
+																					<td style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px" align="center" valign="top" width="176">
+																						<a href="https://plus.google.com/+Voza%C4%8DiSrbije/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																							<img src="$mailImagesGo" style="display:block;border:0" height="54" width="180"> 
+																						</a>
+																					</td>
+																					
+																					<td width="40">&nbsp;</td>
+																				
+																				</tr>
+																			</tbody>
+																		</table>
+																		</td>
+																		<td width="20">&nbsp;</td>
+																	</tr>
+																	
+																	<tr>
+																		<td width="20">&nbsp;</td>
+																		<td height="20">&nbsp;</td>
+																		<td width="20">&nbsp;</td>
+																	</tr>
+																	
+																	<tr>
+																		<td width="20">&nbsp;</td>
+																		<td align="center" valign="top">
+																			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																				<tbody>
+																					<tr>
+																						<td style="color:#3f6085;font-size:23px;font-family:arial,sans" align="center" valign="top">
+																							<a href="http://www.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																								<img src="$mailImagesLogo" style="display:block;border:4;color:black"> 
+																							</a>
+																						</td>
+																					</tr>
+																					
+																				</tbody>
+																			</table>
+																		</td>
+																		<td width="20">&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td width="20">&nbsp;</td>
+																		<td height="20">&nbsp;</td>
+																		<td width="20">&nbsp;</td>
+																	</tr>
+																</tbody>
+															</table>
+												
+											</td>
+													
+										</tr>		
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div>&nbsp;</div>
+
+				<div>&nbsp;</div>
+			</div>
+
+			<div>&nbsp;</div>
+		</div>
+
+	</body>
+</html>

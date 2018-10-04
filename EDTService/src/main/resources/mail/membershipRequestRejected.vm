@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Zahtev za članstvo je odbijen - VozaciSrbije.com</title>
+	</head>
+	<body>
+		<div bgcolor="#3573b9" style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+			<div style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td height="40">&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top" width="100%">
+								<table border="0" width="650" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td align="left" valign="top">
+												<table bgcolor="#1c4e88" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="center" valign="top">
+																<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td style="padding-top:15px;padding-bottom:5px;color:#ffffff;font-size:27px;font-family:arial,sans" align="center" valign="top">Zdravo $name,
+																			</td>
+																		</tr>
+																		<tr>
+																			<td style="color:#8cb3c9;font-size:17px;font-family:arial,sans" align="center" valign="top">na žalost, auto škola "$drivingSchoolName" nije prihvatila Vaš zahtev za članstvo. Više informacija možete pronaći na Sajtu
+																				<a href="http://www.vozacisrbije.com/" style="color:#8cb3c9;font-size:17px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																					VozaciSrbije.com</a>.
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table bgcolor="#1c4e88" border="0" height="46" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td height="46">
+																<img src="$mailImagesCell" style="display:block;border:0" height="46" width="100%">
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table bgcolor="#d4eaef" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td>
+																<table bgcolor="#d4eaef" border="0" width="100%" cellpadding="0" cellspacing="0">
+																	<tbody><tr>
+																		<td width="150">
+																		</td>
+																		<td align="right" valign="middle" width="60">
+																			<a href="https://www.facebook.com/VozaciSrbijeOfficial" target="_blank">
+																				<img src="$mailImagesFbLogo" style="display:block;border:4;color:black" width="48">
+																			</a>
+																		</td>
+																		<td width="60">
+																		</td>
+																		<td align="center" valign="middle" width="60">
+																			<a href="https://twitter.com/VozaciSrbije" target="_blank">
+																				<img src="$mailImagesTwLogo" style="display:block;border:4;color:black" width="48">
+																			</a>
+																		</td>
+																		<td width="60">
+																		</td>
+																		<td align="left" valign="middle" width="60">
+																			<a href="https://plus.google.com/+Voza%C4%8DiSrbije/" target="_blank">
+																				<img src="$mailImagesGoLogo" style="display:block;border:4;color:black" width="48">
+																			</a>
+																		</td>
+																		<td width="150">
+																		</td>
+																	</tr>
+																</tbody></table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="center" valign="top">
+																<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td style="color:#3f6085;font-size:23px;font-family:arial,sans" align="center" valign="top">
+																				<a href="http://www.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																					<img src="$mailImagesLogo" style="display:block;border:4;color:black"> 
+																				</a>
+																			</td>
+																		</tr>
+																		
+																	</tbody>
+																</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+							
+				<div>&nbsp;</div>
+
+				<div>&nbsp;</div>
+			</div>
+
+			<div>&nbsp;</div>
+		</div>
+	</body>
+</html>

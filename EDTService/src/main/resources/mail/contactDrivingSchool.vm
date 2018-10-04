@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Novi e-mail sa sajta VozaciSrbije.com</title>
+	</head>
+	<body>
+		<div bgcolor="#3573b9" style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+			<div style="margin:0;padding:0;background:#3573b9;background-color:#3573b9">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td height="30">&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top" width="100%">
+								<table border="0" width="70%" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td align="left" valign="top">
+												<table bgcolor="#1c4e88" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20" height="90">&nbsp;</td>
+															<td align="center" valign="middle">
+																<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td style="padding-top:15px;padding-bottom:5px;color:#ffffff;font-size:27px;font-family:arial,sans" align="center" valign="top">Poštovani,
+																			</td>
+																		</tr>
+																		<tr>
+																			<td style="color:#8cb3c9;font-size:17px;font-family:arial,sans" align="center" valign="top">korisnik sajta 
+																				<a href="http://www.vozacisrbije.com/" style="color:#8cb3c9;font-size:17px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																					VozaciSrbije.com
+																				</a> Vam je poslao novu poruku. Detalji su ispod:
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+												
+												<table bgcolor="#eeeeee" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="left" valign="top">
+																<table border="0" width="100%" cellpadding="4" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td width="12%" style="color:#1C4E88;font-size:17px;font-family:arial,sans;font-weight: bold;font-style: italic;">
+																				Korisnik
+																			</td>
+																			<td width="88%" style="border-left: 3px solid #1C4E88; color:#1C4E88;font-family:arial,sans;font-size:16px;">
+																				$userName
+																			</td>
+																		</tr>
+																		<tr>
+																			<td width="12%" style="color:#1C4E88;font-size:17px;font-family:arial,sans;font-weight: bold;font-style: italic;">
+																				E-mail
+																			</td>
+																			<td width="88%" style="border-left: 3px solid #1C4E88;color:#1C4E88;font-family:arial,sans;font-size:16px;">
+																				$userEmail
+																			</td>
+																		</tr>
+																		<tr>
+																			<td width="12%" style="color:#1C4E88;font-size:17px;font-family:arial,sans;font-weight: bold;font-style: italic;">
+																				Poruka
+																			</td>
+																			<td width="88%" style="border-left: 3px solid #1C4E88;color:#1C4E88;font-family:arial,sans;font-size:16px;">
+																				$comment
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td height="20">&nbsp;</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+												
+												<table bgcolor="#d4eaef" border="0" width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td width="10">&nbsp;</td>
+															<td height="10">&nbsp;</td>
+															<td width="10">&nbsp;</td>
+														</tr>	
+														<tr>
+															<td width="20">&nbsp;</td>
+															<td align="center" valign="top">
+																<table border="0" width="100%" cellpadding="0" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td style="color:#3f6085;font-size:23px;font-family:arial,sans" align="center" valign="top">
+																				<a href="http://www.vozacisrbije.com/" style="color:#333;font-size:12.5px;font-family:arial,sans;line-height:17px;text-decoration:none" target="_blank">
+																					<img src="$companyLogo" style="display:block;border:4;color:black"> 
+																				</a>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+															<td width="20">&nbsp;</td>
+														</tr>
+														<tr>
+															<td width="10">&nbsp;</td>
+															<td height="10">&nbsp;</td>
+															<td width="10">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>					
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+	</body>
+</html>

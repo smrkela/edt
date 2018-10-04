@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body style="font-family: Verdana; width: 100%; border-left: 3px solid #0071DB;padding: 5px;">
+		Zdravo administratori,
+		<br/><br/>
+		aktivacija korisnika na Forumu nije uspela te je potrebno ručno aktivirati korisnika (ukoliko je već registrovan). Detalji su sledeći:
+		<br/>
+		<table style="width: 100%;font-size: 12px;border: 1px solid #EEEEEE;">
+	            <tr>
+	                <td width="200px">FirstName</td><td style="font-weight: bold;">$firstName</td>
+	            </tr>
+	            <tr>
+	                <td width="200px">LastName</td><td style="font-weight: bold;">$lastName</td>
+	            </tr>
+	            <tr>
+	                <td>Username</td><td style="font-weight: bold;">$username</td>
+	            </tr>
+	            <tr>
+	                <td>Password</td><td style="font-weight: bold;">$password</td>
+	            </tr>
+	            <tr>
+	                <td>E-mail</td><td style="font-weight: bold;">$userEmail</td>
+	            </tr>
+	            <tr>
+	                <td>IsMale</td><td style="font-weight: bold;">$isMale</td>
+	            </tr>
+	            <tr>
+	                <td>Error</td><td style="font-weight: bold;">$error</td>
+	            </tr>
+	    </table>
+		<br/>
+		<br/>
+		<br/>
+		Pozdrav,
+		<br/>
+		<img src="$companyLogo" width="160px" height="49px"/>
+		<br/>
+	</body>
+<html>
