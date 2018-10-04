@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:twitter="http://www.springframework.org/schema/social/twitter"
+       xmlns:social="http://www.springframework.org/schema/social"
+       xmlns:facebook="http://www.springframework.org/schema/social/facebook"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/social http://docs.spring.io/autorepo/schema/spring-social/1.1.0.RELEASE/social/spring-social.xsd
+       http://www.springframework.org/schema/social/twitter http://docs.spring.io/autorepo/schema/spring-social-twitter/1.1.0.RELEASE/social/spring-social-twitter.xsd
+       http://www.springframework.org/schema/social/facebook http://docs.spring.io/autorepo/schema/spring-social-facebook/1.1.0.RELEASE/social/spring-social-facebook.xsd">
+
+    <!--
+        Enabled when the active Spring profile is 'application'.
+        This is required so that we can write integration tests
+        for our application.
+    -->
+    <beans profile="application">
+        
+        <!-- Ensures that configuration properties are read from a property file -->
+        <context:property-placeholder location="classpath:environment.properties"/>
+    </beans>
+</beans>

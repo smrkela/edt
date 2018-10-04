@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:social="http://www.springframework.org/schema/social"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/social http://docs.spring.io/autorepo/schema/spring-social/1.1.0.RELEASE/social/spring-social.xsd	
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+ 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- Ensures that configuration properties are read from a property file -->
+	<context:property-placeholder location="classpath:environment.properties" />
+
+	<http pattern="/images/**" security="none" />
+	<http pattern="/images/css" security="none" />
+	<http pattern="/settings.xml" security="none" />
+	<http pattern="/forum/**" security="none" />
+	<http pattern="/js-security" security="none" />
+	<http pattern="/BingSiteAuth.xml" security="none" />
+	<http use-expressions="true" auto-config="true">
+
+	    <intercept-url pattern="/rest/learningApp/getGuestPrepare" access="permitAll"/>
+	    <intercept-url pattern="/rest/learningApp/getUser" access="permitAll"/>
+	    <intercept-url pattern="/rest/learningApp/getGuestGroups" access="permitAll"/>
+	    <intercept-url pattern="/rest/learningApp/getGuestLessons" access="permitAll"/>
+	    <intercept-url pattern="/rest/learningApp/loadLeaderboard" access="permitAll"/>
+	    
+		<intercept-url pattern="/rest/user/registerUser" access="permitAll" />
+		<intercept-url pattern="/rest/kontakt/posalji-mail"
+			access="permitAll" />
+		<intercept-url pattern="/rest/kontakt/posalji-mail-auto-skola"
+			access="permitAll" />
+		<intercept-url pattern="/rest/user/resetPassword"
+			access="permitAll" />
+		<intercept-url pattern="/rest/user/askForResetPassword"
+			access="permitAll" />
+		<intercept-url pattern="/rest/user/askForResetPasswordXML"
+			access="permitAll" />
+		<intercept-url pattern="/rest/user/sendForgottenUsername"
+			access="permitAll" />
+		<intercept-url pattern="/rest/page/getAllPages" access="permitAll" />
+		<intercept-url pattern="/rest/page/getPage" access="permitAll" />
+		<intercept-url pattern="/rest/learning/submitDailyTest"
+			access="permitAll" />
+
+		<!-- Ovo mora da bude public jer na firefoxu filereferences ne salje jsessionid 
+			cookie pa puca upload ako se radi autorizacija -->
+		<intercept-url pattern="/rest/upload" access="permitAll" />
+
+		<intercept-url pattern="/rest/twitter/getTweets" access="permitAll" />
+
+		<intercept-url pattern="/rest/**" access="isAuthenticated()" />
+		<intercept-url pattern="/admin/**" access="isAuthenticated()" />
+		<intercept-url pattern="/signin/**" access="permitAll" />
+
+		<form-login login-page="/uloguj-se" username-parameter="username"
+			password-parameter="password" authentication-failure-url="/uloguj-se?error=credentials"
+			authentication-success-handler-ref="loginSuccessHandler"
+			login-processing-url="/login" />
+
+		<sec:logout logout-url="/logout" />
+
+		<sec:remember-me key="evola-edt" user-service-ref="userService" />
+
+	</http>
+
+	<authentication-manager alias="authenticationManager">
+		<sec:authentication-provider
+			user-service-ref="userService">
+			<sec:password-encoder ref="passwordEncoder" />
+		</sec:authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="userService" class="com.evola.edt.service.UserServiceImpl"></beans:bean>
+
+	<!-- This is used to hash the password of the user. -->
+	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg index="0" value="10" />
+	</beans:bean>
+
+	<beans:bean id="loginSuccessHandler"
+		class="com.evola.edt.web.security.EDTAuthenticationSuccessHandler">
+		<beans:property name="userService" ref="userService" />
+	</beans:bean>
+
+
+</beans:beans>

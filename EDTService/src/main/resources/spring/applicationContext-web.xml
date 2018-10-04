@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:social="http://www.springframework.org/schema/social"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                           http://www.springframework.org/schema/social 
+                           http://docs.spring.io/autorepo/schema/spring-social/1.1.0.RELEASE/social/spring-social.xsd">
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.evola.edt.web" />
+
+	<!-- Ensures that configuration properties are read from a property file -->
+	<context:property-placeholder location="classpath:environment.properties" />
+	
+	<!-- **************************************************************** -->
+	<!-- RESOURCE FOLDERS CONFIGURATION -->
+	<!-- Dispatcher configuration for serving static resources -->
+	<!-- **************************************************************** -->
+	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/atheme/" mapping="/atheme/**" />
+	<mvc:resources location="/image/" mapping="/image/**" />
+	<mvc:resources location="/resource/" mapping="/resource/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/scripts/" mapping="/scripts/**" />
+	<mvc:resources location="/app/" mapping="/app/**" />
+	<mvc:resources location="/learningApp/" mapping="/learningApp/**" />
+	<mvc:resources location="/settings.xml" mapping="/settings.xml" />
+	<mvc:resources location="/crossdomain.xml" mapping="/crossdomain.xml" />
+	<mvc:resources location="/BingSiteAuth.xml" mapping="/BingSiteAuth.xml" />
+
+	<!-- **************************************************************** -->
+	<!-- SPRING ANNOTATION PROCESSING -->
+	<!-- **************************************************************** -->
+	<mvc:annotation-driven />
+
+	<!-- **************************************************************** -->
+	<!-- MESSAGE EXTERNALIZATION/INTERNATIONALIZATION -->
+	<!-- Standard Spring MessageSource implementation -->
+	<!-- **************************************************************** -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="Messages" />
+	</bean>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="52428800" />
+	</bean>
+
+	<!-- **************************************************************** -->
+	<!-- THYMELEAF-SPECIFIC ARTIFACTS -->
+	<!-- TemplateResolver <- TemplateEngine <- ViewResolver -->
+	<!-- **************************************************************** -->
+
+	<bean id="tilesConfigurer"
+		class="org.thymeleaf.extras.tiles2.spring.web.configurer.ThymeleafTilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles-defs.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tilesViewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+		<property name="viewClass"
+			value="org.thymeleaf.extras.tiles2.spring.web.view.ThymeleafTilesView" />
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="contentType" value="text/html; charset=UTF-8" />
+	</bean>
+
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="templateMode" value="HTML5" />
+		<property name="cacheable" value="false" />
+		<property name="characterEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+		<property name="additionalDialects">
+			<set>
+				<bean class="org.thymeleaf.extras.tiles2.dialect.TilesDialect" />
+				<bean class="org.thymeleaf.spring3.dialect.SpringStandardDialect" />
+				<bean
+					class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+			</set>
+		</property>
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+
+	<!-- SOCIAL -->
+	
+	<bean id="signInController"
+		class="org.springframework.social.connect.web.ProviderSignInController">
+
+		<constructor-arg index="0"
+			ref="connectionFactoryLocator" />
+		<constructor-arg index="1"
+			ref="edtUsersConnectionRepository" />
+		<constructor-arg index="2"
+			ref="socialSignInAdapter" />
+
+		<property name="signUpUrl" value="/registruj-se" />
+		<property name="signInUrl" value="/uloguj-se" />
+		
+		<property name="signInInterceptors">
+		    <list>
+		        <bean class="com.evola.edt.web.security.EDTFacebookSignInInterceptor"/>
+		    </list>
+		    
+		</property>
+
+	</bean>
+
+	<bean id="socialSignInAdapter"
+		class="com.evola.edt.utils.social.SocialSignInAdapter" />
+
+	<!-- This bean determines the account ID of the user. The example application 
+		uses the username as the account ID. -->
+		
+	<bean id="userIdSource"
+		class="org.springframework.social.security.AuthenticationNameUserIdSource" />
+
+	<!-- This bean encrypts the authorization details of the connection. In 
+		our example, the authorization details are stored as plain text. DO NOT USE 
+		THIS IN PRODUCTION. -->
+		
+	<bean id="textEncryptor"
+		class="org.springframework.security.crypto.encrypt.Encryptors"
+		factory-method="noOpText" />
+
+	<bean id="connectionFactoryLocator"
+		class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
+
+		<property name="connectionFactories">
+			<list>
+				<bean
+					class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+					<constructor-arg index="0"
+						value="${facebook.app.id}" />
+					<constructor-arg index="1"
+						value="${facebook.app.secret}" />
+					<property name="scope" value="email" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="edtUsersConnectionRepository"
+		class="com.evola.edt.utils.social.EDTJDBCUsersConnectionRepository">
+		
+		<constructor-arg index="0" ref="dataSource" />
+		<constructor-arg index="1"
+			ref="connectionFactoryLocator" />
+		<constructor-arg index="2" ref="textEncryptor" />
+		
+	</bean>
+	
+	<bean id="socialConnectionSignUp" class="com.evola.edt.utils.social.SocialConnectionSignUp">
+	    <property name="registrationManager" ref="registrationManager"/>
+	</bean>
+	
+	<bean id="registrationManager" class="com.evola.edt.managers.RegistrationManager"/>
+	
+	<!-- Bean za Connect kontroler. -->
+	
+	<bean class="org.springframework.social.connect.web.ConnectController"/>
+
+	<!-- Ovo je podesavanje konektora za Connect kontroler. -->
+	
+	<social:jdbc-connection-repository
+		encryptor-ref="textEncryptor" />
+
+</beans>
